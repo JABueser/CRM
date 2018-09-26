@@ -26,6 +26,11 @@ namespace CRM.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult VolunteerOutput(string first, string last, string phone, string email)
+        {
+            return Content($"First Name: {first} \nLast Name: {last} \nPhone Number: {phone} \nEmail: {email}");
+        }
 
 
     }
