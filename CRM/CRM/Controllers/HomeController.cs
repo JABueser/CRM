@@ -11,10 +11,21 @@ namespace CRM.Controllers
     public class HomeController : Controller
     {
         // GET: /<controller>/
-        public IActionResult Index()
+        public ViewResult Index()
         {
             return View();
         }
+
+        public ViewResult VolunteerForm()
+        {
+            return View();
+        }
+
+        public ViewResult VolunteerHours()
+        {
+            return View();
+        }
+
 
 
     }
