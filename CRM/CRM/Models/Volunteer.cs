@@ -12,5 +12,6 @@ namespace CRM.Models
         public string lastName { get; set; }
         public string email { get; set; }
         public string interest { get; set; }
+        public int hours { get; set; }
     }
 }
