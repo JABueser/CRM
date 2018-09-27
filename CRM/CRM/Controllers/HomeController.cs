@@ -26,6 +26,11 @@ namespace CRM.Controllers
             return View();
         }
 
+        public ViewResult VolunteerEmail()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult VolunteerOutput(string first, string last, string phone, string email)
         {
