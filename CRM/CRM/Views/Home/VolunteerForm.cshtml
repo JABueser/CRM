@@ -1,0 +1,34 @@
+﻿@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width-device-width" />
+    <title>VolunteerForm</title>
+</head>
+<body>
+    <form method="post" action="/Home/VolunteerOutput">
+        <p>
+            <label for="First">First Name:</label>
+            <input type="text" id="First" name="First" value="" />
+        </p>
+        <p>
+            <label for="Last">Last Name:</label>
+            <input type="text" id="Last" name="Last" value="" />
+        </p>
+        <p>
+            <label for="Phone">Phone:</label>
+            <input type="text" id="Phone" name="Phone" value="" />
+        </p>
+        <p>
+            <label for="Email">Email:</label>
+            <input type="text" id="Email" name="Email" value="" />
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
