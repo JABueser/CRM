@@ -1,0 +1,29 @@
+﻿@model CRM.Models.VolunteerViewModel
+<table>
+    <tr>
+        <th>Interest</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Email</th>
+    </tr>
+    @foreach (var volunteer in Model.Volunteers)
+    {
+        <tr>
+            <td>
+                @volunteer.interest
+            </td>
+            <td>
+                @volunteer.lastName
+            </td>
+            <td>
+                @volunteer.firstName
+            </td>
+            <td>
+                @volunteer.email
+            </td>
+        </tr>
+    }
+
+
+
+</table>
