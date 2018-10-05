@@ -1,4 +1,5 @@
-﻿@{ 
+﻿@model CRM.Models.Volunteer
+@{ 
     Layout = null;
 }
 
@@ -11,22 +12,32 @@
     <title>VolunteerForm</title>
 </head>
 <body>
-    <form method="post" action="/Home/VolunteerOutput">
+    <form asp-action="VolunteerConfirm" method="post">
         <p>
-            <label for="First">First Name:</label>
-            <input type="text" id="First" name="First" value="" />
+            <label asp-for="firstName">First Name:</label>
+            <input asp-for="firstName" />
         </p>
         <p>
-            <label for="Last">Last Name:</label>
-            <input type="text" id="Last" name="Last" value="" />
+            <label asp-for="lastName">Last Name:</label>
+            <input asp-for="lastName" />
         </p>
         <p>
-            <label for="Phone">Phone:</label>
-            <input type="text" id="Phone" name="Phone" value="" />
+            <label asp-for="phone">Phone Number:</label>
+            <input asp-for="phone" />
         </p>
         <p>
-            <label for="Email">Email:</label>
-            <input type="text" id="Email" name="Email" value="" />
+            <label asp-for="email">Email Address:</label>
+            <input asp-for="email" />
+        </p>
+        <p>
+            <label>What is your interest?</label>
+            <select asp-for="interest">
+                <option value="">Choose an Option</option>
+                <option value="Food Line">Food Line</option>
+                <option value="Thrift Store">Thrift Store</option>
+                <option value="Dentist">Dentist</option>
+                <option value="Doctor">Doctor</option>
+            </select>
         </p>
         <button type="submit">Submit</button>
     </form>
