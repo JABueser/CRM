@@ -1,30 +1,38 @@
-﻿@{
+﻿@model IEnumerable<CRM.Models.Volunteer>
+@{
     Layout = null;
 }
 
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <h2>Volunteers</h2>
-    </head>
-    
-    <body>
-        <table>
+<head>
+    <h2>Volunteers</h2>
+</head>
+
+<body>
+    <table>
+        <thead>
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Cateogry</th>
-                <th>Total Hours Worked</th>
+                <th>Interest</th>
+                <th>Hours</th>
             </tr>
-            <tr>
-                <td>Jill</td>
-                <td>Smith</td>
-                <td>Doctor</td>
-                <td>20</td>
-            </tr>
-        </table>
-    </body>
-   
+        </thead>
+        <tbody>
+            @foreach (CRM.Models.Volunteer r in Model)
+            {
+                <tr>
+                    <td>@r.firstName</td>
+                    <td>@r.lastName</td>
+                    <td>@r.interest</td>
+                    <td>@r.hours</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+
 
 </html>

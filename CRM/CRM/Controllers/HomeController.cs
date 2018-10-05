@@ -25,7 +25,7 @@ namespace CRM.Controllers
 
         public ViewResult VolunteerHours()
         {
-            return View();
+            return View(Repository.Volunteers);
         }
 
         public ViewResult ListVolunteer()
