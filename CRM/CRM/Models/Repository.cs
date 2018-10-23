@@ -18,5 +18,20 @@ namespace CRM.Models
         {
            volunteers.Add(volunteer);
         }
+
+        public static Volunteer GetVolunteer(string lastname, string firstname)
+        {
+            Volunteer specificVolunteer = null;
+
+            foreach(Volunteer r in volunteers)
+            {
+                if(r.firstName.Equals(firstname) && r.lastName.Equals(lastname))
+                {
+                    specificVolunteer = r;
+                }
+            }
+
+            return specificVolunteer;
+        }
     }
 }

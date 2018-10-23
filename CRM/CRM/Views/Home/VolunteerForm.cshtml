@@ -16,27 +16,101 @@
         <p>
             <label asp-for="firstName">First Name:</label>
             <input asp-for="firstName" />
-        </p>
-        <p>
             <label asp-for="lastName">Last Name:</label>
             <input asp-for="lastName" />
         </p>
         <p>
-            <label asp-for="phone">Phone Number:</label>
+            <label asp-for="address">Address:</label>
+            <input asp-for="address" />
+        </p>
+        <p>
+            <label asp-for="city">City:</label>
+            <input asp-for="city" />
+            <label asp-for="state">State:</label>
+            <input asp-for="state" />
+            <label asp-for="zipCode">Zip Code:</label>
+            <input asp-for="zipCode" />
+        </p>
+        <p>
+            <label asp-for="phone">Phone Number (XXX-XXX-XXXX):</label>
             <input asp-for="phone" />
         </p>
         <p>
             <label asp-for="email">Email Address:</label>
             <input asp-for="email" />
+            <label asp-for="birthDate">Birth Date (XX/XX/XXXX):</label>
+            <input asp-for="birthDate" />
         </p>
         <p>
-            <label>What is your interest?</label>
-            <select asp-for="interest">
+            <label asp-for="organization">Organization or Company:</label>
+            <input asp-for="organization" />
+            <label asp-for="occupation">Occupation:</label>
+            <input asp-for="occupation" />
+        </p>
+        <p>
+            <label asp-for="church">Church Affiliation ("None" if not affiliated):</label>
+            <input asp-for="church" />
+            <label asp-for="pastor">Senior Pastor ("None" if you don't have one):</label>
+            <input asp-for="pastor" />
+        </p>
+        <p>
+            <label asp-for="howDidYouHear">How did you hear about us?:</label>
+            <input asp-for="howDidYouHear" />
+        </p>
+        <p>
+            <label>Have you ever plead guilty or been convicted of a criminal offense?</label>
+            <select asp-for="felony">
                 <option value="">Choose an Option</option>
-                <option value="Food Line">Food Line</option>
-                <option value="Thrift Store">Thrift Store</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </p>
+        <p>
+            <label asp-for="natureOfFelony">If yes, please state the nature of the offense (if no, type "N/A"):</label>
+            <input asp-for="natureOfFelony" />
+        </p>
+        <p>
+            <label asp-for="emergencyName">Person to contact in case of emergency (first and last name):</label>
+            <input asp-for="emergencyName" />
+            <label asp-for="emergencyRelation">Relation:</label>
+            <input asp-for="emergencyRelation" />
+        </p>
+        <p>
+            <label asp-for="emergencyPhone">Their phone number (XXX-XXX-XXXX):</label>
+            <input asp-for="emergencyPhone" />
+        </p>
+        <p>
+            <label>Please describe any medical conditions or disabilities that might impair your ability to perform volunteer assignments</label>
+            <br />
+            <textarea asp-for="disabilities" rows="3" cols="105">
+            </textarea>
+        </p>
+        <p>
+            <label>What is your availability?</label>
+            <select asp-for="availability">
+                  <option value="Sunday">Sunday</option>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+            </select>
+
+        </p>
+        <p>
+            <label>Please list any skills, talents, or training that may help us determine the best position for you</label>
+            <br />
+            <textarea asp-for="skills" rows="3" cols="105">
+            </textarea>
+        </p>
+        <p>
+            <label>What interests for volunteering?</label>
+            <select asp-for="interest">
                 <option value="Dentist">Dentist</option>
                 <option value="Doctor">Doctor</option>
+                <option value="Foodline">Foodline</option>
+                <option value="Thrift Store">Thrift Store</option>
             </select>
         </p>
         <button type="submit">Submit</button>
