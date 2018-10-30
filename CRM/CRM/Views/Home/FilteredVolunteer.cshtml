@@ -2,22 +2,29 @@
 
 <table>
     <tr>
-        <th>Interest</th>
-        <th>Last Name</th>
         <th>First Name</th>
+        <th>Last Name</th>
         <th>Email</th>
+        <th>Phone</th>
+        <th>Interest</th>
+        <th>Hours</th>
+
+
+
         <th>Phone</th>
     </tr>
 
     @foreach (CRM.Models.Volunteer r in Model)
     {
-        <tr>
-            <td>@r.interest</td>
-            <td>@r.lastName</td>
-            <td>@r.firstName</td>
-            <td>@r.email</td>
-            <td>@r.phone</td>
-        </tr>
+    <tr>
+        <td>@r.firstName</td>
+        <td>@r.lastName</td>
+        <td>@r.email</td>
+        <td>@r.phone</td>
+        <td>@r.interest</td>
+        <td>@r.hours</td>
+
+    </tr>
     }
 </table>
 
