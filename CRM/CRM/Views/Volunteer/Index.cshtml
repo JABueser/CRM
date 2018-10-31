@@ -17,7 +17,7 @@
             });
     }
 
-    
+
     $(document).ready(function () {
         $("#ddlInterest").on('change', filter);
     });
@@ -26,26 +26,32 @@
 
 <h2>List Filtered by Interest</h2>
 
+<label for="selectAll"><strong>Select All</strong></label>
+@Html.CheckBox("selectAll")
+
+
+<br>
+
 <label for="ddlInterest"><strong>Select an Interest</strong></label>
-    @Html.DropDownList("ddlInterest", new List<SelectListItem>
+@Html.DropDownList("ddlInterest", new List<SelectListItem>
+{
+    new SelectListItem
     {
-        new SelectListItem
-        {
-            Text ="Dentist", Value="Dentist"
-        },
-        new SelectListItem
-        {
-            Text = "Doctor", Value = "Doctor"
-        },
-        new SelectListItem
-        {
-            Text ="Foodline", Value = "Foodline"
-        },
-        new SelectListItem
-        {
-            Text="Thrift Store", Value = "Thrift Store"
-        }
-    })
+        Text ="Dentist", Value="Dentist"
+    },
+    new SelectListItem
+    {
+        Text = "Doctor", Value = "Doctor"
+    },
+    new SelectListItem
+    {
+        Text ="Foodline", Value = "Foodline"
+    },
+    new SelectListItem
+    {
+        Text="Thrift Store", Value = "Thrift Store"
+    }
+})
 
 
 <div id="dvVolunteerList">
