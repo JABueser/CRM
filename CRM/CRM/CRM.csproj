@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Extensions\" />
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\lib\Images\" />
   </ItemGroup>
 
   <ItemGroup>

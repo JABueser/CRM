@@ -1,0 +1,43 @@
+﻿.center_header_text{
+    text-align: center;
+    color: #666666;
+    font-size: 58px;
+    font-family: Arial;
+    margin-right: 275px;
+}
+
+.leftimage {
+    width: 230px;
+    height: 80px;
+    float: left;
+
+}
+
+.site_header{
+    margin-left: 75px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+.u_header {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #DEF2FC;
+}
+
+.li_header{
+    float: left;
+}
+
+.li_a_header {
+    display: block;
+    font-family: Arial;
+    font-size: 50px;
+    color: #666666;
+    text-align: center;
+    padding: 20px 48px;
+    text-decoration: none;
+}
