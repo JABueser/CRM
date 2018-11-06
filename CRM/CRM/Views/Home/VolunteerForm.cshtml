@@ -8,9 +8,11 @@
 <head>
     <meta name="viewport" content="width-device-width" />
     <title>VolunteerForm</title>
+    <link href="~/lib/css/invalidinput.css" rel="stylesheet" />
 </head>
 <body>
     <form asp-action="VolunteerConfirm" method="post">
+        <div asp-validation-summary="All"></div>
         <p>
             <label asp-for="firstName">First Name:</label>
             <input asp-for="firstName" />
@@ -86,13 +88,14 @@
         <p>
             <label>What is your availability?</label>
             <select asp-for="availability">
-                  <option value="Sunday">Sunday</option>
-                  <option value="Monday">Monday</option>
-                  <option value="Tuesday">Tuesday</option>
-                  <option value="Wednesday">Wednesday</option>
-                  <option value="Thursday">Thursday</option>
-                  <option value="Friday">Friday</option>
-                  <option value="Saturday">Saturday</option>
+                <option value="">Choose an Option</option>
+                <option value="Sunday">Sunday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
             </select>
 
         </p>
@@ -105,6 +108,7 @@
         <p>
             <label>What interests for volunteering?</label>
             <select asp-for="interest">
+                <option value="">Choose an Option</option>
                 <option value="Dentist">Dentist</option>
                 <option value="Doctor">Doctor</option>
                 <option value="Foodline">Foodline</option>

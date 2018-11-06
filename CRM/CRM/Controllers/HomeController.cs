@@ -36,8 +36,17 @@ namespace CRM.Controllers
         [HttpPost]
         public ViewResult VolunteerConfirm(Volunteer volunteer)
         {
-            Repository.AddVolunteer(volunteer);
-            return View("Confirm", volunteer);
+            if (ModelState.IsValid)
+            {
+                Repository.AddVolunteer(volunteer);
+                return View("Confirm", volunteer);
+            }
+
+            else
+            {
+                return View("VolunteerForm");
+            }
+
         }
 
         public ViewResult VolunteerInterest()
