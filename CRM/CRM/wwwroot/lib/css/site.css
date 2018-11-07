@@ -23,7 +23,7 @@
 .u_header {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding-left: 435px;
     overflow: hidden;
     background-color: #DEF2FC;
 }
@@ -38,6 +38,6 @@
     font-size: 50px;
     color: #666666;
     text-align: center;
-    padding: 20px 48px;
+    padding: 20px 40px;
     text-decoration: none;
 }
