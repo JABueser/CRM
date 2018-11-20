@@ -1,0 +1,11 @@
+﻿@model CRM.ViewModels.VolunteerIndexViewModel
+
+@{
+    ViewData["Title"] = "List of Volunteers";
+}
+
+
+@foreach (var volunteer in Model.Volunteers)
+{
+    @Html.Partial("_Summary", volunteer)
+}

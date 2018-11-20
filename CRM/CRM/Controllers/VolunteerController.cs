@@ -1,5 +1,6 @@
 ﻿using CRM.Models;
 using CRM.Services;
+using CRM.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace CRM.Controllers
     public class VolunteerController : Controller
     {
         private readonly IVolunteerService _volunteerService;
+        private readonly IVolunteerData _volunteerData;
 
-        public VolunteerController(IVolunteerService volunteerService)
+        public VolunteerController(IVolunteerService volunteerService, IVolunteerData volunteerData)
         {
             _volunteerService = volunteerService;
+            _volunteerData = volunteerData;
         }
 
 
@@ -29,6 +32,13 @@ namespace CRM.Controllers
             return View(model);
         }
 
+        public IActionResult List()
+        {
+            var model = new VolunteerIndexViewModel();
+            model.Volunteers = _volunteerData.GetAll();
+            return View(model);
+        }
+
         [HttpGet]
         public async Task<ActionResult> FilterVolunteers(string interest)
         { 
@@ -40,5 +50,9 @@ namespace CRM.Controllers
             };
             return PartialView("_VolunteerList", model);
         }
+
+
+
+
     }
 }
