@@ -5,7 +5,7 @@
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
+        padding-top: 350px; /* Location of the box */
         left: 0;
         top: 0;
         width: 100%; /* Full width */
@@ -21,7 +21,7 @@
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 80%;
+        width: 50%;
     }
 
     /* The Close Button */
@@ -38,14 +38,32 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+    table{
+        width: 850px;
+        border-collapse: collapse;
+    }
+
+    th, td{
+        text-align: center;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+
 </style>
 <table>
     <tr>
-        <th>Select</th>
-        <th>Interest</th>
+        <th>@Html.CheckBox("Select")</th>
+        <th>Category</th>
         <th>Last Name</th>
         <th>First Name</th>
         <th>Email</th>
+        <th>Add Hours</th>
+        <th>Edit Volunteer</th>
     </tr>
     @foreach (var volunteer in Model.Volunteers)
     {

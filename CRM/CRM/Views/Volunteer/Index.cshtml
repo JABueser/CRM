@@ -24,78 +24,80 @@
 </script>
 
 
-<h2>List Filtered by Interest</h2>
+<h2 style="text-align:center">Volunteers</h2>
 
-<label for="selectAll"><strong>Select All</strong></label>
-@Html.CheckBox("selectAll")
+<div style="margin-left: 480px">
 
+    <form>
+        <div style="margin-left: 65px">
+            Search:
+            <input type="text" name="search">
+                <label for="ddlInterest"  style="margin-left: 210px">Select an Interest</label>
+                @Html.DropDownList("ddlInterest", new List<SelectListItem>
+                {
+                    new SelectListItem
+                    {
+                        Text ="Dentist", Value="Dentist"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Doctor", Value = "Doctor"
+                    },
+                    new SelectListItem
+                    {
+                        Text ="Foodline", Value = "Foodline"
+                    },
+                    new SelectListItem
+                    {
+                        Text="Thrift Store", Value = "Thrift Store"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Nurse", Value = "Nurse"
+                    },
+                    new SelectListItem
+                    {
+                        Text="Job Training", Value = "Job Training"
+                    },
+                    new SelectListItem
+                    {
+                        Text="Chapel Ministry", Value = "Chapel Ministry"
+                    },
+                    new SelectListItem
+                    {
+                        Text="Bus Driver", Value = "Bus Driver"
+                    },
+                    new SelectListItem
+                    {
+                        Text="Office/Clerical", Value = "Office/Clerical"
+                    },
+                    new SelectListItem
+                    {
+                        Text="Maintenance", Value = "Maintenance"
+                    },
+                    new SelectListItem
+                    {
+                        Text="Auto Shop", Value = "Auto Shop"
+                    },
+                    new SelectListItem
+                    {
+                        Text="Men's Division", Value = "Men's Division"
+                    },
+                    new SelectListItem
+                    {
+                        Text="Women, Children, and Families", Value = "Women, Children, and Famililes"
+                    },
+                    new SelectListItem
+                    {
+                        Text="Special Events", Value = "Special Events"
+                    }
 
-<br>
+                })
+        </div>
 
-<label for="ddlInterest"><strong>Select an Interest</strong></label>
-@Html.DropDownList("ddlInterest", new List<SelectListItem>
-{
-    new SelectListItem
-    {
-        Text ="Dentist", Value="Dentist"
-    },
-    new SelectListItem
-    {
-        Text = "Doctor", Value = "Doctor"
-    },
-    new SelectListItem
-    {
-        Text ="Foodline", Value = "Foodline"
-    },
-    new SelectListItem
-    {
-        Text="Thrift Store", Value = "Thrift Store"
-    },
-    new SelectListItem
-    {
-        Text = "Nurse", Value = "Nurse"
-    },
-    new SelectListItem
-    {
-        Text="Job Training", Value = "Job Training"
-    },
-    new SelectListItem
-    {
-        Text="Chapel Ministry", Value = "Chapel Ministry"
-    },
-    new SelectListItem
-    {
-        Text="Bus Driver", Value = "Bus Driver"
-    },
-    new SelectListItem
-    {
-        Text="Office/Clerical", Value = "Office/Clerical"
-    },
-    new SelectListItem
-    {
-        Text="Maintenance", Value = "Maintenance"
-    },
-    new SelectListItem
-    {
-        Text="Auto Shop", Value = "Auto Shop"
-    },
-    new SelectListItem
-    {
-        Text="Men's Division", Value = "Men's Division"
-    },
-    new SelectListItem
-    {
-        Text="Women, Children, and Families", Value = "Women, Children, and Famililes"
-    },
-    new SelectListItem
-    {
-        Text="Special Events", Value = "Special Events"
-    }
+    </form>
 
-})
-
-
-<div id="dvVolunteerList">
-    @{Html.RenderPartial("_VolunteerList", Model);}
+    <div id="dvVolunteerList">
+        @{Html.RenderPartial("_VolunteerList", Model);}
+    </div>
 </div>
-

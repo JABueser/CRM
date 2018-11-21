@@ -41,3 +41,7 @@
     padding: 20px 40px;
     text-decoration: none;
 }
+
+.centered_div {
+    margin-left: 300px;
+}
