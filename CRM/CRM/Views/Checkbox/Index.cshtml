@@ -1,0 +1,15 @@
+﻿@model CRM.JdModelExample.CheckBoxVm;
+
+@using (Html.BeginForm("Index", "Checkbox", null, FormMethod.Post))
+{
+    foreach (var cb in Model.AllCategories)
+    {
+        <div>
+            <input type="checkbox" name="SelectedCategories" value="@cb.Id" @(Model.SelectedCategories.Contains(cb.Id) ? "checked='checked'" : null) /> @cb.Name
+        </div>
+    }
+    <br/><br/>
+    <input type="submit" value="Submit" />
+}
+
+
