@@ -84,35 +84,15 @@ namespace CRMSite.Controllers
 
             db.Volunteers.Add(volunteer);
 
-
-
             foreach (var d in postModel.SelectedDays)
             {
-                var avail = new Availability
-                {
-                    AvailabilityID = d
-                };
-
-                db.Availabilities.Add(avail);
-                db.Availabilities.Attach(avail);
-
-                avail.Volunteers.Add(volunteer);
+                InsertVolunteerAvail(volunteer, d);
             }
 
             foreach (var c in postModel.SelectedCategories)
             {
-                var cat = new Category
-                {
-                    CategoryID = c
-                };
-
-                db.Categories.Add(cat);
-                db.Categories.Attach(cat);
-
-                cat.Volunteers.Add(volunteer);
+                InsertVolunteerCat(volunteer, c);
             }
-
-            db.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -120,16 +100,34 @@ namespace CRMSite.Controllers
         // GET: Volunteers/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            Volunteer vol = db.Volunteers.Find(id);
+            List<Category> AllCats = db.Categories.ToList();
+            List<Availability> AllDays = db.Availabilities.ToList();
+            List<int> SelectCats = new List<int>();
+            List<int> SelectDays = new List<int>();
+
+            foreach (var c in db.Volunteers.Find(id).Categories)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                SelectCats.Add(c.CategoryID);
             }
-            Volunteer volunteer = db.Volunteers.Find(id);
-            if (volunteer == null)
+
+            foreach (var d in db.Volunteers.Find(id).Availabilities)
             {
-                return HttpNotFound();
+                SelectDays.Add(d.AvailabilityID);
             }
-            return View(volunteer);
+
+            var model = new EditViewModel
+            {
+                AllCategories = AllCats,
+                AllAvailability = AllDays,
+                SelectedCategories = SelectCats,
+                SelectedDays = SelectDays,
+                PreviousCategories = SelectCats,
+                PreviousDays = SelectDays,
+                VolunteerPerson = vol
+            };
+
+            return View(model);
         }
 
         // POST: Volunteers/Edit/5
@@ -137,15 +135,74 @@ namespace CRMSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VolunteerID,LastName,FirstName,Address,City,State,Zipcode,BirthDate,Organization,Occupation,Church,Pastor,HowDidYouHear,Felony,NatureOfFelony,EmergencyName,EmergencyRelation,EmergencyPhone,Disabilities,Skills,Email,Phone,TotalHours")] Volunteer volunteer)
+        public ActionResult Edit(EditViewModel postModel)
         {
             if (ModelState.IsValid)
             {
+                List<Category> AllCats = db.Categories.ToList();
+                List<Availability> AllDays = db.Availabilities.ToList();
+                Volunteer volunteer = db.Volunteers.Find(postModel.VolunteerPerson.VolunteerID);
+                //Volunteer volunteer = db.Volunteers.Include(t => t.Categories).Single(u => u.VolunteerID == postModel.VolunteerPerson.VolunteerID);
+                
+                volunteer.LastName = postModel.VolunteerPerson.LastName;
+                    volunteer.FirstName = postModel.VolunteerPerson.FirstName;
+                    volunteer.Address = postModel.VolunteerPerson.Address;
+                    volunteer.City = postModel.VolunteerPerson.City;
+                    volunteer.State = postModel.VolunteerPerson.State;
+                    volunteer.Zipcode = postModel.VolunteerPerson.Zipcode;
+                    volunteer.BirthDate = postModel.VolunteerPerson.BirthDate;
+                    volunteer.Organization = postModel.VolunteerPerson.Organization;
+                    volunteer.Occupation = postModel.VolunteerPerson.Occupation;
+                    volunteer.Church = postModel.VolunteerPerson.Church;
+                    volunteer.Pastor = postModel.VolunteerPerson.Pastor;
+                    volunteer.HowDidYouHear = postModel.VolunteerPerson.HowDidYouHear;
+                    volunteer.Felony = postModel.VolunteerPerson.Felony;
+                    volunteer.NatureOfFelony = postModel.VolunteerPerson.NatureOfFelony;
+                    volunteer.EmergencyName = postModel.VolunteerPerson.EmergencyName;
+                    volunteer.EmergencyPhone = postModel.VolunteerPerson.EmergencyPhone;
+                    volunteer.EmergencyRelation = postModel.VolunteerPerson.EmergencyRelation;
+                    volunteer.Disabilities = postModel.VolunteerPerson.Disabilities;
+                    volunteer.Skills = postModel.VolunteerPerson.Skills;
+                    volunteer.Email = postModel.VolunteerPerson.Email;
+                    volunteer.Phone = postModel.VolunteerPerson.Phone;
+
+                foreach (var d in AllDays)
+                {
+                    if (d.Volunteers.Contains(volunteer))
+                    {
+                        DeleteVolunteerAvail(volunteer, d.AvailabilityID);
+                    }
+                }
+
+                foreach (var c in AllCats)
+                {
+                    if (c.Volunteers.Contains(volunteer))
+                    {
+                        DeleteVolunteerCat(volunteer, c.CategoryID);
+                    }
+                }
+
+                if(postModel.SelectedDays != null)
+                {
+                    foreach (var d in postModel.SelectedDays)
+                    {
+                        UpdateVolunteerAvail(volunteer, d);
+                    }
+                }                
+
+                if(postModel.SelectedCategories != null)
+                {
+                    foreach (var c in postModel.SelectedCategories)
+                    {
+                        UpdateVolunteerCat(volunteer, c);
+                    }
+                }                
+
                 db.Entry(volunteer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(volunteer);
+            return View(postModel);
         }
 
         // GET: Volunteers/Delete/5
@@ -181,6 +238,66 @@ namespace CRMSite.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public void InsertVolunteerAvail(Volunteer volunteer, int availabilityID)
+        {
+            Availability a = new Availability { AvailabilityID = availabilityID };
+
+            db.Availabilities.Add(a);
+            db.Availabilities.Attach(a);
+
+            a.Volunteers.Add(volunteer);
+
+            db.SaveChanges();
+        }
+
+        public void InsertVolunteerCat(Volunteer volunteer, int catID)
+        {
+            Category c = new Category { CategoryID = catID };
+
+            db.Categories.Add(c);
+            db.Categories.Attach(c);
+            
+            c.Volunteers.Add(volunteer);
+
+            db.SaveChanges();
+        }
+
+        public void UpdateVolunteerAvail(Volunteer volunteer, int availabilityID)
+        {
+            Availability a = db.Availabilities.FirstOrDefault(t => t.AvailabilityID == availabilityID);
+
+            a.Volunteers.Add(volunteer);
+
+            db.SaveChanges();
+        }
+
+        public void UpdateVolunteerCat(Volunteer volunteer, int catID)
+        {
+            Category c = db.Categories.FirstOrDefault(t => t.CategoryID == catID);
+
+            c.Volunteers.Add(volunteer);
+
+            db.SaveChanges();
+        }
+
+        public void DeleteVolunteerAvail(Volunteer volunteer, int availabilityID)
+        {
+            var avail = db.Availabilities.FirstOrDefault(a => a.AvailabilityID == availabilityID);
+
+            avail.Volunteers.Remove(volunteer);
+
+            db.SaveChanges();
+        }
+
+        public void DeleteVolunteerCat(Volunteer volunteer, int catID)
+        {
+            var cat = db.Categories.FirstOrDefault(c => c.CategoryID == catID);
+
+            cat.Volunteers.Remove(volunteer);
+
+            db.SaveChanges();
         }
     }
 }
