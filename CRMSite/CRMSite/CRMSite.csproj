@@ -187,6 +187,7 @@
     <Compile Include="Models\TimeLog.cs">
       <DependentUpon>CRMModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewHourViewModel.cs" />
     <Compile Include="Models\Volunteer.cs">
       <DependentUpon>CRMModel.tt</DependentUpon>
     </Compile>
@@ -253,6 +254,7 @@
     <Content Include="Views\Volunteers\Details.cshtml" />
     <Content Include="Views\Volunteers\Edit.cshtml" />
     <Content Include="Views\Volunteers\Index.cshtml" />
+    <Content Include="Views\Volunteers\HourSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
