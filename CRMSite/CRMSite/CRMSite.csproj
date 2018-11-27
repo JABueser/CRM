@@ -183,6 +183,7 @@
       <DependentUpon>CRMModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EditViewModel.cs" />
+    <Compile Include="Models\HourViewModel.cs" />
     <Compile Include="Models\TimeLog.cs">
       <DependentUpon>CRMModel.tt</DependentUpon>
     </Compile>

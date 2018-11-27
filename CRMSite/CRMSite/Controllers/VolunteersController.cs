@@ -17,7 +17,39 @@ namespace CRMSite.Controllers
         // GET: Volunteers
         public ActionResult Index()
         {
-            return View(db.Volunteers.ToList());
+            List<Category> AllCats = db.Categories.ToList();
+            
+
+            var model = new HourViewModel
+            {
+                Vols = db.Volunteers.ToList()
+            };
+
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Index(HourViewModel postModel)
+        {
+            List<Category> AllCats = db.Categories.ToList();
+            Volunteer a = db.Volunteers.FirstOrDefault(t => t.VolunteerID == postModel.VolID);
+
+            a.TotalHours = a.TotalHours + postModel.Hours;
+
+            var model = new TimeLog
+            {
+                Date = postModel.Date,
+                HoursWorked = postModel.Hours,
+                VolunteerID = postModel.VolID,
+                CategoryID = postModel.CatName
+            };
+
+            db.Entry(a).State = EntityState.Modified;
+            db.TimeLogs.Add(model);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         // GET: Volunteers/Details/5
