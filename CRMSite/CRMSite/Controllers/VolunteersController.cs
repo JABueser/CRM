@@ -19,7 +19,6 @@ namespace CRMSite.Controllers
         {
             List<Category> AllCats = db.Categories.ToList();
             
-
             var model = new HourViewModel
             {
                 Vols = db.Volunteers.ToList()

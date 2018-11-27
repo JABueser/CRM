@@ -14,6 +14,9 @@
             E-Mail Address
         </th>
         <th>
+            Category(s)
+        </th>
+        <th>
             Total Hours
         </th>
         <th></th>
@@ -30,6 +33,13 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            |
+            @foreach (var c in item.Categories)
+            {
+                @(c.Category1 + " | ")
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TotalHours)
