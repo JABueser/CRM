@@ -1,159 +1,116 @@
-﻿@model IEnumerable<CRMSite.Models.Volunteer>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+﻿@model CRMSite.Models.HourViewModel
+<h2 class="center-block">Volunteers</h2>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            First Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            Last Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address)
+            E-Mail Address
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.City)
+            Category(s)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Zipcode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Organization)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Occupation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Church)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pastor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HowDidYouHear)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Felony)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NatureOfFelony)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmergencyName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmergencyRelation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmergencyPhone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Disabilities)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Skills)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalHours)
+            Total Hours
         </th>
         <th></th>
     </tr>
+    @foreach (var item in Model.Vols)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                |
+                @foreach (var c in item.Categories)
+                {
+                    @(c.Category1 + " | ")
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalHours)
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@item.VolunteerID">
+                    Add Hours
+                </button>
+                @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.VolunteerID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerID })
+            </td>
+        </tr>
+        <div class="modal" id="@item.VolunteerID">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add Hours</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zipcode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Organization)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Occupation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Church)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pastor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HowDidYouHear)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Felony)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NatureOfFelony)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmergencyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmergencyRelation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmergencyPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Disabilities)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Skills)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalHours)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.VolunteerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.VolunteerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VolunteerID })
-        </td>
-    </tr>
-}
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            @item.FirstName @item.LastName
+                            <br /><br />
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Hours, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Hours, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Hours, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CatName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select id="CatName" name="CatName">
+                                        <option value=1>Doctor</option>
+                                        <option value=2>Dentist</option>
+                                        <option value=3>Nurse</option>
+                                        <option value=4>Chapel Ministry</option>
+                                        <option value=5>Bus Driver</option>
+                                        <option value=6>Office/Clerical</option>
+                                        <option value=7>Maintenance</option>
+                                        <option value=8>Auto Shop</option>
+                                        <option value=9>Food Service</option>
+                                        <option value=10>Mens Division</option>
+                                        <option value=11>Thrift Store</option>
+                                        <option value=12>Special Events</option>
+                                        <option value=13>Women, Children, and Families</option>
+                                        <option value=14>Job Training/Life Skills Instructor</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.Hours, "", new { @class = "text-danger" })
+                                    <input id="VolID" name="VolID" type="hidden" value="@item.VolunteerID" />
+                                </div>
+                            </div>
+                            <br /><br /><br /><br /><br /><br />
+                        </div>
 
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
 </table>

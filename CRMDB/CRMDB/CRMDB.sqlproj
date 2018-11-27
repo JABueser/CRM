@@ -66,4 +66,7 @@
     <Build Include="AvailabilityAssoc.sql" />
     <Build Include="TimeLog.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql" />
+  </ItemGroup>
 </Project>

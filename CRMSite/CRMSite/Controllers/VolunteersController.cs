@@ -17,7 +17,15 @@ namespace CRMSite.Controllers
         // GET: Volunteers
         public ActionResult Index()
         {
-            return View(db.Volunteers.ToList());
+            List<Category> AllCats = db.Categories.ToList();
+
+            var model = new HourViewModel
+            {
+                Vols = db.Volunteers.ToList()
+            };
+
+
+            return View(model);
         }
 
         // GET: Volunteers/Details/5
@@ -181,6 +189,115 @@ namespace CRMSite.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult HourSummary()
+        {
+            List<TimeLog> time = db.TimeLogs.ToList();
+
+            var model = new ViewHourViewModel
+            {
+                Doctor = 0,
+                Dentist = 0,
+                Nurse = 0,
+                Ministry = 0,
+                Bus = 0,
+                Office = 0,
+                Maintenance = 0,
+                Auto = 0,
+                Food = 0,
+                Men = 0,
+                Thrift = 0,
+                Special = 0,
+                Women = 0,
+                Training = 0,
+                Total = 0
+            };
+
+            foreach (var t in time)
+            {
+                if (t.Category.Category1.Equals("Doctor"))
+                {
+                    model.Doctor = model.Doctor + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Dentist"))
+                {
+                    model.Dentist = model.Dentist + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Nurse"))
+                {
+                    model.Nurse = model.Nurse + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Chapel Ministry"))
+                {
+                    model.Ministry = model.Ministry + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Bus Driver"))
+                {
+                    model.Bus = model.Bus + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Office/Clerical"))
+                {
+                    model.Office = model.Office + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Maintenance"))
+                {
+                    model.Maintenance = model.Maintenance + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Auto Shop"))
+                {
+                    model.Auto = model.Auto + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Mens Division"))
+                {
+                    model.Men = model.Men + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Thrift Store"))
+                {
+                    model.Thrift = model.Thrift + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Special Events"))
+                {
+                    model.Special = model.Special + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Women, Children, and Families"))
+                {
+                    model.Women = model.Women + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Job Training/Life Skills Instructor"))
+                {
+                    model.Training = model.Training + (int)t.HoursWorked;
+                }
+
+                model.Total = model.Total + (int)t.HoursWorked;
+            }
+
+            return View(model);
+
+        }
+        [HttpPost]
+        public ActionResult Index(HourViewModel postModel)
+        {
+            List<Category> AllCats = db.Categories.ToList();
+
+            Volunteer a = db.Volunteers.FirstOrDefault(t => t.VolunteerID == postModel.VolID);
+
+
+            a.TotalHours = a.TotalHours + postModel.Hours;
+
+            var model = new TimeLog
+            {
+                Date = postModel.Date,
+                HoursWorked = postModel.Hours,
+                VolunteerID = postModel.VolID,
+                CategoryID = postModel.CatName
+            };
+
+            db.Entry(a).State = EntityState.Modified;
+            db.TimeLogs.Add(model);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

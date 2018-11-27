@@ -1,0 +1,104 @@
+﻿@model CRMSite.Models.ViewHourViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+<h2>Hour Summary</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Doctor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Doctor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dentist)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dentist)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nurse)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nurse)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ministry)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ministry)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Office)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Office)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Maintenance)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Maintenance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Auto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Auto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Food)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Food)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Men)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Men)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Thrift)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Thrift)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Special)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Special)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Women)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Women)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Training)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Training)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
