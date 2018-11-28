@@ -188,6 +188,49 @@
 
     </dl>
 </div>
+
+<div>
+    Categories:
+    @foreach (var c in Model.Categories)
+    {
+        <p>@c.Category1</p>
+    }
+</div>
+
+<div>
+    Available Days:
+    @foreach (var a in Model.Availabilities)
+    {
+        <p>@a.Day</p>
+    }
+</div>
+
+@foreach (var m in Model.TimeLogs)
+{
+    <div>
+        <dl>
+            <dd>
+                Date
+            </dd>
+            <dt>
+                @m.Date
+            </dt>
+            <dd>
+                Category
+            </dd>
+            <dt>
+                @m.Category.Category1
+            </dt>
+            <dd>
+                Hours Worked
+            </dd>
+            <dt>
+                @m.HoursWorked
+            </dt>
+        </dl>
+    </div>
+}
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.VolunteerID }) |
     @Html.ActionLink("Back to List", "Index")
