@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CRMDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Availability">
+          <Key>
+            <PropertyRef Name="AvailabilityID" />
+          </Key>
+          <Property Name="AvailabilityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AvailabilityAssoc">
+          <Key>
+            <PropertyRef Name="AvailabilityID" />
+            <PropertyRef Name="VolunteerID" />
+          </Key>
+          <Property Name="AvailabilityID" Type="int" Nullable="false" />
+          <Property Name="VolunteerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryValue" Type="int" />
+        </EntityType>
+        <EntityType Name="CategoryAssoc">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="VolunteerID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="VolunteerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TimeLog">
+          <Key>
+            <PropertyRef Name="TimeLogID" />
+          </Key>
+          <Property Name="TimeLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="HoursWorked" Type="int" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="VolunteerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Volunteer">
+          <Key>
+            <PropertyRef Name="VolunteerID" />
+          </Key>
+          <Property Name="VolunteerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zipcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="Organization" Type="nvarchar" MaxLength="50" />
+          <Property Name="Occupation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Church" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pastor" Type="nvarchar" MaxLength="50" />
+          <Property Name="HowDidYouHear" Type="nvarchar(max)" />
+          <Property Name="Felony" Type="nvarchar" MaxLength="50" />
+          <Property Name="NatureOfFelony" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmergencyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmergencyRelation" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmergencyPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Disabilities" Type="nvarchar(max)" />
+          <Property Name="Skills" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalHours" Type="int" />
+        </EntityType>
+        <Association Name="FK_dbo_AvailabilityAssoc_dbo_Availability_AvailabilityID">
+          <End Role="Availability" Type="Self.Availability" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AvailabilityAssoc" Type="Self.AvailabilityAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Availability">
+              <PropertyRef Name="AvailabilityID" />
+            </Principal>
+            <Dependent Role="AvailabilityAssoc">
+              <PropertyRef Name="AvailabilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AvailabilityAssoc_dbo_Volunteer_VolunteerID">
+          <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AvailabilityAssoc" Type="Self.AvailabilityAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Volunteer">
+              <PropertyRef Name="VolunteerID" />
+            </Principal>
+            <Dependent Role="AvailabilityAssoc">
+              <PropertyRef Name="VolunteerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CategoryAssoc_dbo_Category_CategoryID">
+          <End Role="Category" Type="Self.Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CategoryAssoc" Type="Self.CategoryAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="CategoryAssoc">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CategoryAssoc_dbo_Volunteer_VolunteerID">
+          <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CategoryAssoc" Type="Self.CategoryAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Volunteer">
+              <PropertyRef Name="VolunteerID" />
+            </Principal>
+            <Dependent Role="CategoryAssoc">
+              <PropertyRef Name="VolunteerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TimeLog_dbo_Category_CategoryID">
+          <End Role="Category" Type="Self.Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TimeLog" Type="Self.TimeLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="TimeLog">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TimeLog_dbo_Volunteer_VolunteerID">
+          <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TimeLog" Type="Self.TimeLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Volunteer">
+              <PropertyRef Name="VolunteerID" />
+            </Principal>
+            <Dependent Role="TimeLog">
+              <PropertyRef Name="VolunteerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CRMDBModelStoreContainer">
+          <EntitySet Name="Availability" EntityType="Self.Availability" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AvailabilityAssoc" EntityType="Self.AvailabilityAssoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryAssoc" EntityType="Self.CategoryAssoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeLog" EntityType="Self.TimeLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AvailabilityAssoc_dbo_Availability_AvailabilityID" Association="Self.FK_dbo_AvailabilityAssoc_dbo_Availability_AvailabilityID">
+            <End Role="Availability" EntitySet="Availability" />
+            <End Role="AvailabilityAssoc" EntitySet="AvailabilityAssoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AvailabilityAssoc_dbo_Volunteer_VolunteerID" Association="Self.FK_dbo_AvailabilityAssoc_dbo_Volunteer_VolunteerID">
+            <End Role="Volunteer" EntitySet="Volunteer" />
+            <End Role="AvailabilityAssoc" EntitySet="AvailabilityAssoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CategoryAssoc_dbo_Category_CategoryID" Association="Self.FK_dbo_CategoryAssoc_dbo_Category_CategoryID">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryAssoc" EntitySet="CategoryAssoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CategoryAssoc_dbo_Volunteer_VolunteerID" Association="Self.FK_dbo_CategoryAssoc_dbo_Volunteer_VolunteerID">
+            <End Role="Volunteer" EntitySet="Volunteer" />
+            <End Role="CategoryAssoc" EntitySet="CategoryAssoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TimeLog_dbo_Category_CategoryID" Association="Self.FK_dbo_TimeLog_dbo_Category_CategoryID">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="TimeLog" EntitySet="TimeLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TimeLog_dbo_Volunteer_VolunteerID" Association="Self.FK_dbo_TimeLog_dbo_Volunteer_VolunteerID">
+            <End Role="Volunteer" EntitySet="Volunteer" />
+            <End Role="TimeLog" EntitySet="TimeLog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CRMDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Availability">
+          <Key>
+            <PropertyRef Name="AvailabilityID" />
+          </Key>
+          <Property Name="AvailabilityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Volunteers" Relationship="Self.AvailabilityAssoc" FromRole="Availability" ToRole="Volunteer" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryValue" Type="Int32" />
+          <NavigationProperty Name="TimeLogs" Relationship="Self.FK_dbo_TimeLog_dbo_Category_CategoryID" FromRole="Category" ToRole="TimeLog" />
+          <NavigationProperty Name="Volunteers" Relationship="Self.CategoryAssoc" FromRole="Category" ToRole="Volunteer" />
+        </EntityType>
+        <EntityType Name="TimeLog">
+          <Key>
+            <PropertyRef Name="TimeLogID" />
+          </Key>
+          <Property Name="TimeLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoursWorked" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="VolunteerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_dbo_TimeLog_dbo_Category_CategoryID" FromRole="TimeLog" ToRole="Category" />
+          <NavigationProperty Name="Volunteer" Relationship="Self.FK_dbo_TimeLog_dbo_Volunteer_VolunteerID" FromRole="TimeLog" ToRole="Volunteer" />
+        </EntityType>
+        <EntityType Name="Volunteer">
+          <Key>
+            <PropertyRef Name="VolunteerID" />
+          </Key>
+          <Property Name="VolunteerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Organization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Church" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pastor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HowDidYouHear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Felony" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NatureOfFelony" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyRelation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Disabilities" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalHours" Type="Int32" />
+          <NavigationProperty Name="TimeLogs" Relationship="Self.FK_dbo_TimeLog_dbo_Volunteer_VolunteerID" FromRole="Volunteer" ToRole="TimeLog" />
+          <NavigationProperty Name="Availabilities" Relationship="Self.AvailabilityAssoc" FromRole="Volunteer" ToRole="Availability" />
+          <NavigationProperty Name="Categories" Relationship="Self.CategoryAssoc" FromRole="Volunteer" ToRole="Category" />
+        </EntityType>
+        <Association Name="FK_dbo_TimeLog_dbo_Category_CategoryID">
+          <End Role="Category" Type="Self.Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TimeLog" Type="Self.TimeLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="TimeLog">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TimeLog_dbo_Volunteer_VolunteerID">
+          <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TimeLog" Type="Self.TimeLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Volunteer">
+              <PropertyRef Name="VolunteerID" />
+            </Principal>
+            <Dependent Role="TimeLog">
+              <PropertyRef Name="VolunteerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AvailabilityAssoc">
+          <End Role="Availability" Type="Self.Availability" Multiplicity="*" />
+          <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+        </Association>
+        <Association Name="CategoryAssoc">
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="CRMDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Availabilities" EntityType="Self.Availability" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="TimeLogs" EntityType="Self.TimeLog" />
+          <EntitySet Name="Volunteers" EntityType="Self.Volunteer" />
+          <AssociationSet Name="FK_dbo_TimeLog_dbo_Category_CategoryID" Association="Self.FK_dbo_TimeLog_dbo_Category_CategoryID">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="TimeLog" EntitySet="TimeLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TimeLog_dbo_Volunteer_VolunteerID" Association="Self.FK_dbo_TimeLog_dbo_Volunteer_VolunteerID">
+            <End Role="Volunteer" EntitySet="Volunteers" />
+            <End Role="TimeLog" EntitySet="TimeLogs" />
+          </AssociationSet>
+          <AssociationSet Name="AvailabilityAssoc" Association="Self.AvailabilityAssoc">
+            <End Role="Availability" EntitySet="Availabilities" />
+            <End Role="Volunteer" EntitySet="Volunteers" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryAssoc" Association="Self.CategoryAssoc">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Volunteer" EntitySet="Volunteers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CRMDBModelStoreContainer" CdmEntityContainer="CRMDBEntities">
+          <EntitySetMapping Name="Availabilities">
+            <EntityTypeMapping TypeName="CRMDBModel.Availability">
+              <MappingFragment StoreEntitySet="Availability">
+                <ScalarProperty Name="AvailabilityID" ColumnName="AvailabilityID" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="CRMDBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Category1" ColumnName="Category" />
+                <ScalarProperty Name="CategoryValue" ColumnName="CategoryValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeLogs">
+            <EntityTypeMapping TypeName="CRMDBModel.TimeLog">
+              <MappingFragment StoreEntitySet="TimeLog">
+                <ScalarProperty Name="TimeLogID" ColumnName="TimeLogID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="HoursWorked" ColumnName="HoursWorked" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="VolunteerID" ColumnName="VolunteerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Volunteers">
+            <EntityTypeMapping TypeName="CRMDBModel.Volunteer">
+              <MappingFragment StoreEntitySet="Volunteer">
+                <ScalarProperty Name="VolunteerID" ColumnName="VolunteerID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Church" ColumnName="Church" />
+                <ScalarProperty Name="Pastor" ColumnName="Pastor" />
+                <ScalarProperty Name="HowDidYouHear" ColumnName="HowDidYouHear" />
+                <ScalarProperty Name="Felony" ColumnName="Felony" />
+                <ScalarProperty Name="NatureOfFelony" ColumnName="NatureOfFelony" />
+                <ScalarProperty Name="EmergencyName" ColumnName="EmergencyName" />
+                <ScalarProperty Name="EmergencyRelation" ColumnName="EmergencyRelation" />
+                <ScalarProperty Name="EmergencyPhone" ColumnName="EmergencyPhone" />
+                <ScalarProperty Name="Disabilities" ColumnName="Disabilities" />
+                <ScalarProperty Name="Skills" ColumnName="Skills" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AvailabilityAssoc" TypeName="CRMDBModel.AvailabilityAssoc" StoreEntitySet="AvailabilityAssoc">
+            <EndProperty Name="Availability">
+              <ScalarProperty Name="AvailabilityID" ColumnName="AvailabilityID" />
+            </EndProperty>
+            <EndProperty Name="Volunteer">
+              <ScalarProperty Name="VolunteerID" ColumnName="VolunteerID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="CategoryAssoc" TypeName="CRMDBModel.CategoryAssoc" StoreEntitySet="CategoryAssoc">
+            <EndProperty Name="Category">
+              <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            </EndProperty>
+            <EndProperty Name="Volunteer">
+              <ScalarProperty Name="VolunteerID" ColumnName="VolunteerID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
