@@ -6,6 +6,23 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function filter() {
+            var val = $("#SelectedCategoryID").val();
+            $.ajax({
+                url: "/Volunteers/FilterVolunteers",
+                type: "GET",
+                data: { CategoryID: val }
+            })
+                .done(function (partialViewResult) {
+                    $("#dvVolunteerList").html(partialViewResult);
+                });
+        }
+        $(document).ready(function () {
+            $("#SelectedCategoryID").on('change', filter);
+        });
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">

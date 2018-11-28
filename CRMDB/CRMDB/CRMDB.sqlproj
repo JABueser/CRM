@@ -66,4 +66,8 @@
     <Build Include="AvailabilityAssoc.sql" />
     <Build Include="TimeLog.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="CRMDB_local.publish.xml" />
+    <None Include="CRMDB_production.publish.xml" />
+  </ItemGroup>
 </Project>

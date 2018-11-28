@@ -182,6 +182,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CRMModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\TimeLog.cs">
       <DependentUpon>CRMModel.tt</DependentUpon>
     </Compile>
@@ -254,6 +255,7 @@
     <Content Include="Views\Volunteers\_CreateBasic.cshtml" />
     <Content Include="Views\Volunteers\_CreateCategory.cshtml" />
     <Content Include="Views\Volunteers\_CreateAvailability.cshtml" />
+    <Content Include="Views\Volunteers\_VolunteerList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
