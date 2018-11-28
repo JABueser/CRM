@@ -155,6 +155,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VolunteersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -182,6 +183,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CRMModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\TimeLog.cs">
       <DependentUpon>CRMModel.tt</DependentUpon>
     </Compile>
@@ -254,6 +256,8 @@
     <Content Include="Views\Volunteers\_CreateBasic.cshtml" />
     <Content Include="Views\Volunteers\_CreateCategory.cshtml" />
     <Content Include="Views\Volunteers\_CreateAvailability.cshtml" />
+    <Content Include="Views\Filter\Index.cshtml" />
+    <Content Include="Views\Volunteers\_VolunteerList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
