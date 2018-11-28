@@ -17,15 +17,36 @@ namespace CRMSite.Controllers
         // GET: Volunteers
         public ActionResult Index()
         {
-            List<Category> AllCats = db.Categories.ToList();
-            
-            var model = new HourViewModel
+            var model = new FilterViewModel
             {
-                Vols = db.Volunteers.ToList()
+                AllCategories = db.Categories.ToList(),
+                Volunteers = db.Volunteers.ToList()
             };
-
-            
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult FilterVolunteers(string CategoryID)
+        {
+            if(CategoryID == "")
+            {
+                return PartialView("_VolunteerList", db.Volunteers.ToList());
+            }
+            int ID = Convert.ToInt32(CategoryID);
+            List<Volunteer> filteredVolunteers = new List<Volunteer>();
+            List<Volunteer> volunteers = db.Volunteers.ToList();
+            foreach (var v in volunteers)
+            {
+                foreach (var c in v.Categories)
+                {
+                    if (c.CategoryID == ID)
+                    {
+                        filteredVolunteers.Add(v);
+                    }
+                }
+            }
+           
+            return PartialView("_VolunteerList", filteredVolunteers);
         }
 
         public ActionResult HourSummary()
