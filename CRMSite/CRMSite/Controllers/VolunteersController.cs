@@ -17,10 +17,14 @@ namespace CRMSite.Controllers
         // GET: Volunteers
         public ActionResult Index()
         {
+            var HoursViewModel = new HourViewModel
+            {
+                Vols = db.Volunteers.ToList()
+            };
             var model = new FilterViewModel
             {
                 AllCategories = db.Categories.ToList(),
-                Volunteers = db.Volunteers.ToList()
+                HourViewModel = HoursViewModel
             };
             return View(model);
         }
@@ -45,8 +49,12 @@ namespace CRMSite.Controllers
                     }
                 }
             }
+            var model = new HourViewModel
+            {
+                Vols = filteredVolunteers
+            };
            
-            return PartialView("_VolunteerList", filteredVolunteers);
+            return PartialView("_VolunteerList", model);
         }
 
         public ActionResult HourSummary()
