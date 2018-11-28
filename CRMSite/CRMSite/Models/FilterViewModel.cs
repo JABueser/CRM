@@ -12,6 +12,6 @@ namespace CRMSite.Models
 
         public string SelectedCategoryID { get; set; }
 
-        public IEnumerable<Volunteer> Volunteers { get; set; }
+        public HourViewModel HourViewModel { get; set; }
     }
 }
