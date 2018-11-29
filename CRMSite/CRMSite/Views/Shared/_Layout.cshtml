@@ -35,15 +35,21 @@
                 </button>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Volunteers", "Index", "Volunteers")</li>
-                    <li>@Html.ActionLink("Add Volunteer", "Create", "Volunteers")</li>
-                    <li>@Html.ActionLink("Hour Summary", "HourSummary", "Volunteers")</li>
+                <a class="navbar-brand" href="#">
+                    <img src="~/PICS/crmlogo.png" alt="logo" style="width:150px;">
+                </a>
+                <ul class="nav navbar-nav" style="margin-left:459px">
+                    <li style="font-size: x-large">@Html.ActionLink("Hour Summary", "HourSummary", "Volunteers")</li>
+                    <li style="font-size: x-large">@Html.ActionLink("Add Volunteer", "Create", "Volunteers")</li>
+                    <li style="font-size: x-large">@Html.ActionLink("Volunteers", "Index", "Volunteers")</li>
                 </ul>
             </div>
         </div>
     </div>
+
     <div class="container body-content">
+        <br />
+        <br />
         @RenderBody()
         <hr />
         <footer>

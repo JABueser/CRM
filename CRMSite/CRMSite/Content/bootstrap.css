@@ -185,6 +185,7 @@ table {
 }
 td,
 th {
+    font-size:medium;
   padding: 0;
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
@@ -1444,6 +1445,7 @@ dl {
 dt,
 dd {
   line-height: 1.42857143;
+  font-size:x-large;
 }
 dt {
   font-weight: bold;
@@ -1457,7 +1459,7 @@ dd {
     width: 160px;
     overflow: hidden;
     clear: left;
-    text-align: right;
+    text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -4165,7 +4167,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 50px;
+  min-height: 85px;
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
@@ -4324,7 +4326,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin: 7.5px -15px;
 }
 .navbar-nav > li > a {
-  padding-top: 10px;
+  margin-top: 18px;
+  padding-top: 100px;
   padding-bottom: 10px;
   line-height: 20px;
 }
@@ -4357,7 +4360,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin: 0;
   }
   .navbar-nav > li {
-    float: left;
+    float: right;
   }
   .navbar-nav > li > a {
     padding-top: 15px;
