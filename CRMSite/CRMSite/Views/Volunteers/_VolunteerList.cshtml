@@ -1,22 +1,20 @@
 ﻿@model CRMSite.Models.HourViewModel
 
-<h2 class="center-block">Volunteers</h2>
-
-<table class="table">
+<table class="table table-bordered">
     <tr>
-        <th>
+        <th class="text-center">
             First Name
         </th>
-        <th>
+        <th class="text-center" style="min-width:100px">
             Last Name
         </th>
-        <th>
+        <th class="text-center">
             E-Mail Address
         </th>
-        <th>
+        <th class="text-center" style="max-width:400px">
             Category(s)
         </th>
-        <th>
+        <th class="text-center">
             Total Hours
         </th>
         <th></th>
@@ -25,33 +23,37 @@
     @foreach (var item in Model.Vols)
     {
         <tr>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
+            <td style="max-width:400px">
                 |
                 @foreach (var c in item.Categories)
                 {
                     @(c.Category1 + " | ")
                 }
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.TotalHours)
             </td>
-            <td>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@item.VolunteerID">
-                    Add Hours
-                </button>
+            <td class="text-center">
+                <div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@item.VolunteerID">
+                        Add Hours
+                    </button>
 
-                @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.VolunteerID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerID })
+                    <br />
+
+                    @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.VolunteerID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerID })
+                </div>
             </td>
         </tr>
 
@@ -61,35 +63,33 @@
                     @using (Html.BeginForm())
                     {
                         <div class="modal-header">
-                            <h4 class="modal-title">Add Hours</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            @item.FirstName @item.LastName
-                            <br /><br />
+                            <p style="font-size:x-large">@item.FirstName @item.LastName</p>                          
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
+                            <div>
+                                <div>
+                                    Date:
                                     @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Hours, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
+                            <br />
+                            <div>
+                                <div>
+                                    Hours Worked:
                                     @Html.EditorFor(model => model.Hours, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Hours, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.CatName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    <select id="CatName" name="CatName">
+                            <br />
+                            <div>
+                                <div>
+                                    What Category Do The Hours Apply To? <br />
+                                    <select id="CatName" name="CatName" style="width:300px;">
                                         <option value=1>Doctor</option>
                                         <option value=2>Dentist</option>
                                         <option value=3>Nurse</option>
@@ -109,8 +109,7 @@
                                     <input id="VolID" name="VolID" type="hidden" value="@item.VolunteerID" />
                                 </div>
                             </div>
-
-                            <br /><br /><br /><br /><br /><br />
+                            <br />
                         </div>
 
                         <!-- Modal footer -->

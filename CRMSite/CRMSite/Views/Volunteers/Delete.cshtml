@@ -4,101 +4,69 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Volunteer</h4>
+<h3 class="text-center">Are you sure you want to delete this volunteer?</h3>
+<div class="row">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+    <div class="col-lg-4">
+    </div>
+    <div class="col-lg-4" style="margin-left: 20px;">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalHours)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.State)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TotalHours)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Zipcode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Zipcode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalHours)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TotalHours)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
+        </dl>
+    </div>
+    <div class="col-lg-4">
+    </div>
+</div>
+<div class="row">
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="col-lg-4">
+        </div>
+        <div class="form-actions no-color col-lg-4" style="margin-left:20px;">
+            <input type="submit" value="Delete" class="btn btn-primary" style="margin-right:110px;" />
+            <input type="button" class="btn btn-primary" value="Back to List" onclick="location.href='@Url.Action("Index", "Volunteers")'" />
+        </div>
+        <div class="col-lg-4">
         </div>
     }
 </div>
