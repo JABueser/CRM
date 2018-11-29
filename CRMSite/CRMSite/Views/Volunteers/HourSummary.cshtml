@@ -4,131 +4,80 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Hour Summary</h2>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Doctor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Doctor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Dentist)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Dentist)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nurse)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nurse)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ministry)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ministry)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Bus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Office)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Office)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Maintenance)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Maintenance)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Auto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Auto)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Food)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Food)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Men)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Men)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Thrift)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Thrift)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Special)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Special)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Women)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Women)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Training)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Training)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Total)
-        </dd>
-    </dl>
+<div class="container">
+    <h2>Total Hours Summary by Categories</h2>
+    <br />
+    <table class="table table-bordered">
+        <thread>
+            <tr>
+                <th>Category</th>
+                <th>Hours</th>
+            </tr>
+        </thread>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Doctor)</td>
+                <td>@Html.DisplayFor(model => model.Doctor)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Dentist)</td>
+                <td>@Html.DisplayFor(model => model.Dentist)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Nurse)</td>
+                <td>@Html.DisplayFor(model => model.Nurse)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Ministry)</td>
+                <td>@Html.DisplayFor(model => model.Ministry)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Bus)</td>
+                <td>@Html.DisplayFor(model => model.Bus)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Office)</td>
+                <td>@Html.DisplayFor(model => model.Office)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Maintenance)</td>
+                <td>@Html.DisplayFor(model => model.Maintenance)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Auto)</td>
+                <td>@Html.DisplayFor(model => model.Auto)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Food)</td>
+                <td>@Html.DisplayFor(model => model.Food)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Men)</td>
+                <td>@Html.DisplayFor(model => model.Men)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Thrift)</td>
+                <td>@Html.DisplayFor(model => model.Thrift)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Special)</td>
+                <td>@Html.DisplayFor(model => model.Special)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Women)</td>
+                <td>@Html.DisplayFor(model => model.Women)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Training)</td>
+                <td>@Html.DisplayFor(model => model.Training)</td>
+            </tr>
+            <tr>
+                <td><strong>@Html.DisplayNameFor(model => model.Total) </strong></td>
+                <td><strong>@Html.DisplayFor(model => model.Total) </strong></td>
+            </tr>
+        </tbody>
+        </table>
 </div>
 
 <p>
