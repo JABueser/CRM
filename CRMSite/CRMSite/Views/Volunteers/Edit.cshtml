@@ -5,7 +5,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    <input id="VolunteerPerson.VolunteerID" name="VolunteerPerson.VolunteerID" type="hidden" value="@Model.VolunteerPerson.VolunteerID" />
     <div class="form-horizontal">
 
         <hr />
@@ -228,7 +228,7 @@
         @foreach (var av in Model.AllAvailability)
         {
             <div>
-                <input type="checkbox" name="SelectedDays" value="@av.AvailabilityID" @(Model.SelectedDays.Contains(av.AvailabilityID) ? "checked='checked'" : null)/>  @av.Day
+                <input type="checkbox" name="SelectedDays" value="@av.AvailabilityID" @(Model.SelectedDays.Contains(av.AvailabilityID) ? "checked='checked'" : null) />  @av.Day
             </div>
         }
 
@@ -250,7 +250,7 @@
                             @:<tr style="height:30px">
                             }
                             <td>
-                                <input type="checkbox" name="SelectedCategories" value="@ct.CategoryID" @(Model.SelectedCategories.Contains(ct.CategoryID) ? "checked='checked'" : null)/>@ct.Category1
+                                <input type="checkbox" name="SelectedCategories" value="@ct.CategoryID" @(Model.SelectedCategories.Contains(ct.CategoryID) ? "checked='checked'" : null) />@ct.Category1
                             </td>
                             if (total + 1 % 5 == 0)
                             {
