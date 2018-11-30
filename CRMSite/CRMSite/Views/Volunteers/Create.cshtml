@@ -14,7 +14,6 @@
     <h3>Personal Information</h3>
     <div class="row">
         <div class="col-lg-3">
-            @*@Html.LabelFor(model => model.FirstName)*@
             First Name
             @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
@@ -136,7 +135,7 @@
 
         </div>
     </div>
-
+    <br />
     <div class="row">
         <div class="col-md-4">
             Church Name
@@ -223,31 +222,21 @@
     <hr />
 
     <h3>Availability</h3>
+    <br />
 
     @foreach (var av in Model.AllAvailability)
     {
         <div>
-
             <input type="checkbox" name="SelectedDays" value="@av.AvailabilityID" />  @av.Day
         </div>
     }
 
-
-
-    @*@foreach (var ct in Model.AllCategories)
-        {
-            <div>
-                <p>@ct.Category1</p>
-                <input type="checkbox" name="SelectedCategories" value="@ct.CategoryID" />
-            </div>
-        }*@
-
     <br />
     <hr />
 
-    <h3>Categories</h3>
+    <h3>What Categories are You Interested to Volunteer In?</h3>
+
     <div>
-        
         @{
             int total = 0;
         }
@@ -274,8 +263,9 @@
 
 
 
+    <br />
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div class="text-center">
             <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
