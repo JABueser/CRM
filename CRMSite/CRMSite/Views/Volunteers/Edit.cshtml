@@ -25,7 +25,7 @@
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.LastName, "", new { @class = "text-danger" })
             </div>
             <div class="col-lg-3">
-                Birth Date
+                Birth Date (xx-xx-xxxx)
                 @Html.EditorFor(model => model.VolunteerPerson.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.BirthDate, "", new { @class = "text-danger" })
             </div>
@@ -73,7 +73,7 @@
             </div>
 
             <div class="col-lg-3">
-                Phone Number
+                Phone Number (xxx-xxx-xxxx)
                 @Html.EditorFor(model => model.VolunteerPerson.Phone, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.Phone, "", new { @class = "text-danger" })
             </div>
@@ -139,14 +139,14 @@
         <br />
         <div class="row">
             <div class="col-md-4">
-                Church Name
+                Church Name ("n/a" if you aren't affiliated)
                 @Html.EditorFor(model => model.VolunteerPerson.Church, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.Church, "", new { @class = "text-danger" })
             </div>
 
 
             <div class="col-md-4">
-                Pastor Name
+                Pastor Name ("n/a" if this doesn't apply)
                 @Html.EditorFor(model => model.VolunteerPerson.Pastor, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.Pastor, "", new { @class = "text-danger" })
             </div>
@@ -173,7 +173,7 @@
             </div>
 
             <div class="col-md-4">
-                Please explain the nature of the Felony.
+                Nature of the Felony? ("n/a" if you answered no)
                 @Html.TextAreaFor(model => model.VolunteerPerson.NatureOfFelony, new { @Style = "height:30px; width:800px;" })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.NatureOfFelony, "", new { @class = "text-danger" })
             </div>
