@@ -4,9 +4,14 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using CRMSite.Models;
+using MailChimp.Net;
+using MailChimp.Net.Core;
+using MailChimp.Net.Interfaces;
+using MailChimp.Net.Models;
 
 namespace CRMSite.Controllers
 {
@@ -240,7 +245,42 @@ namespace CRMSite.Controllers
                 InsertVolunteerCat(volunteer, c);
             }
 
+            //add volunteer to mailing list
+            Task<bool> task = Task.Run<bool>(async () => await AddToMailingListAsync(volunteer));
+
             return RedirectToAction("Index");
+        }
+
+        private async Task<bool> AddToMailingListAsync(Volunteer volunteer)
+        {
+            IMailChimpManager mailChimpManager = new MailChimpManager("a17bc860f1ee9723ca306aa7811cdcb3");
+
+            var mailChimpListCollection = await mailChimpManager.Lists.GetAllAsync().ConfigureAwait(false);
+            var listIdCollection = new List<string>();
+            foreach(List list in mailChimpListCollection)
+            {
+                foreach(Category cat in volunteer.Categories)
+                {
+                    if(cat.Category1 == list.Name)
+                    {
+                        listIdCollection.Add(list.Id);
+                    }
+                }
+            }
+
+            if (listIdCollection.Any())
+            {
+                foreach(string id in listIdCollection)
+                {
+                    // Use the Status property if updating an existing member
+                    var member = new Member { EmailAddress = volunteer.Email, StatusIfNew = Status.Subscribed };
+                    member.MergeFields.Add("FNAME", volunteer.FirstName);
+                    member.MergeFields.Add("LNAME", volunteer.LastName);
+                    await mailChimpManager.Members.AddOrUpdateAsync(id, member);
+                }
+                return true;
+            }
+            return false;
         }
 
         // GET: Volunteers/Edit/5

@@ -51,6 +51,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="MailChimp.Net, Version=3.5.0.0, Culture=neutral, PublicKeyToken=37d26d538413c581, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailChimp.Net.V3.3.5.0\lib\net45\MailChimp.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -226,6 +229,10 @@
     <Content Include="Models\CRMModel.edmx.diagram">
       <DependentUpon>CRMModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\JAKL - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\JAKL - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\JAKL - Web Deploy2.pubxml" />
+    <None Include="Properties\PublishProfiles\JAKL - Web Deploy3.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -256,9 +263,6 @@
     <Content Include="Views\Volunteers\Details.cshtml" />
     <Content Include="Views\Volunteers\Edit.cshtml" />
     <Content Include="Views\Volunteers\Index.cshtml" />
-    <Content Include="Views\Volunteers\_CreateBasic.cshtml" />
-    <Content Include="Views\Volunteers\_CreateCategory.cshtml" />
-    <Content Include="Views\Volunteers\_CreateAvailability.cshtml" />
     <Content Include="Views\Volunteers\_VolunteerList.cshtml" />
     <Content Include="Views\Volunteers\HourSummary.cshtml" />
   </ItemGroup>
