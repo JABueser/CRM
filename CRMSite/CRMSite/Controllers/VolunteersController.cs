@@ -206,7 +206,7 @@ namespace CRMSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateViewModel postModel)
+        public async Task<ActionResult> Create(CreateViewModel postModel)
         {
             var volunteer = new Volunteer
             {
@@ -246,7 +246,9 @@ namespace CRMSite.Controllers
             }
 
             //add volunteer to mailing list
-            Task<bool> task = Task.Run<bool>(async () => await AddToMailingListAsync(volunteer));
+            //Task<bool> task = Task.Run<bool>(async () => await AddToMailingListAsync(volunteer));
+
+            await AddToMailingListAsync(volunteer);
 
             return RedirectToAction("Index");
         }
