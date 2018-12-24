@@ -245,30 +245,36 @@ namespace CRMSite.Controllers
                 InsertVolunteerCat(volunteer, c);
             }
 
-            //add volunteer to mailing list
-            //Task<bool> task = Task.Run<bool>(async () => await AddToMailingListAsync(volunteer));
-
             await AddToMailingListAsync(volunteer);
 
             return RedirectToAction("Index");
         }
 
-        private async Task<bool> AddToMailingListAsync(Volunteer volunteer)
+        private async Task AddToMailingListAsync(Volunteer volunteer)
         {
-            IMailChimpManager mailChimpManager = new MailChimpManager("a17bc860f1ee9723ca306aa7811cdcb3");
+            IMailChimpManager mailChimpManager = new MailChimpManager("9b1f1fcc98cae3a9c4d355ddee1d3506-us19");
+
+            List<Category> AllCats = db.Categories.ToList();
 
             var mailChimpListCollection = await mailChimpManager.Lists.GetAllAsync().ConfigureAwait(false);
             var listIdCollection = new List<string>();
+
+            //this foreach loop does not actually work. c.Category1 is always null for any category that the volunteer is in.
             foreach(List list in mailChimpListCollection)
             {
-                foreach(Category cat in volunteer.Categories)
+                foreach (var c in AllCats)
                 {
-                    if(cat.Category1 == list.Name)
+                    if (c.Volunteers.Contains(volunteer))
                     {
-                        listIdCollection.Add(list.Id);
+                        if(c.Category1 == list.Name)
+                        {
+                            listIdCollection.Add(list.Id);
+                        }
                     }
                 }
             }
+            //hard coded listID
+            listIdCollection.Add(mailChimpListCollection.ElementAtOrDefault(0).Id);
 
             if (listIdCollection.Any())
             {
@@ -278,11 +284,12 @@ namespace CRMSite.Controllers
                     var member = new Member { EmailAddress = volunteer.Email, StatusIfNew = Status.Subscribed };
                     member.MergeFields.Add("FNAME", volunteer.FirstName);
                     member.MergeFields.Add("LNAME", volunteer.LastName);
+                    member.MergeFields.Add("PHONE", volunteer.Phone);
+                    member.MergeFields.Add("ADDRESS", volunteer.Address);
                     await mailChimpManager.Members.AddOrUpdateAsync(id, member);
                 }
-                return true;
             }
-            return false;
+            return;
         }
 
         // GET: Volunteers/Edit/5
