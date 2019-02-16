@@ -3,18 +3,16 @@
 @{
     ViewBag.Title = "Details";
 }
-
-
-<div class="container">
     <h2>Total Hours Summary by Categories</h2>
     <br />
+
     <table class="table table-bordered">
-        <thread>
+        <thead>
             <tr>
                 <th>Category</th>
                 <th>Hours</th>
             </tr>
-        </thread>
+        </thead>
         <tbody>
             <tr>
                 <td>@Html.DisplayNameFor(model => model.Doctor)</td>
@@ -79,8 +77,8 @@
                 <td><strong>@Html.DisplayFor(model => model.Total) </strong></td>
             </tr>
         </tbody>
-        </table>
-</div>
+    </table>
+
 
 <p>
     @Html.ActionLink("Back to List", "Index")
