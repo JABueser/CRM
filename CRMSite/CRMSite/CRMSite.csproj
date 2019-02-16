@@ -256,9 +256,6 @@
     <Content Include="Views\Volunteers\Details.cshtml" />
     <Content Include="Views\Volunteers\Edit.cshtml" />
     <Content Include="Views\Volunteers\Index.cshtml" />
-    <Content Include="Views\Volunteers\_CreateBasic.cshtml" />
-    <Content Include="Views\Volunteers\_CreateCategory.cshtml" />
-    <Content Include="Views\Volunteers\_CreateAvailability.cshtml" />
     <Content Include="Views\Volunteers\_VolunteerList.cshtml" />
     <Content Include="Views\Volunteers\HourSummary.cshtml" />
   </ItemGroup>
