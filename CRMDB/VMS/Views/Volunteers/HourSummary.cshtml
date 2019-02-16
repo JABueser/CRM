@@ -1,0 +1,85 @@
+﻿@model VMS.Models.ViewHourViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+<h2>Total Hours Summary by Categories</h2>
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Hours</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Doctor)</td>
+            <td>@Html.DisplayFor(model => model.Doctor)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Dentist)</td>
+            <td>@Html.DisplayFor(model => model.Dentist)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Nurse)</td>
+            <td>@Html.DisplayFor(model => model.Nurse)</td>
+        </tr>
+        <tr>
+            <td>
+                Chapel Ministry
+            </td>
+            <td>@Html.DisplayFor(model => model.Ministry)</td>
+        </tr>
+        <tr>
+            <td>Bus Driver</td>
+            <td>@Html.DisplayFor(model => model.Bus)</td>
+        </tr>
+        <tr>
+            <td>Office/Clerical</td>
+            <td>@Html.DisplayFor(model => model.Office)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Maintenance)</td>
+            <td>@Html.DisplayFor(model => model.Maintenance)</td>
+        </tr>
+        <tr>
+            <td>Auto Shop</td>
+            <td>@Html.DisplayFor(model => model.Auto)</td>
+        </tr>
+        <tr>
+            <td>Food Service</td>
+            <td>@Html.DisplayFor(model => model.Food)</td>
+        </tr>
+        <tr>
+            <td>Men's Division</td>
+            <td>@Html.DisplayFor(model => model.Men)</td>
+        </tr>
+        <tr>
+            <td>Thrift Store</td>
+            <td>@Html.DisplayFor(model => model.Thrift)</td>
+        </tr>
+        <tr>
+            <td>Special Events</td>
+            <td>@Html.DisplayFor(model => model.Special)</td>
+        </tr>
+        <tr>
+            <td>Women, Children, and Families</td>
+            <td>@Html.DisplayFor(model => model.Women)</td>
+        </tr>
+        <tr>
+            <td>Job Training/Life Skills Instructor</td>
+            <td>@Html.DisplayFor(model => model.Training)</td>
+        </tr>
+        <tr>
+            <td><strong>@Html.DisplayNameFor(model => model.Total) </strong></td>
+            <td><strong>@Html.DisplayFor(model => model.Total) </strong></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

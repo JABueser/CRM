@@ -1,0 +1,72 @@
+﻿@model VMS.Models.Volunteer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3 class="text-center">Are you sure you want to delete this volunteer?</h3>
+<div class="row">
+    <hr />
+    <div class="col-lg-4">
+    </div>
+    <div class="col-lg-4" style="margin-left: 20px;">
+        <dl class="dl-horizontal">
+            <dt>
+                <b>First Name</b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                <b>Last Name</b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                <b>E-Mail</b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                <b>Phone</b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+
+            <dt>
+                <b>Total Hours</b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TotalHours)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col-lg-4">
+    </div>
+</div>
+<div class="row">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-lg-4">
+        </div>
+        <div class="form-actions no-color col-lg-4" style="margin-left:20px;">
+            <input type="submit" value="Delete" class="btn btn-primary" style="margin-right:110px;" />
+            <input type="button" class="btn btn-primary" value="Back to List" onclick="location.href='@Url.Action("Index", "Volunteers")'" />
+        </div>
+        <div class="col-lg-4">
+        </div>
+    }
+</div>

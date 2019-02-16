@@ -1,0 +1,12 @@
+﻿@model VMS.Models.FilterViewModel
+
+<h2>Volunteers</h2>
+
+<p>
+    <text>Category</text>
+    @Html.DropDownListFor(x => x.SelectedCategoryID, new SelectList(Model.AllCategories, "CategoryID", "Category1"), "Select a category")
+</p>
+
+<div id="dvVolunteerList">
+    @{Html.RenderPartial("_VolunteerList", Model.HourViewModel); }
+</div>
