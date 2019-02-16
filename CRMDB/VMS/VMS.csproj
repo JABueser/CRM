@@ -210,12 +210,16 @@
     <Compile Include="Models\Category.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CreateViewModel.cs" />
+    <Compile Include="Models\EditViewModel.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
+    <Compile Include="Models\HourViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TimeLog.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewHourViewModel.cs" />
     <Compile Include="Models\VMSModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -256,6 +260,7 @@
       <DependentUpon>VMSModel.edmx</DependentUpon>
       <LastGenOutput>VMSModel.cs</LastGenOutput>
     </Content>
+    <Content Include="PICS\crmlogo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -316,6 +321,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Volunteers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -6,7 +6,23 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function filter() {
+            var val = $("#SelectedCategoryID").val();
+            $.ajax({
+                url: "/Volunteers/FilterVolunteers",
+                type: "GET",
+                data: { CategoryID: val }
+            })
+                .done(function (partialViewResult) {
+                    $("#dvVolunteerList").html(partialViewResult);
+                });
+        }
+        $(document).ready(function () {
+            $("#SelectedCategoryID").on('change', filter);
+        });
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,23 +33,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <a class="navbar-brand" href="#">
+                    <img src="~/PICS/crmlogo.png" alt="logo" style="width:150px;">
+                </a>
+                <ul class="nav navbar-nav" style="margin-left:459px">
+                    <li style="font-size: x-large">@Html.ActionLink("Hour Summary", "HourSummary", "Volunteers")</li>
+                    <li style="font-size: x-large">@Html.ActionLink("Add Volunteer", "Create", "Volunteers")</li>
+                    <li style="font-size: x-large">@Html.ActionLink("Volunteers", "Index", "Volunteers")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+
     <div class="container body-content">
+        <br />
+        <br />
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - City Rescue Mission</p>
         </footer>
     </div>
 
@@ -42,3 +62,4 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
