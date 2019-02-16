@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace VMS.Models
+{
+    public class FilterViewModel
+    {
+        public IEnumerable<Category> AllCategories { get; set; }
+
+        public string SelectedCategoryID { get; set; }
+
+        public HourViewModel HourViewModel { get; set; }
+    }
+}
