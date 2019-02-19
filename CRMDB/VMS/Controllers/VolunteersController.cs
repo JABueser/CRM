@@ -12,6 +12,12 @@ namespace VMS.Controllers
 {
     public class VolunteersController : Controller
     {
+        //private DateTime ParseDate(String date)
+        //{
+        //    String[] dateArr = date.Split('-');
+        //    return new DateTime(int.Parse(dateArr[0]), int.Parse(dateArr[1]), int.Parse(dateArr[2]));
+        //}
+
         private CRMDBEntities db = new CRMDBEntities();
 
 
