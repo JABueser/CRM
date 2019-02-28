@@ -168,7 +168,7 @@ namespace CRMSite.Controllers
         }
 
         // GET: Volunteers/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
@@ -179,6 +179,28 @@ namespace CRMSite.Controllers
             {
                 return HttpNotFound();
             }
+            return View(volunteer);
+        }
+
+        [HttpPost]
+        public ActionResult Details(int volid, int timeid)
+        {
+            if (timeid == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            TimeLog timelog = db.TimeLogs.Find(timeid);
+            db.TimeLogs.Remove(timelog);
+            db.SaveChanges();
+
+            Volunteer volunteer = db.Volunteers.Find(volid);
+
+            if (volunteer == null)
+            {
+                return HttpNotFound();
+            }
+
             return View(volunteer);
         }
 

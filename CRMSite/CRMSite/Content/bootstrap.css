@@ -6757,4 +6757,7 @@ button.close {
     display: none !important;
   }
 }
+th.dt-center, td.dt-center {
+    text-align: center;
+}
 /*# sourceMappingURL=bootstrap.css.map */

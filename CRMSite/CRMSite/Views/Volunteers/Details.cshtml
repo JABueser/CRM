@@ -47,22 +47,25 @@
         <p style="font-size:large; margin:0px">@Model.NatureOfFelony</p>
     </div>
     <div class="col-lg-5" style="height:510px; overflow: auto">
-        <table class="table table-bordered">
-            <tr>
-                <th>
-                    Date
-                </th>
-                <th>
-                    Category
-                </th>
-                <th>
-                    Hours
-                </th>
-            </tr>
+        <table id="timetable" class="display">
+            <thead>
+                <tr class="text-center">
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Hours
+                    </th>
+                    <th></th>
+                </tr>
+             </thead>
 
             @foreach (var m in Model.TimeLogs)
             {
-                <tr>
+                <tr class="text-center">
                     <td>
                         @m.Date
                     </td>
@@ -71,6 +74,14 @@
                     </td>
                     <td>
                         @m.HoursWorked
+                    </td>
+                    <td>
+                        @using (Html.BeginForm())
+                        {
+                            <input id="volid" name="volid" type="hidden" value="@Model.VolunteerID" />
+                            <input id="timeid" name="timeid" type="hidden" value="@m.TimeLogID" />
+                            <input type="submit" value="X" class="btn btn-default" />
+                        }
                     </td>
                 </tr>
             }
@@ -81,11 +92,11 @@
 <div class="row text-center">
     <div class="col-lg-3">
         <b style="font-size:large">Skills</b><br />
-         @Model.Skills
+        @Model.Skills
     </div>
     <div class="col-lg-3">
         <b style="font-size:large">Disabilities</b><br />
-         @Model.Disabilities
+        @Model.Disabilities
     </div>
     <div class="col-lg-3">
         <b style="font-size:large">Category(s)</b><br />
@@ -109,3 +120,21 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.VolunteerID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section Scripts{
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#timetable').dataTable({
+                paging: false,
+                info: false,
+                searching: false,
+                "columnDefs": [
+                    {"orderable": false, "targets": -1}
+                ]
+            });
+        });
+
+    </script>
+}

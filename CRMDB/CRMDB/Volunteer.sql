@@ -7,7 +7,7 @@
 	[City] NVARCHAR (50) NULL,
 	[State] NVARCHAR (50) NULL,
 	[Zipcode] NVARCHAR (50) NULL,
-	[BirthDate] DATE NULL,
+	[BirthDate] NVARCHAR (50) NULL,
 	[Organization] NVARCHAR (50) NULL,
 	[Occupation] NVARCHAR (50) NULL,
 	[Church] NVARCHAR (50) NULL,

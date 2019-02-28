@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-lg-3">
             First Name
-            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new {@class = "form-control" } })
             @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
         </div>
         <div class="col-lg-3">
@@ -24,8 +24,8 @@
             @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
         </div>
         <div class="col-lg-3">
-            Birth Date (xx/xx/xxxx)
-            @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+            Birth Date
+            @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { type = "date", @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
         </div>
         <div class="col-lg-3">
