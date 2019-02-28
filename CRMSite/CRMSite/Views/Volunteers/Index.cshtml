@@ -2,11 +2,28 @@
 
 <h2>Volunteers</h2>
 
-<p>
+@*<p>
     <text>Category</text>
     @Html.DropDownListFor(x => x.SelectedCategoryID, new SelectList(Model.AllCategories, "CategoryID", "Category1"), "Select a category")
-</p>
+</p>*@
 
 <div id="dvVolunteerList">
     @{Html.RenderPartial("_VolunteerList", Model.HourViewModel); }
 </div>
+
+@section Scripts{
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#voltable').dataTable({
+                columDefs: [
+                    {
+                        className: "dt-center", targets: "_all"
+                    }
+                ]
+            });
+        });
+
+    </script>
+}

@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[TimeLog]
 (
 	[TimeLogID] INT	IDENTITY(1,1) NOT NULL,
-	[Date] DATE NULL,
+	[Date] NVARCHAR (50) NULL,
 	[HoursWorked] INT NULL,
 	[CategoryID] INT NOT NULL,
 	[VolunteerID] INT NOT NULL,
