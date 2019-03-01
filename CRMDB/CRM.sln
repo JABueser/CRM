@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CRMDB", "CRMDB\CRMDB.sqlproj", "{B346A22D-14D6-4796-A80F-8D9DF49CEC5A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VMS", "VMS\VMS.csproj", "{58F2E765-1D57-42AC-8F74-3E0546DBF750}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B346A22D-14D6-4796-A80F-8D9DF49CEC5A} = {B346A22D-14D6-4796-A80F-8D9DF49CEC5A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
