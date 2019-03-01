@@ -19,7 +19,6 @@ namespace CRMSite.Models
         {
             this.TimeLogs = new HashSet<TimeLog>();
             this.Volunteers = new HashSet<Volunteer>();
-            this.CategoryValue = 1;
         }
     
         public int CategoryID { get; set; }
