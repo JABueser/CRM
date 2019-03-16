@@ -10,6 +10,7 @@ using VMS.Models;
 
 namespace VMS.Controllers
 {
+    [Authorize]
     public class VolunteersController : Controller
     {
         //private DateTime ParseDate(String date)
@@ -65,6 +66,7 @@ namespace VMS.Controllers
             return PartialView("_VolunteerList", model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult HourSummary()
         {
             List<TimeLog> time = db.TimeLogs.ToList();
@@ -189,6 +191,7 @@ namespace VMS.Controllers
             return View(volunteer);
         }
 
+        [AllowAnonymous]
         // GET: Volunteers/Create
         public ActionResult Create()
         {
@@ -204,6 +207,7 @@ namespace VMS.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         // POST: Volunteers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

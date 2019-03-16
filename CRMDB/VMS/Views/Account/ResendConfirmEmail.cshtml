@@ -1,0 +1,9 @@
+﻿@using VMS.Models
+@model ResendConfirmEmailViewModel
+@{
+    ViewBag.Title = "ResendConfirmEmail";
+}
+
+<h2>ResendConfirmEmail</h2>
+@Html.ActionLink("Click here to resend the confirmation email", "ResendConfirmEmailAsync", new { UserName = Model.UserName })
+    

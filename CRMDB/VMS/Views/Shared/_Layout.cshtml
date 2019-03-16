@@ -27,28 +27,59 @@
     </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse">
-                <a class="navbar-brand" href="#">
-                    <img src="~/PICS/crmlogo.png" alt="logo" style="width:150px;">
-                </a>
-                <ul class="nav navbar-nav" style="margin-left:459px">
-                    <li style="font-size: x-large">@Html.ActionLink("Hour Summary", "HourSummary", "Volunteers")</li>
-                    <li style="font-size: x-large">@Html.ActionLink("Add Volunteer", "Create", "Volunteers")</li>
-                    <li style="font-size: x-large">@Html.ActionLink("Volunteers", "Index", "Volunteers")</li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="@Url.Action("Index", "Volunteers")">
+            <img src="~/PICS/crmlogo.png" alt="logo" style="width:150px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+ 
+        <div class="collapse navbar-collapse" id="navbarColor03">
+            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Hour Summary", "HourSummary", "Volunteers", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Add Volunteer", "Create", "Volunteers", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Volunteers", "Index", "Volunteers", null, new { @class = "nav-link" })
+                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+            }
+
+            @Html.Partial("_LoginPartial")
+            @*<form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>*@
         </div>
-    </div>
+    </nav>
+    @*<div class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <a class="navbar-brand" href="#">
+                        <img src="~/PICS/crmlogo.png" alt="logo" style="width:150px;">
+                    </a>
+                    <ul class="nav navbar-nav" style="margin-left:459px">
+                        <li style="font-size: x-large">@Html.ActionLink("Hour Summary", "HourSummary", "Volunteers")</li>
+                        <li style="font-size: x-large">@Html.ActionLink("Add Volunteer", "Create", "Volunteers")</li>
+                        <li style="font-size: x-large">@Html.ActionLink("Volunteers", "Index", "Volunteers")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
 
     <div class="container body-content">
         <br />
