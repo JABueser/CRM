@@ -1,280 +1,307 @@
 ﻿@model VMS.Models.CreateViewModel
 
-<h2>Add New Volunteer</h2>
+<h2>Volunteer Application</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+<div class="form-horizontal">
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <h3>Personal Information</h3>
-        <div class="row">
-            <div class="col-lg-3">
-                First Name
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-lg-3">
-                Last Name
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-lg-3">
-                Birth Date (xx/xx/xxxx)
-                @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-lg-3">
-
-            </div>
-
+    <h3>Personal Information</h3>
+    <div class="row">
+        <div class="col-lg-3">
+            First Name
+            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-lg-3">
+            Last Name
+            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
         </div>
 
-        <br />
+        <div class="col-lg-3">
 
-        <div class="row">
-            <div class="col-lg-3">
-                Address
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-lg-3">
-                City
-                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-lg-3">
-                State
-                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-lg-3">
-                Zip Code
-                @Html.EditorFor(model => model.Zipcode, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Zipcode, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <br />
-
-        <div class="row">
-
-            <div class="col-lg-3">
-                Email Address
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-lg-3">
-                Phone Number (xxx-xxx-xxxx)
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-lg-3">
-
-            </div>
-            <div class="col-lg-3">
-
-            </div>
-
-        </div>
-
-        <br />
-        <hr />
-
-        <h3>Emergency Contact</h3>
-
-        <div class="row">
-
-            <div class="col-md-4">
-                Emergency Contact
-                @Html.EditorFor(model => model.EmergencyName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EmergencyName, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-md-4">
-                Relation to you
-                @Html.EditorFor(model => model.EmergencyRelation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EmergencyRelation, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-md-4">
-                Emergency Contact Phone Number
-                @Html.EditorFor(model => model.EmergencyPhone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EmergencyPhone, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <br />
-        <hr />
-
-        <h3>Organization</h3>
-
-
-        <div class="row">
-            <div class="col-md-4">
-                Organization
-                @Html.EditorFor(model => model.Organization, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Organization, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-md-4">
-                Occupation
-                @Html.EditorFor(model => model.Occupation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Occupation, "", new { @class = "text-danger" })
-            </div>
-
-
-            <div class="col-md-4">
-
-            </div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-md-4">
-                Church Name ("n/a" if you aren't affiliated)
-                @Html.EditorFor(model => model.Church, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Church, "", new { @class = "text-danger" })
-            </div>
-
-
-            <div class="col-md-4">
-                Pastor Name ("n/a" if this doesn't apply)
-                @Html.EditorFor(model => model.Pastor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Pastor, "", new { @class = "text-danger" })
-            </div>
-
-
-
-            <div class="col-md-4">
-                How did you hear about us?
-                @Html.EditorFor(model => model.HowDidYouHear, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HowDidYouHear, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <br />
-        <hr />
-        <h3>Criminal Past</h3>
-
-        <div class="row">
-
-            <div class="col-md-4">
-                Have you ever been convited of a Felony?
-                @Html.EditorFor(model => model.Felony, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Felony, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-md-4">
-                Nature of the Felony? ("n/a" if you answered no)
-                @Html.TextAreaFor(model => model.NatureOfFelony, new { @Style = "height:30px; width:800px;" })
-                @Html.ValidationMessageFor(model => model.NatureOfFelony, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-md-4">
-
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-
-            </div>
-
-            <div class="col-md-4">
-
-            </div>
-
-            <div class="col-md-4">
-
-            </div>
-        </div>
-
-
-        <br />
-        <hr />
-
-        <h3>Other</h3>
-        <div class="row">
-
-            <div class="col-md-4">
-                Do you have any Disabilities? If so explain below.
-                <br />
-                @Html.TextAreaFor(model => model.Disabilities, new { @Style = "height:100px; width:800px;" })
-                @Html.ValidationMessageFor(model => model.Disabilities, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-md-4">
-                Please list some of your skills below.
-                <br />
-                @Html.TextAreaFor(model => model.Skills, new { @Style = "height:100px; width:800px;" })
-                @Html.ValidationMessageFor(model => model.Skills, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <br />
-        <hr />
-
-        <h3>Availability</h3>
-        <br />
-
-        @foreach (var av in Model.AllAvailability)
-        {
-            <div>
-                <input type="checkbox" name="SelectedDays" value="@av.AvailabilityID" />  @av.Day
-            </div>
-        }
-
-        <br />
-        <hr />
-
-        <h3>What Categories are You Interested to Volunteer In?</h3>
-
-        <div>
-            @{
-                int total = 0;
-            }
-            <table id="memberlist" style="width:100%">
-                <tbody>
-                    @foreach (var ct in Model.AllCategories)
-                    {
-                        if (total % 4 == 0)
-                        {
-                            @:<tr style="height:30px">
-                            }
-                            <td>
-                                <input type="checkbox" name="SelectedCategories" value="@ct.CategoryID" /> @ct.Category1
-                            </td>
-                            if (total + 1 % 5 == 0)
-                            {
-                            @:</tr>
-                        }
-                        total++;
-                    }
-                </tbody>
-            </table>
-        </div>
-
-
-
-        <br />
-        <div class="form-group">
-            <div class="text-center">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
         </div>
     </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-lg-3">
+            Birth Date (xx/xx/xxxx)
+            @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-lg-3">
+            Address
+            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-lg-3">
+            Address 2
+            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-lg-3">
+            City
+            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-lg-3">
+            State
+            @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-lg-3">
+            Zip Code
+            @Html.EditorFor(model => model.Zipcode, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Zipcode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+
+        <div class="col-lg-3">
+            Email Address
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-lg-3">
+            Phone Number (xxx-xxx-xxxx)
+            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+    <br />
+
+    <hr />
+
+    <h3>Emergency Contact</h3>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            Emergency Contact
+            @Html.EditorFor(model => model.EmergencyName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EmergencyName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            Relation to you
+            @Html.EditorFor(model => model.EmergencyRelation, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EmergencyRelation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            Emergency Contact Phone Number
+            @Html.EditorFor(model => model.EmergencyPhone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EmergencyPhone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+    <hr />
+
+    <h3>Organization</h3>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            Organization
+            @Html.EditorFor(model => model.Organization, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Organization, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-4">
+            Occupation
+            @Html.EditorFor(model => model.Occupation, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Occupation, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="col-md-4">
+
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            Church Name ("n/a" if you aren't affiliated)
+            @Html.EditorFor(model => model.Church, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Church, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="col-md-4">
+            Pastor Name ("n/a" if this doesn't apply)
+            @Html.EditorFor(model => model.Pastor, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Pastor, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            How did you hear about us?
+            @Html.EditorFor(model => model.HowDidYouHear, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HowDidYouHear, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+    <hr />
+
+    <h3>Criminal Past</h3>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            Have you ever been convited of a Felony?
+            @Html.EditorFor(model => model.Felony, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Felony, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">
+            Nature of the Felony? ("n/a" if you answered no)
+            @Html.TextAreaFor(model => model.NatureOfFelony, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NatureOfFelony, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+
+    <br />
+    <hr />
+
+    <h3>Other</h3>
+    <div class="row">
+
+        <div class="col-md-4">
+            Do you have any Disabilities? If so explain below.
+            <br />
+            @Html.TextAreaFor(model => model.Disabilities, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Disabilities, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">
+            Please list some of your skills below.
+            <br />
+            @Html.TextAreaFor(model => model.Skills, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Skills, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+    <hr />
+
+    <h3>Availability</h3>
+    <br />
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+            Default checkbox
+        </label>
+    </div>
+
+    @foreach (var av in Model.AllAvailability)
+    {
+        <div>
+            <input type="checkbox" name="SelectedDays" value="@av.AvailabilityID" />  @av.Day
+        </div>
+    }
+
+    <br />
+    <hr />
+
+    <h3>What Categories are You Interested to Volunteer In?</h3>
+
+    <div>
+        @{
+            int total = 0;
+        }
+        <table id="memberlist" style="width:100%">
+            <tbody>
+                @foreach (var ct in Model.AllCategories)
+                {
+                    if (total % 4 == 0)
+                    {
+                        @:<tr style="height:30px">
+                        }
+                        <td>
+                            <input type="checkbox" name="SelectedCategories" value="@ct.CategoryID" /> @ct.Category1
+                        </td>
+                        if (total + 1 % 5 == 0)
+                        {
+                        @:</tr>
+                    }
+                    total++;
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <br />
+
+
+    <div class="form-group">
+        <div class="text-center">
+            <input type="submit" value="Submit" class="btn btn-primary btn-lg" />
+        </div>
+    </div>
+</div>
+    <br />
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

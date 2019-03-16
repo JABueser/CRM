@@ -16,19 +16,19 @@ namespace CRMSite.Controllers
 
         // GET: Volunteers
         //test
-        public ActionResult Index()
-        {
-            var HoursViewModel = new HourViewModel
-            {
-                Vols = db.Volunteers.ToList()
-            };
-            var model = new FilterViewModel
-            {
-                AllCategories = db.Categories.ToList(),
-                HourViewModel = HoursViewModel
-            };
-            return View(model);
-        }
+       // public ActionResult Index()
+       // {
+            //var HoursViewModel = new HourViewModel
+            //{
+            //    Vols = db.Volunteers.ToList()
+            //};
+        //    var model = new FilterViewModel
+        //    {
+        //        AllCategories = db.Categories.ToList(),
+        //        HourViewModel = HoursViewModel
+        //    };
+        //    return View(model);
+        //}
 
         [HttpGet]
         public ActionResult FilterVolunteers(string CategoryID)

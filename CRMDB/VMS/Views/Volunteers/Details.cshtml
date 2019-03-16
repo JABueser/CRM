@@ -1,111 +1,176 @@
 ﻿@model VMS.Models.Volunteer
 
-<h2>Details</h2>
+<h2>Volunteer Information</h2>
 
-<div class="row">
-    <hr />
-    <div class="col-lg-3" style="margin-top: 13px">
-        <b style="font-size:large">First Name</b><br />
-        <b style="font-size:large">Last Name</b><br />
-        <b style="font-size:large">Birth Date</b><br />
-        <b style="font-size:large">Address</b><br />
-        <b style="font-size:large">City</b><br />
-        <b style="font-size:large">State</b><br />
-        <b style="font-size:large">Zipcode</b><br />
-        <b style="font-size:large">Phone</b><br />
-        <b style="font-size:large">E-Mail</b><br />
-        <b style="font-size:large">Emergency Name</b><br />
-        <b style="font-size:large">Emergency Relation</b><br />
-        <b style="font-size:large">Emergency Phone</b><br />
-        <b style="font-size:large">Organization</b><br />
-        <b style="font-size:large">Occupation</b><br />
-        <b style="font-size:large">Church Affiliation</b><br />
-        <b style="font-size:large">Senior Pastor</b><br />
-        <b style="font-size:large">How Did You Hear of Us?</b><br />
-        <b style="font-size:large">Felony</b><br />
-        <b style="font-size:large">Nature of Felony</b><br />
-    </div>
-    <div class="col-lg-4" style="margin-top: 13px">
-        <p style="font-size:large; margin:0px">@Model.FirstName</p>
-        <p style="font-size:large; margin:0px">@Model.LastName</p>
-        <p style="font-size:large; margin:0px">@Model.BirthDate</p>
-        <p style="font-size:large; margin:0px">@Model.Address</p>
-        <p style="font-size:large; margin:0px">@Model.City</p>
-        <p style="font-size:large; margin:0px">@Model.State</p>
-        <p style="font-size:large; margin:0px">@Model.Zipcode</p>
-        <p style="font-size:large; margin:0px">@Model.Phone</p>
-        <p style="font-size:large; margin:0px">@Model.Email</p>
-        <p style="font-size:large; margin:0px">@Model.EmergencyName</p>
-        <p style="font-size:large; margin:0px">@Model.EmergencyRelation</p>
-        <p style="font-size:large; margin:0px">@Model.EmergencyPhone</p>
-        <p style="font-size:large; margin:0px">@Model.Organization</p>
-        <p style="font-size:large; margin:0px">@Model.Occupation</p>
-        <p style="font-size:large; margin:0px">@Model.Church</p>
-        <p style="font-size:large; margin:0px">@Model.Pastor</p>
-        <p style="font-size:large; margin:0px">@Model.HowDidYouHear</p>
-        <p style="font-size:large; margin:0px">@Model.Felony</p>
-        <p style="font-size:large; margin:0px">@Model.NatureOfFelony</p>
-    </div>
-    <div class="col-lg-5" style="height:510px; overflow: auto">
-        <table class="table table-bordered">
+<div class="col-lg-6" style="height:510px">
+
+    <table class="table table-sm">
+        <tbody>
             <tr>
-                <th>
-                    Date
-                </th>
-                <th>
-                    Category
-                </th>
-                <th>
-                    Hours
-                </th>
+                <td>First Name</td>
+                <td>@Model.FirstName</td>
             </tr>
 
-            @foreach (var m in Model.TimeLogs)
-            {
-                <tr>
-                    <td>
-                        @m.Date
-                    </td>
-                    <td>
-                        @m.Category.Category1
-                    </td>
-                    <td>
-                        @m.HoursWorked
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>
-</div>
-<br /><br />
-<div class="row text-center">
-    <div class="col-lg-3">
-        <b style="font-size:large">Skills</b><br />
-        @Model.Skills
-    </div>
-    <div class="col-lg-3">
-        <b style="font-size:large">Disabilities</b><br />
-        @Model.Disabilities
-    </div>
-    <div class="col-lg-3">
-        <b style="font-size:large">Category(s)</b><br />
-        @foreach (var c in Model.Categories)
-        {
-            @c.Category1<br />
-        }
-    </div>
-    <div class="col-lg-3">
-        <b style="font-size:large">Availability</b><br />
-        @foreach (var a in Model.Availabilities)
-        {
-            @a.Day<br />
-        }
-    </div>
+            <tr>
+                <td>Last Name</td>
+                <td>@Model.LastName</td>
+            </tr>
 
+            <tr>
+                <td>Birth Date</td>
+                <td>@Model.BirthDate </td>
+            </tr>
+
+            <tr>
+                <td>Address </td>
+                <td>@Model.Address</td>
+            </tr>
+
+            <tr>
+                <td>City</td>
+                <td>@Model.City</td>
+            </tr>
+
+            <tr>
+                <td>State</td>
+                <td>@Model.City </td>
+            </tr>
+
+            <tr>
+                <td>Zip Code</td>
+                <td>@Model.Zipcode</td>
+            </tr>
+
+            <tr>
+                <td>Phone</td>
+                <td>@Model.Phone</td>
+            </tr>
+
+            <tr>
+                <td>E-Mail</td>
+                <td>@Model.Email</td>
+            </tr>
+
+            <tr>
+                <td>Emergency Name</td>
+                <td>@Model.EmergencyName</td>
+            </tr>
+
+            <tr>
+                <td>Emergency Relation</td>
+                <td>@Model.EmergencyRelation</td>
+            </tr>
+
+            <tr>
+                <td>Emergency Phone</td>
+                <td>@Model.EmergencyPhone</td>
+            </tr>
+
+            <tr>
+                <td>Organization</td>
+                <td>@Model.Organization</td>
+            </tr>
+
+            <tr>
+                <td>Occupation</td>
+                <td>@Model.Occupation</td>
+            </tr>
+
+            <tr>
+                <td>Church Affiliation</td>
+                <td>@Model.Church</td>
+            </tr>
+
+            <tr>
+                <td>Senior Pastor</td>
+                <td>@Model.Pastor</td>
+            </tr>
+
+            <tr>
+                <td>How Did You Hear of Us?</td>
+                <td>@Model.HowDidYouHear</td>
+            </tr>
+
+            <tr>
+                <td>Felony</td>
+                <td>@Model.Felony</td>
+            </tr>
+
+            <tr>
+                <td>Nature of Felony</td>
+                <td>@Model.NatureOfFelony</td>
+            </tr>
+
+            <tr>
+                <td>Skills</td>
+                <td>@Model.Skills</td>
+            </tr>
+
+            <tr>
+                <td>Disability</td>
+                <td>@Model.Disabilities</td>
+            </tr>
+
+            <tr>
+                <td>Category(s)</td>
+                <td>
+                    @foreach (var c in Model.Categories)
+                    {
+                        @c.Category1<br />
+                    }
+                </td>
+            </tr>
+
+            <tr>
+                <td>Availibility</td>
+                <td>
+                    @foreach (var a in Model.Availabilities)
+                    {
+                        @a.Day<br />
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.VolunteerID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
+
+
+<div class="col-lg-6" style="height:510px; overflow: auto">
+    <h3>Volunteer Hours Log</h3>
+    <table class="table table-sm">
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Hours
+            </th>
+        </tr>
+
+        @foreach (var m in Model.TimeLogs)
+        {
+            <tr>
+                <td>
+                    @m.Date
+                </td>
+                <td>
+                    @m.Category.Category1
+                </td>
+                <td>
+                    @m.HoursWorked
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
 <br />
 <br />
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.VolunteerID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
