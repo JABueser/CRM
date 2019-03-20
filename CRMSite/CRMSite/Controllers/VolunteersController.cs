@@ -14,21 +14,20 @@ namespace CRMSite.Controllers
     {
         private CRMDBEntities db = new CRMDBEntities();
 
-        // GET: Volunteers
-        //test
-       // public ActionResult Index()
-       // {
-            //var HoursViewModel = new HourViewModel
-            //{
-            //    Vols = db.Volunteers.ToList()
-            //};
-        //    var model = new FilterViewModel
-        //    {
-        //        AllCategories = db.Categories.ToList(),
-        //        HourViewModel = HoursViewModel
-        //    };
-        //    return View(model);
-        //}
+        //GET: Volunteers
+        public ActionResult Index()
+        {
+            var HoursViewModel = new HourViewModel
+            {
+                Vols = db.Volunteers.ToList()
+            };
+            var model = new FilterViewModel
+            {
+                AllCategories = db.Categories.ToList(),
+                HourViewModel = HoursViewModel
+            };
+            return View(model);
+        }
 
         [HttpGet]
         public ActionResult FilterVolunteers(string CategoryID)

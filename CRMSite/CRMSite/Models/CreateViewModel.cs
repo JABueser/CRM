@@ -17,7 +17,7 @@ namespace CRMSite.Models
         public string City { get; set; }
         public string State { get; set; }
         public string Zipcode { get; set; }
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
         public string Organization { get; set; }
         public string Occupation { get; set; }
         public string Church { get; set; }

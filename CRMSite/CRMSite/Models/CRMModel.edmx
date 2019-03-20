@@ -41,7 +41,7 @@
             <PropertyRef Name="TimeLogID" />
           </Key>
           <Property Name="TimeLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
           <Property Name="HoursWorked" Type="int" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="VolunteerID" Type="int" Nullable="false" />
@@ -57,7 +57,7 @@
           <Property Name="City" Type="nvarchar" MaxLength="50" />
           <Property Name="State" Type="nvarchar" MaxLength="50" />
           <Property Name="Zipcode" Type="nvarchar" MaxLength="50" />
-          <Property Name="BirthDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="date" />
           <Property Name="Organization" Type="nvarchar" MaxLength="50" />
           <Property Name="Occupation" Type="nvarchar" MaxLength="50" />
           <Property Name="Church" Type="nvarchar" MaxLength="50" />
@@ -218,7 +218,7 @@
             <PropertyRef Name="TimeLogID" />
           </Key>
           <Property Name="TimeLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="HoursWorked" Type="Int32" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="VolunteerID" Type="Int32" Nullable="false" />
@@ -236,7 +236,7 @@
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Zipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BirthDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
           <Property Name="Organization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Church" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

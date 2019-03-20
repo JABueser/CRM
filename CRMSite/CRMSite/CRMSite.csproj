@@ -258,6 +258,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\images\Sorting icons.psd" />
     <EntityDeploy Include="Models\CRMModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CRMModel.Designer.cs</LastGenOutput>
@@ -265,7 +266,6 @@
     <Content Include="Models\CRMModel.edmx.diagram">
       <DependentUpon>CRMModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\images\Sorting icons.psd" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

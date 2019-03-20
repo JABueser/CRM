@@ -15,7 +15,7 @@ namespace CRMSite.Models
     public partial class TimeLog
     {
         public int TimeLogID { get; set; }
-        public string Date { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
         public Nullable<int> HoursWorked { get; set; }
         public int CategoryID { get; set; }
         public int VolunteerID { get; set; }

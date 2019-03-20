@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="207d130e869c4e9086625c842539c881" Name="Diagram1">
-        <EntityTypeShape EntityType="CRMDBModel.Availability" Width="1.5" PointX="2.625" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRMDBModel.Category" Width="1.5" PointX="2.625" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRMDBModel.TimeLog" Width="1.5" PointX="2.625" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRMDBModel.Volunteer" Width="1.5" PointX="0.5" PointY="2.75" IsExpanded="true" />
+      <Diagram DiagramId="90ffa12dba374ebaa34f769483f111cf" Name="Diagram1">
+        <EntityTypeShape EntityType="CRMDBModel.Availability" Width="1.5" PointX="3.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMDBModel.Category" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMDBModel.TimeLog" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMDBModel.Volunteer" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
         <AssociationConnector Association="CRMDBModel.FK_dbo_TimeLog_dbo_Category_CategoryID" ManuallyRouted="false" />
         <AssociationConnector Association="CRMDBModel.FK_dbo_TimeLog_dbo_Volunteer_VolunteerID" ManuallyRouted="false" />
         <AssociationConnector Association="CRMDBModel.AvailabilityAssoc" ManuallyRouted="false" />
