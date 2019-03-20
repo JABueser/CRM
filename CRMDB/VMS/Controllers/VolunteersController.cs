@@ -220,6 +220,7 @@ namespace VMS.Controllers
                 LastName = postModel.LastName,
                 FirstName = postModel.FirstName,
                 Address = postModel.Address,
+                Address2 = postModel.Address2,
                 City = postModel.City,
                 State = postModel.State,
                 Zipcode = postModel.Zipcode,
@@ -305,6 +306,7 @@ namespace VMS.Controllers
                 volunteer.LastName = postModel.VolunteerPerson.LastName;
                 volunteer.FirstName = postModel.VolunteerPerson.FirstName;
                 volunteer.Address = postModel.VolunteerPerson.Address;
+                volunteer.Address2 = postModel.VolunteerPerson.Address2;
                 volunteer.City = postModel.VolunteerPerson.City;
                 volunteer.State = postModel.VolunteerPerson.State;
                 volunteer.Zipcode = postModel.VolunteerPerson.Zipcode;
