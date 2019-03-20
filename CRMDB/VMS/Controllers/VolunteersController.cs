@@ -220,6 +220,7 @@ namespace VMS.Controllers
                 LastName = postModel.LastName,
                 FirstName = postModel.FirstName,
                 Address = postModel.Address,
+                Address2 = postModel.Address2,
                 City = postModel.City,
                 State = postModel.State,
                 Zipcode = postModel.Zipcode,
