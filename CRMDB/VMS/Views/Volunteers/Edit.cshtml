@@ -25,7 +25,7 @@
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.LastName, "", new { @class = "text-danger" })
             </div>
             <div class="col-lg-3">
-                Birth Date (xx-xx-xxxx)
+                Birth Date 
                 @Html.EditorFor(model => model.VolunteerPerson.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.BirthDate, "", new { @class = "text-danger" })
             </div>

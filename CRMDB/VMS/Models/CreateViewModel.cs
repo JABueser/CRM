@@ -8,7 +8,7 @@ namespace VMS.Models
 {
     public class CreateViewModel
     {
-  
+ 
         public List<int> SelectedCategories { get; set; }
     
         public List<int> SelectedDays { get; set; }
