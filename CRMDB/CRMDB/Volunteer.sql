@@ -23,5 +23,6 @@
 	[Email] NVARCHAR (50) NULL,
 	[Phone] NVARCHAR (50) NULL,
 	[TotalHours] INT NULL,
-	PRIMARY KEY CLUSTERED ([VolunteerID] ASC)
+	[Address2] NVARCHAR(10) NULL, 
+    PRIMARY KEY CLUSTERED ([VolunteerID] ASC)
 )

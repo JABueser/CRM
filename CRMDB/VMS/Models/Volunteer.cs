@@ -45,6 +45,7 @@ namespace VMS.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public Nullable<int> TotalHours { get; set; }
+        public string Address2 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TimeLog> TimeLogs { get; set; }

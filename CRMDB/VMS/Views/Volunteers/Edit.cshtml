@@ -43,6 +43,11 @@
                 @Html.EditorFor(model => model.VolunteerPerson.Address, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.Address, "", new { @class = "text-danger" })
             </div>
+            <div class="col-lg-3">
+                Address Line 2
+                @Html.EditorFor(model => model.VolunteerPerson.Address2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.VolunteerPerson.Address2, "", new { @class = "text-danger" })
+            </div>
 
             <div class="col-lg-3">
                 City

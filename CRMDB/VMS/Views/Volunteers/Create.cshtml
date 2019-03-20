@@ -33,7 +33,7 @@
 
     <div class="row">
         <div class="col-lg-3">
-            Birth Date (xx/xx/xxxx)
+            Birth Date
             @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
         </div>
@@ -49,9 +49,9 @@
         </div>
 
         <div class="col-lg-3">
-            Address 2
-            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            Address Line 2
+            @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
         </div>
     </div>
 
