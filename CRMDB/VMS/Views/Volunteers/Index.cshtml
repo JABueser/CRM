@@ -12,21 +12,45 @@
 </div>
 
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-
+<link href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
 @section scripts{
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/dataTables.checkboxes.js"></script>
     <script>
         var dataTable;
         dataTable = $(document).ready(function () {
-            $('#volunteerTable').dataTable({
+            var table = $('#volunteerTable').DataTable({
+               // ajax: '/lab/jquery-datatables-checkboxes/ids-arrays.txt',
                 columnDefs: [
                     {
                         className: "dt-center", targets: "_all"
+
                     }
-                ]
+                ],
+                select: {
+                    'style': 'multi'
+                },
+                order: [[1, 'asc']]
+            });
+
+            // Handle form submission event
+            $('#volunteerTableCheckBoxes').on('submit', function (e) {
+                var form = this;
+
+                var rows_selected = table.column(0).checkboxes.selected();
+
+                // Iterate over all selected checkboxes
+                $.each(rows_selected, function (index, rowId) {
+                    // Create a hidden element
+                    $(form).append(
+                        $('<input>')
+                            .attr('type', 'hidden')
+                            .attr('name', 'id[]')
+                            .val(rowId)
+                    );
+                });
             });
         });
-
     </script>
 }
