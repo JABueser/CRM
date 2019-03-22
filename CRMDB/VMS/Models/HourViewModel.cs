@@ -13,5 +13,6 @@ namespace VMS.Models
         public int Hours { get; set; }
         public int VolID { get; set; }
         public int CatName { get; set; }
+
     }
 }

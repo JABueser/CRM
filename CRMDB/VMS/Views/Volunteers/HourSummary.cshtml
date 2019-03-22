@@ -3,15 +3,9 @@
 @{
     ViewBag.Title = "Details";
 }
-<h2>Total Hours Summary by Categories</h2>
-<br />
 
-<p id="date_filter">
-    <span id="date-label-from" class="date-label">From: </span><input class="date_range_filter date" type="text" id="datepicker_from" />
-    <span id="date-label-to" class="date-label">To:<input class="date_range_filter date" type="text" id="datepicker_to" />
-    <button type="button" onclick="sendDates()">Submit</button>
-</p>
-<table id="hoursTable" class="table table-bordered">
+<br /> <br />
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>Category</th>
@@ -90,50 +84,6 @@
     @Html.ActionLink("Back to List", "Index")
 </p>
 
-
-@section scripts{
-    <script>
-        var dataTable, minDateFilter, maxDateFilter;
-        $(function () {
-            $("#datepicker_from").datepicker({
-                showOn: "button",
-                buttonImage: "images/calendar.gif",
-                buttonImageOnly: false,
-                "onSelect": function (date) {
-                    minDateFilter = new Date(date).getTime();
-                }
-            }).keyup(function () {
-                minDateFilter = new Date(this.value).getTime();
-            });
-
-            $("#datepicker_to").datepicker({
-                showOn: "button",
-                buttonImage: "images/calendar.gif",
-                buttonImageOnly: false,
-                "onSelect": function (date) {
-                    maxDateFilter = new Date(date).getTime();
-                }
-            }).keyup(function () {
-                maxDateFilter = new Date(this.value).getTime();
-            });
-        });
-
-        function sendDates() {
-            send(minDateFilter, maxDateFilter);
-        }
-        function send(startDate, endDate){}
-        {
-            var dates = [startDate, endDate]
-
-            jQuery.ajax({
-                type: "POST",
-                url: "@Url.Action("HourSummary")",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify(dates),
-            });
-        }
-    </script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
-
-
