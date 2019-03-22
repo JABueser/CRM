@@ -65,30 +65,44 @@ namespace VMS.Controllers
 
             return PartialView("_VolunteerList", model);
         }
-
+        [HttpGet]
         [Authorize(Roles = "Admin")]
-        public ActionResult HourSummary()
+        public ActionResult HoursForm()
         {
-            List<TimeLog> time = db.TimeLogs.ToList();
 
-            var model = new ViewHourViewModel
-            {
-                Doctor = 0,
-                Dentist = 0,
-                Nurse = 0,
-                Ministry = 0,
-                Bus = 0,
-                Office = 0,
-                Maintenance = 0,
-                Auto = 0,
-                Food = 0,
-                Men = 0,
-                Thrift = 0,
-                Special = 0,
-                Women = 0,
-                Training = 0,
-                Total = 0
-            };
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult HoursForm(ViewHourViewModel model)
+        {
+            return RedirectToAction("HourSummary", model);
+        }
+        [Authorize(Roles = "Admin")]
+        public ActionResult HourSummary(ViewHourViewModel model)
+        {
+            var start = model.StartDate;
+            var end = model.EndDate;
+            List<TimeLog> time = db.TimeLogs.Where(
+                e=> e.Date  >= start && e.Date <= end).ToList();
+
+            model.Doctor = 0;
+            model.Dentist = 0;
+            model.Auto = 0;
+            model.Nurse = 0;
+            model.Ministry = 0;
+            model.Bus = 0;
+            model.Office = 0;
+            model.Maintenance = 0;
+            model.Auto = 0;
+            model.Food = 0;
+            model.Men = 0;
+            model.Thrift = 0;
+            model.Special = 0;
+            model.Women = 0;
+            model.Training = 0;
+            model.Total = 0;
 
             foreach (var t in time)
             {
@@ -193,6 +207,7 @@ namespace VMS.Controllers
 
         [AllowAnonymous]
         // GET: Volunteers/Create
+        [HttpGet]
         public ActionResult Create()
         {
             List<Category> AllCats = db.Categories.ToList();

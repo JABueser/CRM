@@ -24,8 +24,12 @@ namespace VMS.Models
         public int Training { get; set; }
         public int Total { get; set; }
         [Required]
-        public DateTime StartDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime? StartDate { get; set; }
         [Required]
-        public DateTime EndDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime? EndDate { get; set; }
     }
 }
