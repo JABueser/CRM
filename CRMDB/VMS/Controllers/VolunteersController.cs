@@ -67,7 +67,7 @@ namespace VMS.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult HourSummary()
+        public ActionResult HourSummary(List<String> Dates = null)
         {
             List<TimeLog> time = db.TimeLogs.ToList();
 

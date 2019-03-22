@@ -74,6 +74,7 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="TotalHours" Type="int" />
           <Property Name="Address2" Type="nvarchar" MaxLength="10" />
+          <Property Name="DateCreated" Type="date" Nullable="false" />
         </EntityType>
         <Association Name="FK_dbo_AvailabilityAssoc_dbo_Availability_AvailabilityID">
           <End Role="Availability" Type="Self.Availability" Multiplicity="1">
@@ -256,6 +257,7 @@
           <NavigationProperty Name="Availabilities" Relationship="Self.AvailabilityAssoc" FromRole="Volunteer" ToRole="Availability" />
           <NavigationProperty Name="Categories" Relationship="Self.CategoryAssoc" FromRole="Volunteer" ToRole="Category" />
           <Property Name="Address2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <Association Name="FK_dbo_TimeLog_dbo_Category_CategoryID">
           <End Role="Category" Type="Self.Category" Multiplicity="1">
@@ -352,6 +354,7 @@
           <EntitySetMapping Name="Volunteers">
             <EntityTypeMapping TypeName="CRMDBModel.Volunteer">
               <MappingFragment StoreEntitySet="Volunteer">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="Address2" ColumnName="Address2" />
                 <ScalarProperty Name="VolunteerID" ColumnName="VolunteerID" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
