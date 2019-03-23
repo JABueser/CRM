@@ -1,55 +1,225 @@
-﻿@model VMS.Models.FilterViewModel
+﻿
+@model VMS.Models.HourViewModel
 
-<h2>Volunteers</h2>
-
-<p>
-    <text>Category</text>
-    @Html.DropDownListFor(x => x.SelectedCategoryID, new SelectList(Model.AllCategories, "CategoryID", "Category1"), "Select a category")
-</p>
-
-<div id="dvVolunteerList">
-    @{Html.RenderPartial("_VolunteerList", Model.HourViewModel); }
+<div class="form-horizontal">
+    <div class="row">
+        <div class="col-lg-3">
+            From:
+            <input class="form-control text-box single-line" data-val="true" data-val-date="The field StartDate must be a date." data-val-required="The StartDate field is required." id="datepicker_from" name="StartDate" type="date" value="">
+            <span class="field-validation-valid text-danger" data-valmsg-for="StartDate" data-valmsg-replace="true"></span>
+        </div>
+        <br />
+        <div class="col-lg-3">
+            To:
+            <input class="form-control text-box single-line" data-val="true" data-val-date="The field EndDate must be a date." data-val-required="The EndDate field is required." id="datepicker_to" name="EndDate" type="date" value="">
+            <span class="field-validation-valid text-danger" data-valmsg-for="EndDate" data-valmsg-replace="true"></span>
+        </div>
+    </div>
 </div>
 
+<br />
+
+<table id="volunteerTable" class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center">
+                First Name
+            </th>
+            <th class="text-center" style="min-width:100px">
+                Last Name
+            </th>
+            <th class="text-center">
+                E-Mail Address
+            </th>
+            <th class="text-center" style="max-width:400px">
+                Category(s)
+            </th>
+            <th class="text-center">
+                Total Hours
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Vols)
+        {
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td style="max-width:400px">
+                    |
+                    @foreach (var c in item.Categories)
+                    {
+                        @(c.Category1 + " | ")
+                    }
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.TotalHours)
+                </td>
+                <td class="text-center">
+                    <div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#id_@item.VolunteerID">
+                            Add Hours
+                        </button>
+
+                        <br />
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.VolunteerID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerID })
+                    </div>
+                </td>
+            </tr>
+
+            <div class="modal fade" id="id_@item.VolunteerID">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        @using (Html.BeginForm())
+                        {
+                            <div class="modal-header">
+                                <h3>Add Hours</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+
+                                <p style="font-size:x-large">@item.FirstName @item.LastName</p>
+
+                                <div>
+                                    <div>
+                                        Date:
+                                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div>
+                                    <div>
+                                        Hours Worked:
+                                        @Html.EditorFor(model => model.Hours, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Hours, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div>
+                                    <div>
+                                        What Category Do The Hours Apply To? <br />
+                                        <select id="CatName" name="CatName" style="width:300px;">
+                                            <option value=1>Doctor</option>
+                                            <option value=2>Dentist</option>
+                                            <option value=3>Nurse</option>
+                                            <option value=4>Chapel Ministry</option>
+                                            <option value=5>Bus Driver</option>
+                                            <option value=6>Office/Clerical</option>
+                                            <option value=7>Maintenance</option>
+                                            <option value=8>Auto Shop</option>
+                                            <option value=9>Food Service</option>
+                                            <option value=10>Mens Division</option>
+                                            <option value=11>Thrift Store</option>
+                                            <option value=12>Special Events</option>
+                                            <option value=13>Women, Children, and Families</option>
+                                            <option value=14>Job Training/Life Skills Instructor</option>
+                                        </select>
+                                        @Html.ValidationMessageFor(model => model.Hours, "", new { @class = "text-danger" })
+                                        <input id="VolID" name="VolID" type="hidden" value="@item.VolunteerID" />
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </tbody>
+</table>
+
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-<link href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
+
 @section scripts{
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/Scripts/dataTables.checkboxes.js"></script>
     <script>
-        var dataTable;
-        dataTable = $(document).ready(function () {
-            var table = $('#volunteerTable').DataTable({
-                columnDefs: [
-                    {
-                        className: "dt-center", targets: "_all"
 
-                    }
-                ],
-                select: {
-                    'style': 'multi'
-                },
-                order: [[1, 'asc']]
-            });
+            var Popup, dataTable;
 
-            // Handle form submission event
-            $('#volunteerTableCheckBoxes').on('submit', function (e) {
-                var form = this;
+            function Delete(id) {
+                if(confirm('Are You Sure to Delete this Employee Record ?'))
+                {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Delete","Volunteer")/' + id,
+                        success: function (data) {
+                            if (data.success)
+                            {
+                                dataTable.ajax.reload();
 
-                var rows_selected = table.column(0).checkboxes.selected();
+                                $.notify(data.message, {
+                                    globalPosition: "top center",
+                                    className: "success"
+                                })
 
-                // Iterate over all selected checkboxes
-                $.each(rows_selected, function (index, rowId) {
-                    // Create a hidden element
-                    $(form).append(
-                        $('<input>')
-                            .attr('type', 'hidden')
-                            .attr('name', 'id[]')
-                            .val(rowId)
-                    );
+                            }
+                        }
+                    });
+                }
+            }
+
+            $(function () {
+                dataTable = $("#volunteerTable").DataTable();
+
+                $("#datepicker_from").change(function () {
+                    minDateFilter = new Date(this.value).getTime();
+                        dataTable.draw();
+                    });
+
+                $("#datepicker_to").change(function () {
+                    maxDateFilter = new Date(this.value).getTime();
+                    dataTable.draw();
                 });
+
             });
-        });
+            minDateFilter = "";
+            maxDateFilter = "";
+
+            $.fn.dataTableExt.afnFiltering.push(
+                function (oSettings, aData, iDataIndex) {
+                    if (typeof aData._date == 'undefined') {
+                        aData._date = new Date(aData[0]).getTime();
+                    }
+
+                    if (minDateFilter && !isNaN(minDateFilter)) {
+                        if (aData._date < minDateFilter) {
+                            return false;
+                        }
+                    }
+
+                    if (maxDateFilter && !isNaN(maxDateFilter)) {
+                        if (aData._date > maxDateFilter) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+            );
+
+            $(function () {
+                $("#datepicker").datepicker();
+            });
+
     </script>
 }

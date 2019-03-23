@@ -9,7 +9,8 @@ namespace VMS
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -23,7 +24,8 @@ namespace VMS
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-lumen.css",
+                      "~/Content/bootstrap.css",
+                      "~/Content/themes/base/jquery-ui.min.css",
                       "~/Content/site.css"));
         }
     }

@@ -26,7 +26,7 @@ namespace CRMSite.Controllers
                 AllCategories = db.Categories.ToList(),
                 HourViewModel = HoursViewModel
             };
-            return View(model);
+            return View(HoursViewModel);
         }
 
         [HttpGet]
