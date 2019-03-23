@@ -113,8 +113,27 @@ namespace VMS.Controllers
         {
             var start = model.StartDate;
             var end = model.EndDate;
-            List<TimeLog> time = db.TimeLogs.Where(
+            List<TimeLog> time;
+            if(start == null && end == null)
+            {
+                time = db.TimeLogs.ToList();
+            }
+            else if (start == null && end != null)
+            {
+                time = db.TimeLogs.Where(
+                e => e.Date <= end).ToList();
+            }
+            else if(start != null && end == null)
+            {
+                time = db.TimeLogs.Where(
+                e => e.Date >= start).ToList();
+            }
+            else
+            {
+                time = db.TimeLogs.Where(
                 e=> e.Date  >= start && e.Date <= end).ToList();
+            }
+        
 
             model.Doctor = 0;
             model.Dentist = 0;
