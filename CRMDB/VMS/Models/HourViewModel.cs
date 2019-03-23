@@ -15,9 +15,9 @@ namespace VMS.Models
         public string Email { get; set; }
         public List<string> Categories { get; set; }
         public string Church { get; set; }
+        public string DateCreated { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public string DateCreated { get; set; }
         public DateTime Date { get; set; }
         public int Hours { get; set; }
         public int CatName { get; set; }

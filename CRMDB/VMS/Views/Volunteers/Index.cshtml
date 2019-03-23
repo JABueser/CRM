@@ -23,6 +23,9 @@
     <thead>
         <tr>
             <th class="text-center">
+                Date Created
+            </th>
+            <th class="text-center">
                 First Name
             </th>
             <th class="text-center" style="min-width:100px">
@@ -30,6 +33,9 @@
             </th>
             <th class="text-center">
                 E-Mail Address
+            </th>
+            <th class="text-center">
+                Church
             </th>
             <th class="text-center" style="max-width:400px">
                 Category(s)
@@ -43,40 +49,46 @@
     <tbody>
         @foreach (var item in Model.Vols)
         {
-            <tr>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td style="max-width:400px">
-                    |
-                    @foreach (var c in item.Categories)
-                    {
-                        @(c.Category1 + " | ")
-                    }
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.TotalHours)
-                </td>
-                <td class="text-center">
-                    <div>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#id_@item.VolunteerID">
-                            Add Hours
-                        </button>
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Church)
+            </td>
+            <td style="max-width:400px">
+                |
+                @foreach (var c in item.Categories)
+                {
+                    @(c.Category1 + " | ")
+                }
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.TotalHours)
+            </td>
+            <td class="text-center">
+                <div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#id_@item.VolunteerID">
+                        Add Hours
+                    </button>
 
-                        <br />
+                    <br />
 
-                        @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.VolunteerID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerID })
-                    </div>
-                </td>
-            </tr>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.VolunteerID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerID })
+                </div>
+            </td>
+        </tr>
 
             <div class="modal fade" id="id_@item.VolunteerID">
                 <div class="modal-dialog">
@@ -112,7 +124,7 @@
                                 <div>
                                     <div>
                                         What Category Do The Hours Apply To? <br />
-                                        <select id="CatName" name="CatName" style="width:300px;">
+                                        @*<select id="CatName" name="CatName" style="width:300px;">
                                             <option value=1>Doctor</option>
                                             <option value=2>Dentist</option>
                                             <option value=3>Nurse</option>
@@ -127,8 +139,11 @@
                                             <option value=12>Special Events</option>
                                             <option value=13>Women, Children, and Families</option>
                                             <option value=14>Job Training/Life Skills Instructor</option>
-                                        </select>
-                                        @Html.ValidationMessageFor(model => model.Hours, "", new { @class = "text-danger" })
+                                        </select>*@
+
+                                        @Html.DropDownListFor(m => item.Categories, 
+                                           new SelectList(item.Categories, "CategoryID", "Category1", Model.CatName), 
+                                           new { @id = "CatName", @Name = "CatName" }) 
                                         <input id="VolID" name="VolID" type="hidden" value="@item.VolunteerID" />
                                     </div>
                                 </div>
@@ -182,12 +197,12 @@
                 dataTable = $("#volunteerTable").DataTable();
 
                 $("#datepicker_from").change(function () {
-                    minDateFilter = new Date(this.value).getTime();
-                        dataTable.draw();
+                    minDateFilter = new Date(format(this.value)).getTime();
+                    dataTable.draw();
                     });
 
                 $("#datepicker_to").change(function () {
-                    maxDateFilter = new Date(this.value).getTime();
+                    maxDateFilter = new Date(format(this.value)).getTime();
                     dataTable.draw();
                 });
 
@@ -217,9 +232,10 @@
                 }
             );
 
-            $(function () {
-                $("#datepicker").datepicker();
-            });
+            function format(inputDate) {
+                var array = inputDate.split("-");
+                return array[1] + "/" + array[2] + "/" + array[0];
+            }
 
     </script>
 }
