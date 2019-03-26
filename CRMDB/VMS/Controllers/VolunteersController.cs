@@ -276,7 +276,8 @@ namespace VMS.Controllers
                 Disabilities = postModel.Disabilities,
                 Skills = postModel.Skills,
                 Email = postModel.Email,
-                Phone = postModel.Phone
+                Phone = postModel.Phone,
+                DateCreated = DateTime.Now
             };
 
             db.Volunteers.Add(volunteer);
