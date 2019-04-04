@@ -34,7 +34,7 @@
     <div class="row">
         <div class="col-lg-3">
             Birth Date
-            @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control", @max = "9999-12-31" } })
             @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
         </div>
     </div>
