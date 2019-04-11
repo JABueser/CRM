@@ -1,0 +1,25 @@
+﻿@model VMS.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+@Model.FullName
+@Model.Role
+<div class="panel-body">
+    <table class="table table-hover table-bordered table-condensed" id="example1">
+        <thead>
+            <tr>
+                <td><b>Roles</b></td>
+            </tr>
+        </thead>
+        @foreach (var role in Model.RolesList)
+        {
+            <tr>
+                <td>@role.Name</td>
+            </tr>
+        }
+    </table>
+</div>
+
