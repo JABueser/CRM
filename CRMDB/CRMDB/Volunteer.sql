@@ -22,7 +22,7 @@
 	[Skills] NVARCHAR (MAX) NULL,
 	[Email] NVARCHAR (50) NULL,
 	[Phone] NVARCHAR (50) NULL,
-	[TotalHours] INT NULL,
+	[TotalHours] INT NULL DEFAULT 0,
 	[Address2] NVARCHAR(10) NULL, 
     [DateCreated] DATE NOT NULL DEFAULT GETDATE(), 
     PRIMARY KEY CLUSTERED ([VolunteerID] ASC)

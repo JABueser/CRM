@@ -10,14 +10,9 @@ using VMS.Models;
 
 namespace VMS.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin, Employee")]
     public class VolunteersController : Controller
     {
-        //private DateTime ParseDate(String date)
-        //{
-        //    String[] dateArr = date.Split('-');
-        //    return new DateTime(int.Parse(dateArr[0]), int.Parse(dateArr[1]), int.Parse(dateArr[2]));
-        //}
 
         private CRMDBEntities db = new CRMDBEntities();
 
@@ -33,42 +28,6 @@ namespace VMS.Controllers
             return View(HoursViewModel);
         }
 
-        //depreciated
-        public ActionResult GetData()
-        {
-            using (CRMDBEntities db = new CRMDBEntities())
-            {
-                List<Volunteer> vols = db.Volunteers.ToList();
-                List<HourViewModel> model = new List<HourViewModel>();
-                foreach (Volunteer volunteer in vols)
-                {
-                    int hours = 0;
-                    if (volunteer.TotalHours != null)
-                    {
-                        hours = (int)volunteer.TotalHours;
-                    }
-                    List<string> categories = new List<string>();
-                    foreach (Category c in volunteer.Categories)
-                    {
-                        categories.Add(c.Category1);
-                    }
-                    model.Add(
-                        new HourViewModel()
-                        {
-                            DateCreated = volunteer.DateCreated.ToShortDateString(),
-                            VolID = volunteer.VolunteerID,
-                            FirstName = volunteer.FirstName,
-                            LastName = volunteer.LastName,
-                            Email = volunteer.Email,
-                            Categories = categories,
-                            Church = volunteer.Church,
-                            Hours = hours
-                        }
-                    );
-                }
-                return Json(new { data = model }, JsonRequestBehavior.AllowGet);
-            }
-        }
 
         [HttpPost]
         public ActionResult Index(HourViewModel postModel)
@@ -114,7 +73,7 @@ namespace VMS.Controllers
             var start = model.StartDate;
             var end = model.EndDate;
             List<TimeLog> time;
-            if (start == null && end == null)
+            if(start == null && end == null)
             {
                 time = db.TimeLogs.ToList();
             }
@@ -123,7 +82,7 @@ namespace VMS.Controllers
                 time = db.TimeLogs.Where(
                 e => e.Date <= end).ToList();
             }
-            else if (start != null && end == null)
+            else if(start != null && end == null)
             {
                 time = db.TimeLogs.Where(
                 e => e.Date >= start).ToList();
@@ -131,9 +90,9 @@ namespace VMS.Controllers
             else
             {
                 time = db.TimeLogs.Where(
-                e => e.Date >= start && e.Date <= end).ToList();
+                e=> e.Date  >= start && e.Date <= end).ToList();
             }
-
+        
 
             model.Doctor = 0;
             model.Dentist = 0;
@@ -245,7 +204,6 @@ namespace VMS.Controllers
             return View(model);
         }
 
-
         [AllowAnonymous]
         // POST: Volunteers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -278,7 +236,8 @@ namespace VMS.Controllers
                 Skills = postModel.Skills,
                 Email = postModel.Email,
                 Phone = postModel.Phone,
-                DateCreated = DateTime.Now
+                DateCreated = DateTime.Now,
+                TotalHours = 0
             };
 
             db.Volunteers.Add(volunteer);

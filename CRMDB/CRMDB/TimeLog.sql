@@ -2,7 +2,7 @@
 (
 	[TimeLogID] INT	IDENTITY(1,1) NOT NULL,
 	[Date] DATE NULL,
-	[HoursWorked] INT NULL,
+	[HoursWorked] INT NULL DEFAULT 0,
 	[CategoryID] INT NOT NULL,
 	[VolunteerID] INT NOT NULL,
 	PRIMARY KEY CLUSTERED ([TimeLogID] ASC),
