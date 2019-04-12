@@ -161,54 +161,54 @@
 
         </table>
     </div>
+</div>
+
+<hr />
+<div class="row text-center">
+    <div class="col-lg-3">
+        <b style="font-size:large">Skills</b><br />
+        @Model.Skills
+    </div>
+    <div class="col-lg-3">
+        <b style="font-size:large">Disabilities</b><br />
+        @Model.Disabilities
+    </div>
+    <div class="col-lg-3">
+        <b style="font-size:large">Category(s)</b><br />
+        @foreach (var c in Model.Categories)
+        {
+            @c.Category1<br />
+        }
+    </div>
+    <div class="col-lg-3">
+        <b style="font-size:large">Availability</b><br />
+        @foreach (var a in Model.Availabilities)
+        {
+            @a.Day<br />
+        }
     </div>
 
-    <hr />
-    <div class="row text-center">
-        <div class="col-lg-3">
-            <b style="font-size:large">Skills</b><br />
-            @Model.Skills
-        </div>
-        <div class="col-lg-3">
-            <b style="font-size:large">Disabilities</b><br />
-            @Model.Disabilities
-        </div>
-        <div class="col-lg-3">
-            <b style="font-size:large">Category(s)</b><br />
-            @foreach (var c in Model.Categories)
-            {
-                @c.Category1<br />
-            }
-        </div>
-        <div class="col-lg-3">
-            <b style="font-size:large">Availability</b><br />
-            @foreach (var a in Model.Availabilities)
-            {
-                @a.Day<br />
-            }
-        </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VolunteerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
 
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.VolunteerID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-
-    @section Scripts{
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
-        <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#timetable').dataTable({
-                    paging: false,
-                    info: false,
-                    searching: false,
-                    "columnDefs": [
-                        { "orderable": false, "targets": -1 }
-                    ]
-                });
+@section Scripts{
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#timetable').dataTable({
+                paging: false,
+                info: false,
+                searching: false,
+                "columnDefs": [
+                    { "orderable": false, "targets": -1 }
+                ]
             });
+        });
 
-        </script>
-    }
+    </script>
+}
 
