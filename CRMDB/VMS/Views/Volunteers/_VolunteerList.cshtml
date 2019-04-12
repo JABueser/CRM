@@ -64,12 +64,14 @@
                     <div class="modal-content">
                         @using (Html.BeginForm())
                         {
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
+                        <div class="modal-header">
+                            <h3>Add Hours</h3>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
 
                             <!-- Modal body -->
                             <div class="modal-body">
+                               
                                 <p style="font-size:x-large">@item.FirstName @item.LastName</p>
 
                                 <div>
@@ -116,7 +118,7 @@
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                                <input type="submit" value="Save" class="btn btn-default" />
+                                <input type="submit" value="Save" class="btn btn-primary" />
                             </div>
                         }
                     </div>

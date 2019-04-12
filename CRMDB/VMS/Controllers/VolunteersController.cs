@@ -30,65 +30,127 @@ namespace VMS.Controllers
             {
                 Vols = db.Volunteers.ToList()
             };
-            var model = new FilterViewModel
+            return View(HoursViewModel);
+        }
+
+        //depreciated
+        public ActionResult GetData()
+        {
+            using ( CRMDBEntities db = new CRMDBEntities())
             {
-                AllCategories = db.Categories.ToList(),
-                HourViewModel = HoursViewModel
+                List<Volunteer> vols = db.Volunteers.ToList();
+                List<HourViewModel> model = new List<HourViewModel>();
+                foreach(Volunteer volunteer in vols)
+                {
+                    int hours = 0;
+                    if (volunteer.TotalHours != null)
+                    {
+                        hours = (int)volunteer.TotalHours;
+                    }
+                    List<string> categories = new List<string>();
+                    foreach(Category c in volunteer.Categories)
+                    {
+                        categories.Add(c.Category1);
+                    }
+                    model.Add(
+                        new HourViewModel()
+                        {
+                            DateCreated = volunteer.DateCreated.ToShortDateString(),
+                            VolID = volunteer.VolunteerID,
+                            FirstName = volunteer.FirstName,
+                            LastName = volunteer.LastName,
+                            Email = volunteer.Email,
+                            Categories = categories,
+                            Church = volunteer.Church,
+                            Hours = hours
+                        }
+                    );
+                }
+                return Json(new { data = model }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Index(HourViewModel postModel)
+        {
+            List<Category> AllCats = db.Categories.ToList();
+
+            Volunteer a = db.Volunteers.FirstOrDefault(t => t.VolunteerID == postModel.VolID);
+
+            a.TotalHours = a.TotalHours + postModel.Hours;
+
+            var model = new TimeLog
+            {
+                Date = postModel.Date,
+                HoursWorked = postModel.Hours,
+                VolunteerID = postModel.VolID,
+                CategoryID = postModel.CatName
             };
-            return View(model);
+
+            db.Entry(a).State = EntityState.Modified;
+            db.TimeLogs.Add(model);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public ActionResult FilterVolunteers(string CategoryID)
+        [Authorize(Roles = "Admin")]
+        public ActionResult HoursForm()
         {
-            if (CategoryID == "")
-            {
-                return PartialView("_VolunteerList", db.Volunteers.ToList());
-            }
-            int ID = Convert.ToInt32(CategoryID);
-            List<Volunteer> filteredVolunteers = new List<Volunteer>();
-            List<Volunteer> volunteers = db.Volunteers.ToList();
-            foreach (var v in volunteers)
-            {
-                foreach (var c in v.Categories)
-                {
-                    if (c.CategoryID == ID)
-                    {
-                        filteredVolunteers.Add(v);
-                    }
-                }
-            }
-            var model = new HourViewModel
-            {
-                Vols = filteredVolunteers
-            };
 
-            return PartialView("_VolunteerList", model);
+            return View();
         }
 
+        [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult HourSummary()
+        public ActionResult HoursForm(ViewHourViewModel model)
         {
-            List<TimeLog> time = db.TimeLogs.ToList();
-
-            var model = new ViewHourViewModel
+            return RedirectToAction("HourSummary", model);
+        }
+        [Authorize(Roles = "Admin")]
+        public ActionResult HourSummary(ViewHourViewModel model)
+        {
+            var start = model.StartDate;
+            var end = model.EndDate;
+            List<TimeLog> time;
+            if(start == null && end == null)
             {
-                Doctor = 0,
-                Dentist = 0,
-                Nurse = 0,
-                Ministry = 0,
-                Bus = 0,
-                Office = 0,
-                Maintenance = 0,
-                Auto = 0,
-                Food = 0,
-                Men = 0,
-                Thrift = 0,
-                Special = 0,
-                Women = 0,
-                Training = 0,
-                Total = 0
-            };
+                time = db.TimeLogs.ToList();
+            }
+            else if (start == null && end != null)
+            {
+                time = db.TimeLogs.Where(
+                e => e.Date <= end).ToList();
+            }
+            else if(start != null && end == null)
+            {
+                time = db.TimeLogs.Where(
+                e => e.Date >= start).ToList();
+            }
+            else
+            {
+                time = db.TimeLogs.Where(
+                e=> e.Date  >= start && e.Date <= end).ToList();
+            }
+        
+
+            model.Doctor = 0;
+            model.Dentist = 0;
+            model.Auto = 0;
+            model.Nurse = 0;
+            model.Ministry = 0;
+            model.Bus = 0;
+            model.Office = 0;
+            model.Maintenance = 0;
+            model.Auto = 0;
+            model.Food = 0;
+            model.Men = 0;
+            model.Thrift = 0;
+            model.Special = 0;
+            model.Women = 0;
+            model.Training = 0;
+            model.Total = 0;
 
             foreach (var t in time)
             {
@@ -151,31 +213,6 @@ namespace VMS.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult Index(HourViewModel postModel)
-        {
-            List<Category> AllCats = db.Categories.ToList();
-
-            Volunteer a = db.Volunteers.FirstOrDefault(t => t.VolunteerID == postModel.VolID);
-
-
-            a.TotalHours = a.TotalHours + postModel.Hours;
-
-            var model = new TimeLog
-            {
-                Date = postModel.Date,
-                HoursWorked = postModel.Hours,
-                VolunteerID = postModel.VolID,
-                CategoryID = postModel.CatName
-            };
-
-            db.Entry(a).State = EntityState.Modified;
-            db.TimeLogs.Add(model);
-            db.SaveChanges();
-
-            return RedirectToAction("Index");
-        }
-
         // GET: Volunteers/Details/5
         public ActionResult Details(int? id)
         {
@@ -193,6 +230,7 @@ namespace VMS.Controllers
 
         [AllowAnonymous]
         // GET: Volunteers/Create
+        [HttpGet]
         public ActionResult Create()
         {
             List<Category> AllCats = db.Categories.ToList();

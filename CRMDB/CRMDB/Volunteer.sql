@@ -24,5 +24,6 @@
 	[Phone] NVARCHAR (50) NULL,
 	[TotalHours] INT NULL,
 	[Address2] NVARCHAR(10) NULL, 
+    [DateCreated] DATE NOT NULL DEFAULT GETDATE(), 
     PRIMARY KEY CLUSTERED ([VolunteerID] ASC)
 )

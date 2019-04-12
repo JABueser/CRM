@@ -6,27 +6,12 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <script type="text/javascript">
-        function filter() {
-            var val = $("#SelectedCategoryID").val();
-            $.ajax({
-                url: "/Volunteers/FilterVolunteers",
-                type: "GET",
-                data: { CategoryID: val }
-            })
-                .done(function (partialViewResult) {
-                    $("#dvVolunteerList").html(partialViewResult);
-                });
-        }
-        $(document).ready(function () {
-            $("#SelectedCategoryID").on('change', filter);
-        });
-    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="@Url.Action("Index", "Volunteers")">
-            <img src="~/PICS/crmlogo.png" alt="logo" style="width:150px;">
+            <img src="~/Content/icons/crmlogo.png" alt="logo" style="width:150px;">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,7 +22,7 @@
             {
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        @Html.ActionLink("Hour Summary", "HourSummary", "Volunteers", null, new { @class = "nav-link" })
+                        @Html.ActionLink("Hour Summary", "HoursForm", "Volunteers", null, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("Add Volunteer", "Create", "Volunteers", null, new { @class = "nav-link" })
@@ -48,37 +33,15 @@
                 </ul>
             }
 
-            @Html.Partial("_LoginPartial")
-            @*<form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>*@
+            @if (Request.Url.PathAndQuery != "/Volunteers/Create")
+            {
+                @Html.Partial("_LoginPartial")
+            }
         </div>
     </nav>
-    @*<div class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <a class="navbar-brand" href="#">
-                        <img src="~/PICS/crmlogo.png" alt="logo" style="width:150px;">
-                    </a>
-                    <ul class="nav navbar-nav" style="margin-left:459px">
-                        <li style="font-size: x-large">@Html.ActionLink("Hour Summary", "HourSummary", "Volunteers")</li>
-                        <li style="font-size: x-large">@Html.ActionLink("Add Volunteer", "Create", "Volunteers")</li>
-                        <li style="font-size: x-large">@Html.ActionLink("Volunteers", "Index", "Volunteers")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
-        </div>*@
 
     <div class="container body-content">
+        <br />
         <br />
         <br />
         @RenderBody()

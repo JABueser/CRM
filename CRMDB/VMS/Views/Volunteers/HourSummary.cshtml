@@ -3,9 +3,8 @@
 @{
     ViewBag.Title = "Details";
 }
-<h2>Total Hours Summary by Categories</h2>
-<br />
 
+<br /> <br />
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -13,7 +12,7 @@
             <th>Hours</th>
         </tr>
     </thead>
-    
+
     <tbody>
         <tr>
             <td>@Html.DisplayNameFor(model => model.Doctor)</td>
@@ -84,3 +83,7 @@
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
