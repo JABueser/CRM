@@ -192,154 +192,215 @@
 <h2>Details</h2>
 
 <div class="row">
-    <hr />
     <div class="col-sm-4">
-        <table class="table table-sm">
+        <table class="table table-sm" style=" float:left">
             <tbody>
-                @*<div class="col-lg-3" style="margin-top: 13px">*@
+
                 <tr>
-                    <b style="font-size:large">First Name</b>
-                    <br />
-                    <p style="font-size:large; margin:0px">@Model.FirstName</p>
+                    <td style="font-size:large">First Name:</td>
+                    <td style="font-size:large; margin:0px">@Model.FirstName</td>
 
                 </tr>
+
+                <tr>
+                    <td style="font-size:large">Last Name:</td>
+                    <td style="font-size:large; margin:0px">@Model.LastName</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Birth Date:</td>
+                    <td style="font-size:large; margin:0px">@Model.BirthDate</td>
+
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Address:</td>
+                    <td style="font-size:large; margin:0px">@Model.Address</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">City:</td>
+                    <td style="font-size:large; margin:0px">@Model.City</td>
+
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">State:</td>
+                    <td style="font-size:large; margin:0px">@Model.State</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Zipcode:</td>
+                    <td style="font-size:large; margin:0px">@Model.Zipcode</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Phone:</td>
+                    <td style="font-size:large; margin:0px">@Model.Phone</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">E-Mail:</td>
+                    <td style="font-size:large; margin:0px">@Model.Email</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Emergency Name:</td>
+                    <td style="font-size:large; margin:0px">@Model.EmergencyName</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Emergency Relation:</td>
+                    <td style="font-size:large; margin:0px">@Model.EmergencyRelation</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Emergency Phone:</td>
+                    <td style="font-size:large; margin:0px">@Model.EmergencyPhone</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Organization:</td>
+                    <td style="font-size:large; margin:0px">@Model.Organization</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Occupation:</td>
+                    <td style="font-size:large; margin:0px">@Model.Occupation</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Church Affiliation:</td>
+                    <td style="font-size:large; margin:0px">@Model.Church</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Senior Pastor:</td>
+                    <td style="font-size:large; margin:0px">@Model.Pastor</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">How Did You Hear of Us?:</td>
+                    <td style="font-size:large; margin:0px">@Model.HowDidYouHear</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Felony:</td>
+                    <td style="font-size:large; margin:0px">@Model.Felony</td>
+                </tr>
+
+                <tr>
+                    <td style="font-size:large">Nature of Felony:</td>
+                    <td style="font-size:large; margin:0px">@Model.NatureOfFelony</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-sm-4">
+
+    </div>
+
+    <div class="col-sm-4" style="height:510px; overflow: auto">
+        <table id="timetable" class="display">
+            <thead>
+                <tr class="text-center">
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Hours
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            
+
+                @foreach (var m in Model.TimeLogs)
+                {
+                    <tr class="text-center">
+                        <td>
+                            @m.Date
+                        </td>
+                        <td>
+                            @m.Category.Category1
+                        </td>
+                        <td>
+                            @m.HoursWorked
+                        </td>
+                        <td>
+                            @using (Html.BeginForm())
+                            {
+                                <input id="volid" name="volid" type="hidden" value="@Model.VolunteerID" />
+                                <input id="timeid" name="timeid" type="hidden" value="@m.TimeLogID" />
+                                <input type="submit" value="X" class="btn btn-default" />
+                            }
+                    </td>
+                         </tr>
+                    }
+            
+
 
         </table>
     </div>
 </div>
-@*
+
+
     
 
-<b style="font-size:large">Last Name</b><br />
-<b style="font-size:large">Birth Date</b><br />
-<b style="font-size:large">Address</b><br />
-<b style="font-size:large">City</b><br />
-<b style="font-size:large">State</b><br />
-<b style="font-size:large">Zipcode</b><br />
-<b style="font-size:large">Phone</b><br />
-<b style="font-size:large">E-Mail</b><br />
-<b style="font-size:large">Emergency Name</b><br />
-<b style="font-size:large">Emergency Relation</b><br />
-<b style="font-size:large">Emergency Phone</b><br />
-<b style="font-size:large">Organization</b><br />
-<b style="font-size:large">Occupation</b><br />
-<b style="font-size:large">Church Affiliation</b><br />
-<b style="font-size:large">Senior Pastor</b><br />
-<b style="font-size:large">How Did You Hear of Us?</b><br />
-<b style="font-size:large">Felony</b><br />
-<b style="font-size:large">Nature of Felony</b><br />
-                </div>
-<div class="col-lg-4" style="margin-top: 13px">
+    <br /><br />
+    <div class="row text-center">
+        <div class="col-lg-3">
+            <b style="font-size:large">Skills</b><br />
+            @Model.Skills
+        </div>
+        <div class="col-lg-3">
+            <b style="font-size:large">Disabilities</b><br />
+            @Model.Disabilities
+        </div>
+        <div class="col-lg-3">
+            <b style="font-size:large">Category(s)</b><br />
+            @foreach (var c in Model.Categories)
+            {
+                @c.Category1<br />
+            }
+        </div>
+        <div class="col-lg-3">
+            <b style="font-size:large">Availability</b><br />
+            @foreach (var a in Model.Availabilities)
+            {
+                @a.Day<br />
+            }
+        </div>
 
-    <p style="font-size:large; margin:0px">@Model.LastName</p>
-    <p style="font-size:large; margin:0px">@Model.BirthDate</p>
-    <p style="font-size:large; margin:0px">@Model.Address</p>
-    <p style="font-size:large; margin:0px">@Model.City</p>
-    <p style="font-size:large; margin:0px">@Model.State</p>
-    <p style="font-size:large; margin:0px">@Model.Zipcode</p>
-    <p style="font-size:large; margin:0px">@Model.Phone</p>
-    <p style="font-size:large; margin:0px">@Model.Email</p>
-    <p style="font-size:large; margin:0px">@Model.EmergencyName</p>
-    <p style="font-size:large; margin:0px">@Model.EmergencyRelation</p>
-    <p style="font-size:large; margin:0px">@Model.EmergencyPhone</p>
-    <p style="font-size:large; margin:0px">@Model.Organization</p>
-    <p style="font-size:large; margin:0px">@Model.Occupation</p>
-    <p style="font-size:large; margin:0px">@Model.Church</p>
-    <p style="font-size:large; margin:0px">@Model.Pastor</p>
-    <p style="font-size:large; margin:0px">@Model.HowDidYouHear</p>
-    <p style="font-size:large; margin:0px">@Model.Felony</p>
-    <p style="font-size:large; margin:0px">@Model.NatureOfFelony</p>
-</div>
-<div class="col-lg-5" style="height:510px; overflow: auto">
-    <table id="timetable" class="display">
-        <thead>
-            <tr class="text-center">
-                <th>
-                    Date
-                </th>
-                <th>
-                    Category
-                </th>
-                <th>
-                    Hours
-                </th>
-                <th></th>
-            </tr>
-        </thead>
+    </div>
+    <br />
+    <br />
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.VolunteerID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 
-        @foreach (var m in Model.TimeLogs)
-        {
-            <tr class="text-center">
-                <td>
-                    @m.Date
-                </td>
-                <td>
-                    @m.Category.Category1
-                </td>
-                <td>
-                    @m.HoursWorked
-                </td>
-                <td>
-                    @using (Html.BeginForm())
-                    {
-                        <input id="volid" name="volid" type="hidden" value="@Model.VolunteerID" />
-                        <input id="timeid" name="timeid" type="hidden" value="@m.TimeLogID" />
-                        <input type="submit" value="X" class="btn btn-default" />
-                    }
-                </td>
-            </tr>
-        }
-    </table>
-</div>
-    </div>
-<br /><br />
-<div class="row text-center">
-    <div class="col-lg-3">
-        <b style="font-size:large">Skills</b><br />
-        @Model.Skills
-    </div>
-    <div class="col-lg-3">
-        <b style="font-size:large">Disabilities</b><br />
-        @Model.Disabilities
-    </div>
-    <div class="col-lg-3">
-        <b style="font-size:large">Category(s)</b><br />
-        @foreach (var c in Model.Categories)
-        {
-            @c.Category1<br />
-        }
-    </div>
-    <div class="col-lg-3">
-        <b style="font-size:large">Availability</b><br />
-        @foreach (var a in Model.Availabilities)
-        {
-            @a.Day<br />
-        }
-    </div>
-
-</div>
-<br />
-<br />
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.VolunteerID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-
-@section Scripts{
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#timetable').dataTable({
-                paging: false,
-                info: false,
-                searching: false,
-                "columnDefs": [
-                    { "orderable": false, "targets": -1 }
-                ]
+    @section Scripts{
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+        <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#timetable').dataTable({
+                    paging: false,
+                    info: false,
+                    searching: false,
+                    "columnDefs": [
+                        { "orderable": false, "targets": -1 }
+                    ]
+                });
             });
-        });
 
-    </script>
-}
-*@
+        </script>
+    }
+
