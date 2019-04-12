@@ -235,14 +235,41 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Availability.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CreateViewModel.cs" />
     <Compile Include="Models\EditViewModel.cs" />
     <Compile Include="Models\HourViewModel.cs" />
     <Compile Include="Models\Extensions\IdentityExtensions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TimeLog.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\ViewHourViewModel.cs" />
+    <Compile Include="Models\VMSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VMSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VMSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VMSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VMSModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Volunteer.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -299,9 +326,26 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\VMSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VMSModel.edmx</DependentUpon>
+      <LastGenOutput>VMSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\VMSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VMSModel.edmx</DependentUpon>
+      <LastGenOutput>VMSModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\icons\crmlogo.png" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\VMSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VMSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\VMSModel.edmx.diagram">
+      <DependentUpon>VMSModel.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -404,7 +448,6 @@
     <Content Include="Views\Volunteers\HoursForm.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
-    <Content Include="Views\Volunteers\ThankYou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

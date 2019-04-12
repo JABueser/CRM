@@ -25,7 +25,6 @@ namespace VMS.Models
         public string Address2 { get; set; }
         [Required]
         public string City { get; set; }
-
         [Required]
         public string State { get; set; }
         [Required]

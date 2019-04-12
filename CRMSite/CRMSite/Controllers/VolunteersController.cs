@@ -190,14 +190,10 @@ namespace CRMSite.Controllers
             }
 
             TimeLog timelog = db.TimeLogs.Find(timeid);
-            Volunteer volunteer = db.Volunteers.Find(volid);
-            volunteer.TotalHours = volunteer.TotalHours - timelog.HoursWorked;
-            db.Entry(volunteer).State = EntityState.Modified;
             db.TimeLogs.Remove(timelog);
             db.SaveChanges();
 
-
-
+            Volunteer volunteer = db.Volunteers.Find(volid);
 
             if (volunteer == null)
             {
@@ -251,8 +247,7 @@ namespace CRMSite.Controllers
                 Disabilities = postModel.Disabilities,
                 Skills = postModel.Skills,
                 Email = postModel.Email,
-                Phone = postModel.Phone,
-                TotalHours = 0
+                Phone = postModel.Phone
             };
 
             db.Volunteers.Add(volunteer);

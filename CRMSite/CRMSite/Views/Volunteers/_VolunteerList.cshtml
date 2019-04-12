@@ -93,23 +93,22 @@
                             <div>
                                 <div>
                                     What Category Do The Hours Apply To? <br />
-                                                                         <select id="CatName" name="CatName" style="width:300px;">
-                                                                             <option value=1>Doctor</option>
-                                                                             <option value=2>Dentist</option>
-                                                                             <option value=3>Nurse</option>
-                                                                             <option value=4>Chapel Ministry</option>
-                                                                             <option value=5>Bus Driver</option>
-                                                                             <option value=6>Office/Clerical</option>
-                                                                             <option value=7>Maintenance</option>
-                                                                             <option value=8>Auto Shop</option>
-                                                                             <option value=9>Food Service</option>
-                                                                             <option value=10>Mens Division</option>
-                                                                             <option value=11>Thrift Store</option>
-                                                                             <option value=12>Special Events</option>
-                                                                             <option value=13>Women, Children, and Families</option>
-                                                                             <option value=14>Job Training/Life Skills Instructor</option>
-                                                                             <option value=3002>PRISOMN</option>
-                                                                         </select>
+                                    <select id="CatName" name="CatName" style="width:300px;">
+                                        <option value=1>Doctor</option>
+                                        <option value=2>Dentist</option>
+                                        <option value=3>Nurse</option>
+                                        <option value=4>Chapel Ministry</option>
+                                        <option value=5>Bus Driver</option>
+                                        <option value=6>Office/Clerical</option>
+                                        <option value=7>Maintenance</option>
+                                        <option value=8>Auto Shop</option>
+                                        <option value=9>Food Service</option>
+                                        <option value=10>Mens Division</option>
+                                        <option value=11>Thrift Store</option>
+                                        <option value=12>Special Events</option>
+                                        <option value=13>Women, Children, and Families</option>
+                                        <option value=14>Job Training/Life Skills Instructor</option>
+                                    </select>
                                     @Html.ValidationMessageFor(model => model.Hours, "", new { @class = "text-danger" })
                                     <input id="VolID" name="VolID" type="hidden" value="@item.VolunteerID" />
                                 </div>
