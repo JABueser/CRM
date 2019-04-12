@@ -77,7 +77,7 @@
                                 <div>
                                     <div>
                                         Date:
-                                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @max = "9999-12-31"} })
                                         @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
