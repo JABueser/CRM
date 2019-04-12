@@ -217,7 +217,7 @@
     <br />
     <hr />
 
-    <h3>Other</h3>
+    <h3>Disabilities</h3>
     <div class="row">
 
         <div class="col-md-4">
@@ -227,8 +227,11 @@
             @Html.ValidationMessageFor(model => model.Disabilities, "", new { @class = "text-danger" })
         </div>
     </div>
-    <br />
 
+    <br />
+    <hr />
+
+    <h3> Skills </h3>
     <div class="row">
         <div class="col-md-4">
             Please list some of your skills below.
@@ -243,13 +246,6 @@
 
     <h3>Availability</h3>
     <br />
-
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-        <label class="form-check-label" for="defaultCheck1">
-            Default checkbox
-        </label>
-    </div>
 
     @foreach (var av in Model.AllAvailability)
     {
@@ -295,7 +291,7 @@
 
     <div class="form-group">
         <div class="text-center">
-            <input type="submit" value="Submit" class="btn btn-primary btn-lg" />
+            <input type="submit" value="Submit" class="btn btn-primary" />
         </div>
     </div>
 </div>
