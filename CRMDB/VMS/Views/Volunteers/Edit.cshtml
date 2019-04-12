@@ -1,6 +1,6 @@
 ﻿@model VMS.Models.EditViewModel
 
-<h2>Edit Volunteer</h2>
+<h2>Edit Volunteer Information</h2>
 
 @using (Html.BeginForm())
 {
@@ -24,15 +24,19 @@
                 @Html.EditorFor(model => model.VolunteerPerson.LastName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.LastName, "", new { @class = "text-danger" })
             </div>
+
+            <div class="col-lg-3">
+
+            </div>
+
+        </div>
+
+        <div class="row">
             <div class="col-lg-3">
                 Birth Date
                 @Html.EditorFor(model => model.VolunteerPerson.BirthDate, new { htmlAttributes = new { type = "date", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.BirthDate, "", new { @class = "text-danger" })
             </div>
-            <div class="col-lg-3">
-
-            </div>
-
         </div>
 
         <br />
@@ -44,6 +48,15 @@
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.Address, "", new { @class = "text-danger" })
             </div>
 
+            <div class="col-lg-3">
+                Address
+                @Html.EditorFor(model => model.VolunteerPerson.Address2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.VolunteerPerson.Address2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
             <div class="col-lg-3">
                 City
                 @Html.EditorFor(model => model.VolunteerPerson.City, new { htmlAttributes = new { @class = "form-control" } })
@@ -77,16 +90,11 @@
                 @Html.EditorFor(model => model.VolunteerPerson.Phone, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.Phone, "", new { @class = "text-danger" })
             </div>
-            <div class="col-lg-3">
-
-            </div>
-            <div class="col-lg-3">
-
-            </div>
 
         </div>
 
         <br />
+
         <hr />
 
         <h3>Emergency Contact</h3>
@@ -98,13 +106,19 @@
                 @Html.EditorFor(model => model.VolunteerPerson.EmergencyName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.EmergencyName, "", new { @class = "text-danger" })
             </div>
+        </div>
+        <br />
 
+        <div class="row">
             <div class="col-md-4">
                 Relation to you
                 @Html.EditorFor(model => model.VolunteerPerson.EmergencyRelation, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.EmergencyRelation, "", new { @class = "text-danger" })
             </div>
+        </div>
+        <br />
 
+        <div class="row">
             <div class="col-md-4">
                 Emergency Contact Phone Number
                 @Html.EditorFor(model => model.VolunteerPerson.EmergencyPhone, new { htmlAttributes = new { @class = "form-control" } })
@@ -150,9 +164,10 @@
                 @Html.EditorFor(model => model.VolunteerPerson.Pastor, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.Pastor, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-
-
+        <br />
+        <div class="row">
             <div class="col-md-4">
                 How did you hear about us?
                 @Html.EditorFor(model => model.VolunteerPerson.HowDidYouHear, new { htmlAttributes = new { @class = "form-control" } })
@@ -162,6 +177,8 @@
 
         <br />
         <hr />
+
+
         <h3>Criminal Past</h3>
 
         <div class="row">
@@ -171,17 +188,19 @@
                 @Html.EditorFor(model => model.VolunteerPerson.Felony, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.Felony, "", new { @class = "text-danger" })
             </div>
+        </div>
+        <br />
 
+
+        <div class="row">
             <div class="col-md-4">
                 Nature of the Felony? ("n/a" if you answered no)
                 @Html.TextAreaFor(model => model.VolunteerPerson.NatureOfFelony, new { @Style = "height:30px; width:800px;" })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.NatureOfFelony, "", new { @class = "text-danger" })
             </div>
-
-            <div class="col-md-4">
-
-            </div>
         </div>
+
+        <br />
 
         <div class="row">
             <div class="col-md-4">
@@ -201,7 +220,7 @@
         <br />
         <hr />
 
-        <h3>Other</h3>
+        <h3>Disabilities</h3>
         <div class="row">
 
             <div class="col-md-4">
@@ -210,67 +229,75 @@
                 @Html.TextAreaFor(model => model.VolunteerPerson.Disabilities, new { @Style = "height:100px; width:800px;" })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.Disabilities, "", new { @class = "text-danger" })
             </div>
-
-            <div class="col-md-4">
-                Please list some of your skills below.
-                <br />
-                @Html.TextAreaFor(model => model.VolunteerPerson.Skills, new { @Style = "height:100px; width:800px;" })
-                @Html.ValidationMessageFor(model => model.VolunteerPerson.Skills, "", new { @class = "text-danger" })
-            </div>
         </div>
 
-        <br />
-        <hr />
+            <br />
+            <hr />
 
-        <h3>Availability</h3>
-        <br />
-
-        @foreach (var av in Model.AllAvailability)
-        {
-            <div>
-                <input type="checkbox" name="SelectedDays" value="@av.AvailabilityID" @(Model.SelectedDays.Contains(av.AvailabilityID) ? "checked='checked'" : null) />  @av.Day
+            <h3>Skills</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    Please list some of your skills below.
+                    <br />
+                    @Html.TextAreaFor(model => model.VolunteerPerson.Skills, new { @Style = "height:100px; width:800px;" })
+                    @Html.ValidationMessageFor(model => model.VolunteerPerson.Skills, "", new { @class = "text-danger" })
+                </div>
             </div>
-        }
 
-        <br />
-        <hr />
+            <br />
+            <hr />
 
-        <h3>What Categories are You Interested to Volunteer In?</h3>
-        <div>
+            <h3>Availability</h3>
+            <br />
 
-            @{
-                int total = 0;
+            @foreach (var av in Model.AllAvailability)
+            {
+                <div>
+                    <input type="checkbox" name="SelectedDays" value="@av.AvailabilityID" @(Model.SelectedDays.Contains(av.AvailabilityID) ? "checked='checked'" : null) />  @av.Day
+                </div>
             }
-            <table id="memberlist" style="width:100%">
-                <tbody>
-                    @foreach (var ct in Model.AllCategories)
-                    {
-                        if (total % 4 == 0)
+
+            <br />
+            <hr />
+
+            <h3>What Categories are You Interested to Volunteer In?</h3>
+            <div>
+
+                @{
+                    int total = 0;
+                }
+                <table id="memberlist" style="width:100%">
+                    <tbody>
+                        @foreach (var ct in Model.AllCategories)
                         {
-                            @:<tr style="height:30px">
-                            }
-                            <td>
-                                <input type="checkbox" name="SelectedCategories" value="@ct.CategoryID" @(Model.SelectedCategories.Contains(ct.CategoryID) ? "checked='checked'" : null) />@ct.Category1
-                            </td>
+                            if (total % 4 == 0)
+                            {
+                                @:<tr style="height:30px">
+                                }
+                                <td>
+                                    <input type="checkbox" name="SelectedCategories" value="@ct.CategoryID" @(Model.SelectedCategories.Contains(ct.CategoryID) ? "checked='checked'" : null) />@ct.Category1
+                                </td>
                             if (total + 1 % 5 == 0)
                             {
-                            @:</tr>
+                                @:</tr>
+                            }
+                            total++;
                         }
-                        total++;
-                    }
-                </tbody>
-            </table>
-        </div>
+                    </tbody>
+                </table>
+            </div>
 
-        <br />
+            <br />
 
-        <div class="form-group">
-            <div class="text-center">
-                <input type="submit" value="Submit" class="btn btn-default" />
+            <div class="form-group">
+                <div class="text-center">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
             </div>
         </div>
-    </div>
-}
+
+ }
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
