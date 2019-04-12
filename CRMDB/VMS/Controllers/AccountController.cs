@@ -53,8 +53,6 @@ namespace VMS.Controllers
             }
         }
 
-
-
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -196,7 +194,7 @@ namespace VMS.Controllers
                     // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
-                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     //add user to employee role
                     await this.UserManager.AddToRoleAsync(user.Id, "Employee");
