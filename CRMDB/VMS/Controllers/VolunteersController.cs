@@ -187,6 +187,29 @@ namespace VMS.Controllers
             return View(volunteer);
         }
 
+        [HttpPost]
+        public ActionResult Details(int volid, int timeid)
+        {
+            if (timeid == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            TimeLog timelog = db.TimeLogs.Find(timeid);
+            Volunteer volunteer = db.Volunteers.Find(volid);
+            volunteer.TotalHours = volunteer.TotalHours - timelog.HoursWorked;
+            db.Entry(volunteer).State = EntityState.Modified;
+            db.TimeLogs.Remove(timelog);
+            db.SaveChanges();
+
+            if (volunteer == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(volunteer);
+        }
+
         [AllowAnonymous]
         // GET: Volunteers/Create
         [HttpGet]

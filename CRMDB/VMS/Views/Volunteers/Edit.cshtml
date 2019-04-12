@@ -260,11 +260,19 @@
         <h3>Availability</h3>
         <br />
 
+        @{
+            int dayTotal = 0;
+        }
+
         @foreach (var av in Model.AllAvailability)
         {
             <div>
-                <input type="checkbox" name="SelectedDays" value="@av.AvailabilityID" @(Model.SelectedDays.Contains(av.AvailabilityID) ? "checked='checked'" : null) />  @av.Day
+                <input type="checkbox" name="SelectedDays" value="@av.AvailabilityID" id="@dayTotal" @(Model.SelectedDays.Contains(av.AvailabilityID) ? "checked='checked'" : null) />
+                <label class="form-check-label" for="@dayTotal">
+                    @av.Day
+                </label>
             </div>
+            dayTotal++;
         }
 
         <br />
@@ -285,7 +293,10 @@
                             @:<tr style="height:30px">
                             }
                             <td>
-                                <input type="checkbox" name="SelectedCategories" value="@ct.CategoryID" @(Model.SelectedCategories.Contains(ct.CategoryID) ? "checked='checked'" : null) />@ct.Category1
+                                <input type="checkbox" name="SelectedCategories" value="@ct.CategoryID" id="@total" @(Model.SelectedCategories.Contains(ct.CategoryID) ? "checked='checked'" : null) />
+                                <label class="form-check-label" for="@total">
+                                    @ct.Category1
+                                </label>
                             </td>
                             if (total + 1 % 5 == 0)
                             {
