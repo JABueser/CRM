@@ -275,7 +275,7 @@ namespace VMS.Controllers
                 InsertVolunteerCat(volunteer, c);
             }
 
-            return RedirectToAction("Index");
+            return View("ThankYou");
         }
 
         // GET: Volunteers/Edit/5
