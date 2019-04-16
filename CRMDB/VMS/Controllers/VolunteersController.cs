@@ -23,7 +23,9 @@ namespace VMS.Controllers
         {
             var HoursViewModel = new HourViewModel
             {
-                Vols = db.Volunteers.ToList()
+                Vols = db.Volunteers.ToList(),
+                Categories = db.Categories.ToList()
+                
             };
             return View(HoursViewModel);
         }
