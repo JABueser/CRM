@@ -11,7 +11,8 @@ namespace VMS.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Volunteer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -46,6 +47,8 @@ namespace VMS.Models
         public string Phone { get; set; }
         public int TotalHours { get; set; }
         public string Address2 { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MMMM dd, yyyy}")]
         public System.DateTime DateCreated { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
