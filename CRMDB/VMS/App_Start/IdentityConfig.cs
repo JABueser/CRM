@@ -29,10 +29,12 @@ namespace VMS
         {
 
             var apiKey = ConfigurationManager.AppSettings["SendGridApiKey"];
+            var emailSender = ConfigurationManager.AppSettings["EmailSender"];
+            var emailSenderName = ConfigurationManager.AppSettings["EmailSenderName"];
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("unfteam@no-reply.edu", "UNF Team"),
+                From = new EmailAddress(emailSender, emailSenderName),
                 Subject = message.Subject,
                 PlainTextContent = message.Body,
                 HtmlContent = message.Body

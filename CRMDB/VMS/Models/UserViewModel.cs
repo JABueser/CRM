@@ -15,6 +15,19 @@ namespace VMS.Models
         public string Email { get; set; }
         public string Role { get; set; }
         public IEnumerable<IdentityRole> RolesList { get; set; }
+
+        public static UserViewModel Create(ApplicationUser u, List<IdentityRole> roles)
+        {
+            return new UserViewModel
+            {   
+                Id = u.Id,
+                FullName = u.FullName,
+                UserName = u.UserName,
+                Role = string.Join(",", u.RoleNames),
+                Email = new String(u.Email.Where(Char.IsLetter).ToArray()),
+                RolesList = roles
+            };
+        }   
     }
 }
 

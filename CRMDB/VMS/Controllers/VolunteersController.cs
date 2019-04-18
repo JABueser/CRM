@@ -38,20 +38,23 @@ namespace VMS.Controllers
 
             Volunteer a = db.Volunteers.FirstOrDefault(t => t.VolunteerID == postModel.VolID);
 
-            a.TotalHours = a.TotalHours + postModel.Hours;
-
-            var model = new TimeLog
+            if (a != null)
             {
-                Date = postModel.Date,
-                HoursWorked = postModel.Hours,
-                VolunteerID = postModel.VolID,
-                CategoryID = postModel.CatName
-            };
+                a.TotalHours = a.TotalHours + postModel.Hours;
 
-            db.Entry(a).State = EntityState.Modified;
-            db.TimeLogs.Add(model);
-            db.SaveChanges();
+                var model = new TimeLog
+                {
+                    Date = postModel.Date,
+                    HoursWorked = postModel.Hours,
+                    VolunteerID = postModel.VolID,
+                    CategoryID = postModel.CatName
+                };
 
+                db.Entry(a).State = EntityState.Modified;
+                db.TimeLogs.Add(model);
+                db.SaveChanges();
+
+            }
             return RedirectToAction("Index");
         }
 

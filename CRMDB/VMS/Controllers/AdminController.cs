@@ -49,17 +49,19 @@ namespace VMS.Controllers
                                                equals role.Id
                                                select role.Name).ToList()
                               }).ToList().Select(u =>
-                                  new UserViewModel
-                                  {
-                                      Id = u.Id,
-                                      FullName = u.FullName,
-                                      UserName = u.Username,
-                                      Role = string.Join(",", u.RoleNames),
-                                      Email = new String(u.Email.Where(Char.IsLetter).ToArray()),
-                                      RolesList = context.Roles.OrderBy(x => x.Name)
-                                  });
+                              new UserViewModel
+                              {
+                                  Id = u.Id,
+                                  FullName = u.FullName,
+                                  UserName = u.Username,
+                                  Role = string.Join(",", u.RoleNames),
+                                  Email = new String(u.Email.Where(Char.IsLetter).ToArray()),
+                                  RolesList = context.Roles.OrderBy(x => x.Name)
+                              });
+
             return View(viewModels);
         }
+
 
         [HttpPost]
         public async Task<ActionResult> Index(UserViewModel postModel)
@@ -109,12 +111,5 @@ namespace VMS.Controllers
             return View("Error");
             
         }
-
-        //[HttpPost]
-        //public async Task<ActionResult> DetailsAsync(string name, string role)
-        //{
-        //    var user = await UserManager.FindByNameAsync(name);
-        //    return View(user);
-        //}
     }
 }
