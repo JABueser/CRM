@@ -4,7 +4,53 @@
     ViewBag.Title = "Details";
 }
 
-<p>@Model.StartDate</p>
+@{
+    var dateLine = "";
+    var empty = "Jan 1, 0001";
+    DateTime parsedEmpty = DateTime.Parse(empty);
+
+    if(DateTime.Compare(Model.StartDate, parsedEmpty) == 0 && DateTime.Compare(Model.EndDate, parsedEmpty) == 0)
+    {
+        dateLine += "All Time";
+    }
+
+    else
+    {
+        if (DateTime.Compare(Model.StartDate, parsedEmpty) != 0)
+        {
+            var startDateLong = Model.StartDate;
+            var startDateShort = startDateLong.ToShortDateString();
+
+            dateLine += startDateShort;
+        }
+
+        else
+        {
+            dateLine += "Up to ";
+        }
+
+        if (DateTime.Compare(Model.StartDate, parsedEmpty) != 0 && DateTime.Compare(Model.EndDate, parsedEmpty) != 0)
+        {
+            dateLine += " to ";
+        }
+
+        if (DateTime.Compare(Model.EndDate, parsedEmpty) != 0)
+        {
+            var endDateLong = Model.EndDate;
+            var endDateShort = endDateLong.ToShortDateString();
+
+            dateLine += endDateShort;
+        }
+
+        else
+        {
+            dateLine += " Forward";
+        }
+    }
+}
+
+<h1 class="text-center">Total Hour Summary</h1>
+<h2 class="text-center">@dateLine</h2>
 <br /> <br />
 <table class="table table-bordered">
     <thead>
@@ -72,6 +118,10 @@
         <tr>
             <td>Job Training/Life Skills Instructor</td>
             <td>@Html.DisplayFor(model => model.Training)</td>
+        </tr>
+        <tr>
+            <td>Community Service</td>
+            <td>@Html.DisplayFor(model => model.Service)</td>
         </tr>
         <tr>
             <td><strong>@Html.DisplayNameFor(model => model.Total) </strong></td>

@@ -81,40 +81,22 @@
                 <td style="max-width:400px">                    
                     @foreach (var c in item.Categories)
                     {
-                    <span class="badge badge-pill badge-primary bad">@c.Category1</span> 
+                    <span class="badge badge-primary" id="testid">@c.Category1</span> 
                     }
                 </td>
                 <td class="text-center">
                     @Html.DisplayFor(modelItem => item.TotalHours)
                 </td>
                 <td class="text-center">
-                    @*<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#id_@item.VolunteerID">
-            Add Hours
-        </button>*@
-                    <br />
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown button
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-
-
-                    @*<div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Options
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#id_@item.VolunteerID">
+                        Add Hours
                     </button>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID })</li>
-                    </ul>
-                    |
-                    @Html.ActionLink("Details", "Details", new { id = item.VolunteerID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerID })
-                </div>*@
+                    <br />
+
+                    @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID })   <br />                 
+                    @Html.ActionLink("Details", "Details", new { id = item.VolunteerID }) <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerID })
+                
                 </td>
             </tr>
 
