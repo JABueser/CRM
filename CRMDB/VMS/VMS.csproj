@@ -235,6 +235,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationUser2.cs" />
     <Compile Include="Models\Availability.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
