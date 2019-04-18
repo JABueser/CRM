@@ -38,19 +38,27 @@ namespace VMS.Controllers
         public ActionResult Index()
         {
             var viewModels = (from user in context.Users
-                              select new ApplicationUser
+                              select new
                               {
                                   Id = user.Id,
                                   FullName = user.FullName,
-                                  UserName = user.UserName,
+                                  Username = user.UserName,
                                   Email = user.Email,
                                   RoleNames = (from userRole in user.Roles
                                                join role in context.Roles on userRole.RoleId
                                                equals role.Id
                                                select role.Name).ToList()
                               }).ToList().Select(u =>
-                                  UserViewModel.Create(u, context.Roles.OrderBy(x => x.Name).ToList()));
-                                  
+                              new UserViewModel
+                              {
+                                  Id = u.Id,
+                                  FullName = u.FullName,
+                                  UserName = u.Username,
+                                  Role = string.Join(",", u.RoleNames),
+                                  Email = new String(u.Email.Where(Char.IsLetter).ToArray()),
+                                  RolesList = context.Roles.OrderBy(x => x.Name)
+                              });
+
             return View(viewModels);
         }
 
@@ -88,24 +96,20 @@ namespace VMS.Controllers
             var user = await UserManager.FindByNameAsync(name);
             if(user != null)
             {
-                var model = UserViewModel.Create(user, context.Roles.OrderBy(x => x.Name).ToList());
-                //{
-                //    FullName = user.FullName,
-                //    Email = user.Email,
-                //    Role = string.Join(",", (),
-                //    RolesList = context.Roles.OrderBy(x => x.Name)
-                //};
+                var model = new UserViewModel()
+                {
+                    FullName = user.FullName,
+                    Email = user.Email,
+                    Role = string.Join(",", (from userRole in user.Roles
+                                             join role in context.Roles on userRole.RoleId
+                                             equals role.Id
+                                             select role.Name)),
+                    RolesList = context.Roles.OrderBy(x => x.Name)
+                };
                 return View(model);
             }
             return View("Error");
             
         }
-
-        //[HttpPost]
-        //public async Task<ActionResult> DetailsAsync(string name, string role)
-        //{
-        //    var user = await UserManager.FindByNameAsync(name);
-        //    return View(user);
-        //}
     }
 }
