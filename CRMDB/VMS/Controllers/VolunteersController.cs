@@ -114,6 +114,7 @@ namespace VMS.Controllers
             model.Special = 0;
             model.Women = 0;
             model.Training = 0;
+            model.Service = 0;
             model.Total = 0;
 
             foreach (var t in time)
@@ -169,6 +170,10 @@ namespace VMS.Controllers
                 if (t.Category.Category1.Equals("Job Training/Life Skills Instructor"))
                 {
                     model.Training = model.Training + (int)t.HoursWorked;
+                }
+                if (t.Category.Category1.Equals("Community Service"))
+                {
+                    model.Service = model.Service + (int)t.HoursWorked;
                 }
 
                 model.Total = model.Total + (int)t.HoursWorked;

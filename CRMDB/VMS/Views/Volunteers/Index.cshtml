@@ -25,7 +25,7 @@
 <br />
 <br />
 
-<table id="volunteerTable" class="table table-bordered">
+<table id="volunteerTable" class="table table-bordered" style="width:100%">
     <thead>
         <tr>
             <th class="select-checkbox"><input id="checkBox" type="checkbox"></th>
@@ -59,7 +59,12 @@
             <tr>
                 <td></td>
                 <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.DateCreated)
+                    @{ 
+                        var dateTimeNow = item.DateCreated; // Return 00/00/0000 00:00:00
+                        var dateOnlyString = dateTimeNow.ToShortDateString(); //Return 00/00/0000
+                    }
+
+                    @dateOnlyString
                 </td>
                 <td class="text-center">
                     @Html.DisplayFor(modelItem => item.FirstName)
@@ -83,16 +88,15 @@
                     @Html.DisplayFor(modelItem => item.TotalHours)
                 </td>
                 <td class="text-center">
-                    <div>
-                        <button id="addHoursbtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalId" onclick="addHoursModal('@item.VolunteerID', '@item.FirstName', '@item.LastName')">
-                            Add Hours
-                        </button>
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#id_@item.VolunteerID">
+                        Add Hours
+                    </button>
+                    <br />
 
-                        <br />
-                        @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.VolunteerID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerID })
-                    </div>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID })   <br />                 
+                    @Html.ActionLink("Details", "Details", new { id = item.VolunteerID }) <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerID })
+                
                 </td>
             </tr>
 

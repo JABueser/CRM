@@ -22,14 +22,15 @@ namespace VMS.Models
         public int Special { get; set; }
         public int Women { get; set; }
         public int Training { get; set; }
+        public int Service { get; set; }
         public int Total { get; set; }
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime? StartDate { get; set; }
+        public System.DateTime StartDate { get; set; }
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime? EndDate { get; set; }
+        public System.DateTime EndDate { get; set; }
     }
 }
