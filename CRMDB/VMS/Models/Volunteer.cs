@@ -47,7 +47,6 @@ namespace VMS.Models
         public string Phone { get; set; }
         public int TotalHours { get; set; }
         public string Address2 { get; set; }
-
         [DisplayFormat(DataFormatString = "{0:MMMM dd, yyyy}")]
         public System.DateTime DateCreated { get; set; }
     

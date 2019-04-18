@@ -6,7 +6,6 @@
 
 <h2>Hours By Category</h2>
 
-<h4>Please enter in the dates of which you want your total hours to be calculated:</h4>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -19,12 +18,12 @@
 
         <div class="row">
             <div class="col-lg-3">
-                Start Date:
+                From:
                 @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", @max = "9999-12-31" } })
                 @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
             </div>
             <div class="col-lg-3">
-                End Date:
+                To:
                 @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", @max = "9999-12-31" } })
                 @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
             </div>
@@ -33,15 +32,15 @@
         <br />
         <div class="form-group">
             <div class="text-left">
-                <input type="submit" value="Submit" class="btn btn-primary btn-lg" />
-
+                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" id="directions">Directions</button>
+                <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
         </div>
 
     </div>
 }
-<button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#myModal" id="directions">Directions</button>
-<br /><br />
+
+<br />
 <br />
 <div class="container">
     <!-- Modal -->

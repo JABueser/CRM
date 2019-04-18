@@ -23,7 +23,9 @@ namespace VMS.Controllers
         {
             var HoursViewModel = new HourViewModel
             {
-                Vols = db.Volunteers.ToList()
+                Vols = db.Volunteers.ToList(),
+                Categories = db.Categories.ToList()
+                
             };
             return View(HoursViewModel);
         }
@@ -280,7 +282,7 @@ namespace VMS.Controllers
                 InsertVolunteerCat(volunteer, c);
             }
 
-            return RedirectToAction("Index");
+            return View("ThankYou");
         }
 
         // GET: Volunteers/Edit/5

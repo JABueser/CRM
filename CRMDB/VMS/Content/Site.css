@@ -10,6 +10,12 @@
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
+ul.nav > li > a:hover {
+    background-color: #adaba9;
+    color: #2134e3;
+    border-style: none;
+}
+
 .dl-horizontal dt {
     white-space: normal;
 }
@@ -21,3 +27,16 @@ textarea {
     max-width: 280px;
 }
 
+#badge-6{
+    background-color:brown;
+}
+
+#myModal .modal-dialog .modal-content .modal-body {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+#volunteerTable tbody tr.selected {
+    color: white;
+    background-color: #4575a5;
+}

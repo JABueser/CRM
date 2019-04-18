@@ -89,6 +89,11 @@ namespace VMS.Controllers
                     };
                     return View("ResendConfirmEmail", resend);
                 }
+                if(UserManager.IsInRole(user.Id, "Disabled"))
+                {
+                    ViewBag.errorMessage = "Your account has been disabled, please contact the Community Engagement Officer to get your account enabled.";
+                    return View("Error");
+                }
             }
 
             // This doesn't count login failures towards account lockout
@@ -199,7 +204,7 @@ namespace VMS.Controllers
                     //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     //add user to employee role
-                    await this.UserManager.AddToRoleAsync(user.Id, "Employee");
+                    await this.UserManager.AddToRoleAsync(user.Id, "Disabled");
                     ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
                                     + "before you can log in.";
 
