@@ -340,7 +340,7 @@ namespace VMS.Controllers
                 volunteer.Address = postModel.VolunteerPerson.Address;
                 volunteer.Address2 = postModel.VolunteerPerson.Address2;
                 volunteer.City = postModel.VolunteerPerson.City;
-                volunteer.State = postModel.VolunteerPerson.State;
+                volunteer.State = postModel.State;
                 volunteer.Zipcode = postModel.VolunteerPerson.Zipcode;
                 volunteer.BirthDate = postModel.VolunteerPerson.BirthDate;
                 volunteer.Organization = postModel.VolunteerPerson.Organization;

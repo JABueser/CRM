@@ -14,5 +14,6 @@ namespace VMS.Models
         public List<Category> AllCategories { get; set; }
         public List<Availability> AllAvailability { get; set; }
         public Volunteer VolunteerPerson { get; set; }
+        public string State { get; set; }
     }
 }
