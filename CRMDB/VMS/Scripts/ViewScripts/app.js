@@ -101,7 +101,7 @@ function format(inputDate) {
 
 
 function addHoursModal(id, firstname, lastname) {
-    document.getElementById("modalVolunteerName").innerHTML = firstname + " " + lastname;
+    document.getElementById("modalVolunteerName").innerHTML = `${firstname} ${lastname}`;
     document.getElementById("VolID").value = id;
 }
 

@@ -59,12 +59,7 @@
             <tr>
                 <td></td>
                 <td class="text-center">
-                    @{ 
-                        var dateTimeNow = item.DateCreated; // Return 00/00/0000 00:00:00
-                        var dateOnlyString = dateTimeNow.ToShortDateString(); //Return 00/00/0000
-                    }
-
-                    @dateOnlyString
+                    @Html.DisplayFor(modelItem => item.DateCreated)
                 </td>
                 <td class="text-center">
                     @Html.DisplayFor(modelItem => item.FirstName)
@@ -88,7 +83,7 @@
                     @Html.DisplayFor(modelItem => item.TotalHours)
                 </td>
                 <td class="text-center">
-                    <button type="button" class="btn btn-primary bt-sm" data-toggle="modal" data-target="#id_@item.VolunteerID">
+                    <button type="button" class="btn btn-primary bt-sm" data-toggle="modal" data-target="#modalId" onclick="addHoursModal(@item.VolunteerID, '@item.FirstName', '@item.LastName')">
                         Add Hours
                     </button>
                     <br />
@@ -149,29 +144,13 @@
                     <br />
                     <div>
                         <label for="Hours">Hours Worked:</label>
-                        <input class="form-control text-box single-line" data-val="true" data-val-number="The field Hours must be a number." data-val-required="The Hours field is required." id="Hours" name="Hours" type="number" value="0">
+                        <input class="form-control text-box single-line" data-val="true" data-val-number="The field Hours must be a number." data-val-required="The Hours field is required." id="Hours" name="Hours" type="number" value="0" min="0">
                         <span class="field-validation-valid text-danger" data-valmsg-for="Hours" data-valmsg-replace="true"></span>
                     </div>
                     <br />
                     <div>
                         <label for="CatName">Categories:</label>
                         What Category Do The Hours Apply To? <br />
-                        <select id="CatName" name="CatName" style="width:300px;">
-                            <option value=1>Doctor</option>
-                            <option value=2>Dentist</option>
-                            <option value=3>Nurse</option>
-                            <option value=4>Chapel Ministry</option>
-                            <option value=5>Bus Driver</option>
-                            <option value=6>Office/Clerical</option>
-                            <option value=7>Maintenance</option>
-                            <option value=8>Auto Shop</option>
-                            <option value=9>Food Service</option>
-                            <option value=10>Mens Division</option>
-                            <option value=11>Thrift Store</option>
-                            <option value=12>Special Events</option>
-                            <option value=13>Women, Children, and Families</option>
-                            <option value=14>Job Training/Life Skills Instructor</option>
-                        </select>
                         @Html.DropDownListFor(m => Model.Categories,
                                            new SelectList(Model.Categories, "CategoryID", "Category1", Model.CatName),
                                            new { @id = "CatName", @Name = "CatName" })
