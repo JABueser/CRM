@@ -195,8 +195,32 @@
 
             <div class="col-md-4">
                 Have you ever been convited of a Felony?
-                @Html.EditorFor(model => model.VolunteerPerson.Felony, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.VolunteerPerson.Felony, "", new { @class = "text-danger" })
+
+                @{
+                    var boolean = (Model.VolunteerPerson.Felony.Equals("Yes") ? true : false);
+                }
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="VolunteerPerson.Felony" id="FelonyYes" value="Yes" data-val="true" data-val-required="The Felony field is required."
+                           @if (boolean)
+                           {
+                               @: checked
+                           }>
+                    <label class="form-check-label" for="Felony">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="VolunteerPerson.Felony" id="FelonyNo" value="No" data-val="true" data-val-required="The Felony field is required."
+                           @if (!boolean)
+                           {
+                               @: checked
+                           }>
+                    <label class="form-check-label" for="FelonyNo">
+                        No
+                    </label>
+                </div>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Felony" data-valmsg-replace="true"></span>
             </div>
         </div>
         <br />
@@ -205,7 +229,7 @@
         <div class="row">
             <div class="col-md-4">
                 Nature of the Felony? ("n/a" if you answered no)
-                @Html.TextAreaFor(model => model.VolunteerPerson.NatureOfFelony, new { @Style = "height:30px; width:800px;" })
+                @Html.TextAreaFor(model => model.VolunteerPerson.NatureOfFelony, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.NatureOfFelony, "", new { @class = "text-danger" })
             </div>
 
@@ -237,7 +261,7 @@
             <div class="col-md-4">
                 Do you have any Disabilities? If so explain below.
                 <br />
-                @Html.TextAreaFor(model => model.VolunteerPerson.Disabilities, new { @Style = "height:100px; width:800px;" })
+                @Html.TextAreaFor(model => model.VolunteerPerson.Disabilities, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.Disabilities, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -249,7 +273,7 @@
             <div class="col-md-4">
                 Please list some of your skills below.
                 <br />
-                @Html.TextAreaFor(model => model.VolunteerPerson.Skills, new { @Style = "height:100px; width:800px;" })
+                @Html.TextAreaFor(model => model.VolunteerPerson.Skills, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.VolunteerPerson.Skills, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -265,7 +289,7 @@
         }
 
         @foreach (var av in Model.AllAvailability)
-        {
+                    {
             <div>
                 <input type="checkbox" name="SelectedDays" value="@av.AvailabilityID" id="@dayTotal" @(Model.SelectedDays.Contains(av.AvailabilityID) ? "checked='checked'" : null) />
                 <label class="form-check-label" for="@dayTotal">

@@ -41,8 +41,8 @@
             <PropertyRef Name="TimeLogID" />
           </Key>
           <Property Name="TimeLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="HoursWorked" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="HoursWorked" Type="int" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="VolunteerID" Type="int" Nullable="false" />
         </EntityType>
@@ -72,7 +72,7 @@
           <Property Name="Skills" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-          <Property Name="TotalHours" Type="int" Nullable="false" />
+          <Property Name="TotalHours" Type="int" />
           <Property Name="Address2" Type="nvarchar" MaxLength="10" />
           <Property Name="DateCreated" Type="date" Nullable="false" />
         </EntityType>
@@ -219,8 +219,8 @@
             <PropertyRef Name="TimeLogID" />
           </Key>
           <Property Name="TimeLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Precision="0" Nullable="false" />
-          <Property Name="HoursWorked" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="HoursWorked" Type="Int32" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="VolunteerID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_dbo_TimeLog_dbo_Category_CategoryID" FromRole="TimeLog" ToRole="Category" />
@@ -252,7 +252,7 @@
           <Property Name="Skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TotalHours" Type="Int32" Nullable="false" />
+          <Property Name="TotalHours" Type="Int32" />
           <NavigationProperty Name="TimeLogs" Relationship="Self.FK_dbo_TimeLog_dbo_Volunteer_VolunteerID" FromRole="Volunteer" ToRole="TimeLog" />
           <NavigationProperty Name="Availabilities" Relationship="Self.AvailabilityAssoc" FromRole="Volunteer" ToRole="Availability" />
           <NavigationProperty Name="Categories" Relationship="Self.CategoryAssoc" FromRole="Volunteer" ToRole="Category" />
