@@ -24,8 +24,36 @@
 <button class="btn btn-primary" id="btnSelectedRows">Get Emails</button>
 <br />
 <br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-<table id="volunteerTable" class="table table-bordered" >
+    <div class="dropdown" style="margin-bottom:20px">
+        <button class="btn btn-primary dropdown-toggle" type="button"
+                id="dropdownMenu1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true" >
+            Categories
+            <span class="caret"></span>
+        </button>
+
+
+        <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
+            @for (int idx = 0; idx < Model.CatFilter.Count; idx++)
+            {
+                <li>
+                    @Html.HiddenFor(x => Model.CatFilter[idx].CategoryID)
+                    @Html.CheckBoxFor(x => Model.CatFilter[idx].isSelected, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DisplayFor(x => Model.CatFilter[idx].CategoryName)
+                    @Html.HiddenFor(x => Model.CatFilter[idx].CategoryName)
+                </li>
+            }
+        </ul>
+            <input type="submit" value="Filter" class="btn btn-primary" />
+    </div>
+}
+
+
+<table id="volunteerTable" class="table table-bordered">
     <thead>
         <tr>
             <th class="select-checkbox"><input id="checkBox" type="checkbox"></th>
@@ -44,7 +72,7 @@
             <th class="text-center">
                 Church
             </th>
-            <th class="text-center" >
+            <th class="text-center">
                 Category(s)
             </th>
             <th class="text-center">
@@ -88,10 +116,10 @@
                     </button>
                     <br />
 
-                    @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID })   <br />                 
+                    @Html.ActionLink("Edit", "Edit", new { id = item.VolunteerID })   <br />
                     @Html.ActionLink("Details", "Details", new { id = item.VolunteerID }) <br />
                     @Html.ActionLink("Delete", "Delete", new { id = item.VolunteerID })
-                
+
                 </td>
             </tr>
 

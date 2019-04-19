@@ -21,20 +21,47 @@ namespace VMS.Controllers
         //test
         public ActionResult Index()
         {
+            List<Category> categories = db.Categories.ToList();
+            
             var HoursViewModel = new HourViewModel
             {
                 Vols = db.Volunteers.ToList(),
-                Categories = db.Categories.ToList()
-                
+                Categories = categories,
+                CatFilter = categories.Select(c => HourViewModel.Create(c)).ToList()
+
             };
             return View(HoursViewModel);
         }
-
 
         [HttpPost]
         public ActionResult Index(HourViewModel postModel)
         {
             List<Category> AllCats = db.Categories.ToList();
+
+            //look for the selected categories
+            if(postModel.CatFilter != null)
+            {
+                IList<Volunteer> list = db.Volunteers.ToList();
+
+                IList<CategoryFilter> selectedCategories = postModel.CatFilter.Where(x => x.isSelected == true).ToList();
+
+                IList<Category> cat = AllCats.Where(x => selectedCategories.Any(y => y.CategoryID == x.CategoryID)).ToList();
+                //map those categories to a list of categories
+                
+
+                if (selectedCategories.Count > 0)
+                {
+                    var HoursViewModel = new HourViewModel
+                    {
+                        Vols = list.Where(v => v.Categories.Intersect(cat).Any()).ToList(),
+                        Categories = AllCats,
+                        CatFilter = AllCats.Select(c => HourViewModel.Create(c)).ToList()
+
+                    };
+                    return View(HoursViewModel);
+                }
+            }
+            
 
             Volunteer a = db.Volunteers.FirstOrDefault(t => t.VolunteerID == postModel.VolID);
 

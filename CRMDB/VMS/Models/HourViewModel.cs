@@ -23,18 +23,23 @@ namespace VMS.Models
         [DefaultValue(0)]
         public int Hours { get; set; }
         public int CatName { get; set; }
+        public List<CategoryFilter> CatFilter { get; set; }
 
+        public static CategoryFilter Create(Category c)
+        {
+            return new CategoryFilter
+            {
+                CategoryID = c.CategoryID,
+                CategoryName = c.Category1,
+                isSelected = false
+            };
+        }
     }
 
-    public class TestViewModel
+    public class CategoryFilter
     {
-        public int VolID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public List<string> Categories { get; set; }
-        public string Church { get; set; }
-        public string DateCreated { get; set; }
-        public int Hours { get; set; }
+        public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
+        public bool isSelected { get; set; }
     }
 }
