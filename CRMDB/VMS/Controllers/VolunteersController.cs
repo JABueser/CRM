@@ -75,19 +75,23 @@ namespace VMS.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult HourSummary(ViewHourViewModel model)
         {
+            var empty = "Jan 1, 0001";
+            DateTime parsedEmpty = DateTime.Parse(empty);
             var start = model.StartDate;
             var end = model.EndDate;
             List<TimeLog> time;
-            if(start == null && end == null)
+
+            if (DateTime.Compare(model.StartDate, parsedEmpty) == 0 && DateTime.Compare(model.EndDate, parsedEmpty) == 0)
             {
                 time = db.TimeLogs.ToList();
             }
-            else if (start == null && end != null)
+
+            else if (DateTime.Compare(model.StartDate, parsedEmpty) == 0 && end != null)
             {
                 time = db.TimeLogs.Where(
                 e => e.Date <= end).ToList();
             }
-            else if(start != null && end == null)
+            else if(start != null && DateTime.Compare(model.EndDate, parsedEmpty) == 0)
             {
                 time = db.TimeLogs.Where(
                 e => e.Date >= start).ToList();
