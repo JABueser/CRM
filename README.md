@@ -1,4 +1,8 @@
-# City Rescue Mission
+# City Rescue Mission Volunteer Management System
+
+<p align="center">
+        <img src="Demo-snapshot.png" alt="Technologies"/>
+</p>
 
 ## Table of Contents
 
