@@ -9,7 +9,7 @@
 - [Background](#background)
 - [Goals of the Project](#goals-of-the-project)
 - [Technology](#technology)
-- [Contributors](#contributors)
+- [Contributors and Collaborators](#contributors-and-collaborators)
 
 ## Background
 At the University of North Florida (UNF), students studying Information Systems are required to take a  Community-Based Transformational Learning (CBTL) course. This project is the result of the collaboration between four UNF students, IT professionals from Feature[23] (mentors), City Rescue Mission (client) and Karthikeyan Umapathy (instructor).
