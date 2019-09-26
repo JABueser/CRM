@@ -20,9 +20,18 @@ At the University of North Florida (UNF), students studying Information Systems 
 ## Goals of the Project
 The goal of this project is to develop a management system for City Rescue Mission (CRM) to manage their volunteers. This volunteer management system (VMS) is meant to improve CRM's processes for managing and recruiting volunteers. Before this solution, CRM was using a paper based system to keep track and manage volunteer information and volunteer hours. This solution will also aid CRM in efficiently retrieving data for performance evaluation purposes.
 
-## Technology
+## Technologies
+<p align="center">
+        <img src="Technologies.png" alt="Technologies"/>
+</p>
 
+## Contributors and Collaborators
+The Team:
 
-## Contributors
+<a href="https://github.com/JABueser"><img src="https://avatars0.githubusercontent.com/u/36246262?s=400&v=4" style="border-radius:50%" title="John Amiel Bueser" width="80px" height="80px"></a> <a href="https://github.com/jsupina"><img src="https://avatars0.githubusercontent.com/u/22897955?s=400&v=4" style="border-radius:50%" title="John Supina" width="80px" height="80px"></a> <a href="https://github.com/yanlinv"><img src="https://avatars1.githubusercontent.com/u/9778930?s=400&v=4" style="border-radius:50%" title="yanlinv" width="80px" height="80px"></a> <a href="https://github.com/kwankowski"><img src="https://avatars0.githubusercontent.com/u/36246137?s=400&v=4" style="border-radius:50%" title="Kristen Wankowski" width="80px" height="80px"></a>
 
+Instructor and Mentors
 
+<a href="https://github.com/kumapathy"><img src="https://avatars0.githubusercontent.com/u/12943121?s=400&v=4" style="border-radius:50%" title="Karthikeyan Umapathy" width="80px" height="80px"></a>
+<a href="https://github.com/DeanMachine"><img src="https://avatars1.githubusercontent.com/u/3276217?s=400&v=4" style="border-radius:50%" title="Jason Dean" width="80px" height="80px"></a>
+<a href="https://github.com/neefly21"><img src="https://avatars3.githubusercontent.com/u/5705451?s=400&v=4" style="border-radius:50%" title="Noah Emmons" width="80px" height="80px"></a>
