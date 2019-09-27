@@ -1,7 +1,7 @@
 # City Rescue Mission Volunteer Management System
 
 <p align="center">
-        <img src="Demo.png" alt="Demo"/>
+        <img src="index demo.png" alt="Demo"/>
 </p>
 
 ## Table of Contents
