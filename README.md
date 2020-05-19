@@ -32,7 +32,7 @@ The goal of this project is to develop a management system for City Rescue Missi
 ## Contributors and Collaborators
 The Team:
 
-<a href="https://github.com/JABueser"><img src="https://avatars0.githubusercontent.com/u/36246262?s=400&v=4" style="border-radius:50%" title="John Amiel Bueser" width="80px" height="80px"></a> <a href="https://github.com/jsupina"><img src="https://avatars0.githubusercontent.com/u/22897955?s=400&v=4" style="border-radius:50%" title="John Supina" width="80px" height="80px"></a> <a href="https://github.com/yanlinv"><img src="https://avatars1.githubusercontent.com/u/9778930?s=400&v=4" style="border-radius:50%" title="yanlinv" width="80px" height="80px"></a> <a href="https://github.com/kwankowski"><img src="https://avatars0.githubusercontent.com/u/36246137?s=400&v=4" style="border-radius:50%" title="Kristen Wankowski" width="80px" height="80px"></a>
+<a href="https://github.com/JABueser"><img src="https://avatars0.githubusercontent.com/u/36246262?s=400&v=4" style="border-radius:50%" title="John Amiel Bueser" width="80px" height="80px"></a> <a href="https://github.com/jsupina"><img src="https://avatars0.githubusercontent.com/u/22897955?s=400&v=4" style="border-radius:50%" title="John Supina" width="80px" height="80px"></a> <a href="https://github.com/yanling-zhang"><img src="https://avatars1.githubusercontent.com/u/9778930?s=400&v=4" style="border-radius:50%" title="Yanling Zhang" width="80px" height="80px"></a> <a href="https://github.com/kwankowski"><img src="https://avatars0.githubusercontent.com/u/36246137?s=400&v=4" style="border-radius:50%" title="Kristen Wankowski" width="80px" height="80px"></a>
 
 Instructor and Mentors
 
